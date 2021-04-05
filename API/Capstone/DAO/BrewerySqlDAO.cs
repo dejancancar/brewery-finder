@@ -15,9 +15,5 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
-        public bool CreateBrewery(BrewerySqlDAO brewery)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -7,6 +7,5 @@ namespace Capstone.DAO
 {
     public interface IBreweryDAO
     {
-        bool CreateBrewery(BrewerySqlDAO brewery);
     }
 }
