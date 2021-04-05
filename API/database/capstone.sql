@@ -27,7 +27,6 @@ CREATE TABLE users (
 CREATE TABLE breweries (
 	brewery_id int IDENTITY(1,1) NOT NULL,
 	user_id int NOT NULL,
-	phone nvarchar(15) NOT NULL,
 	history nvarchar (2000) NOT NULL,
 	is_active bit NOT NULL,
 	CONSTRAINT PK_brewery_id PRIMARY KEY (brewery_id),
@@ -38,6 +37,7 @@ CREATE TABLE locations (
 	location_id int IDENTITY(1,1) NOT NULL,
 	brewery_id int NOT NULL,
 	street_address nvarchar(400) NOT NULL,
+	phone nvarchar(15) NOT NULL,
 	city nvarchar(200) NOT NULL,
 	zip_code nvarchar (15) NOT NULL,
 	CONSTRAINT PK_location_id PRIMARY KEY (location_id),
