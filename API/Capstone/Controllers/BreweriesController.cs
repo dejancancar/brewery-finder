@@ -20,5 +20,24 @@ namespace Capstone.Controllers
             this.breweryDAO = breweryDAO;
         }
 
+<<<<<<< HEAD
+=======
+        [HttpPost]
+        public IActionResult Create(Brewery brewery)
+        {
+            Brewery createdBrewery = null;
+            createdBrewery = this.breweryDAO.CreateBrewery(brewery);
+
+            // make sure something's created
+            if (createdBrewery != null)
+            {
+                return Created($"{createdBrewery.BreweryId}", createdBrewery);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+>>>>>>> 92bac4ea467332c27c51476edbb6ed3b6b9cde58
     }
 }
