@@ -23,7 +23,18 @@ namespace Capstone.Controllers
         [HttpPost]
         public IActionResult Create(Brewery brewery)
         {
-            bool wasCreated = 
+            Brewery createdBrewery = null;
+            createdBrewery = this.breweryDAO.CreateBrewery(brewery);
+
+            // make sure something's created
+            if (createdBrewery != null)
+            {
+                return Created($"{createdBrewery.BreweryId}", createdBrewery);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }
