@@ -20,8 +20,6 @@ namespace Capstone.Controllers
             this.breweryDAO = breweryDAO;
         }
 
-<<<<<<< HEAD
-=======
         [HttpPost]
         public IActionResult Create(Brewery brewery)
         {
@@ -38,6 +36,5 @@ namespace Capstone.Controllers
                 return BadRequest();
             }
         }
->>>>>>> 92bac4ea467332c27c51476edbb6ed3b6b9cde58
     }
 }

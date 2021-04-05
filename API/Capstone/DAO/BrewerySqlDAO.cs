@@ -12,18 +12,16 @@ namespace Capstone.DAO
 
         private readonly string connectionString;
         private const string SQL_CREATE_BREWERY = @"Begin Transaction
+                                                    UPDATE users SET user_role = 'brewer' WHERE user_id = @userId;
                                                     INSERT INTO breweries(brewery_name, user_id, history, is_active) 
                                                     VALUES(@breweryName, @userId, @history, @isActive); 
-                                                    UPDATE users SET user_role = 'brewer' WHERE user_id = @userId; SELECT @@identity
+                                                    SELECT * FROM breweries WHERE brewery_id = @@identity;
                                                     Commit Transaction";
 
         public BrewerySqlDAO(string dbConnectionString)
         {
             connectionString = dbConnectionString;
         }
-
-<<<<<<< HEAD
-=======
         public Brewery CreateBrewery(Brewery brewery)
         {
             Brewery createdBrewery = null;
@@ -41,6 +39,7 @@ namespace Capstone.DAO
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
+                        createdBrewery = new Brewery();
                         createdBrewery.Name = Convert.ToString(reader["brewery_name"]);
                         createdBrewery.UserId = Convert.ToInt32(reader["user_id"]);
                         createdBrewery.BreweryId = Convert.ToInt32(reader["brewery_id"]);
@@ -55,6 +54,5 @@ namespace Capstone.DAO
                 throw;
             }
         }
->>>>>>> 92bac4ea467332c27c51476edbb6ed3b6b9cde58
     }
 }

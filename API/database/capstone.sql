@@ -22,6 +22,7 @@ CREATE TABLE users (
 	salt varchar(200) NOT NULL,
 	user_role varchar(50) NOT NULL
 	CONSTRAINT PK_user_id PRIMARY KEY (user_id)
+	--TO ASK: Shouldn't we make usernames unique?
 )
 
 CREATE TABLE breweries (
