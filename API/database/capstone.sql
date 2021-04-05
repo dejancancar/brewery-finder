@@ -41,6 +41,7 @@ CREATE TABLE locations (
 	city nvarchar(200) NOT NULL,
 	zip_code nvarchar (15) NOT NULL,
 	CONSTRAINT PK_location_id PRIMARY KEY (location_id),
+	CONSTRAINT FK_brewery_id FOREIGN KEY (brewery_id) REFERENCES breweries(brewery_id)
 )
 
 CREATE TABLE hours (
@@ -51,14 +52,12 @@ CREATE TABLE hours (
 	close_time time NOT NULL,
 	CONSTRAINT PK_hours_id PRIMARY KEY (hours_id),
 	CONSTRAINT FK_locations_id FOREIGN KEY (location_id) REFERENCES locations(location_id),
+	-- Add constraint for day of week 1-7
+	-- Add hours constraint for 1-24
 )
 
 --populate default data
---INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
---instead of just user we have 3 users for the 3 breweries
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user1','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user2','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user3','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
 
 
