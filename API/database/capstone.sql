@@ -27,6 +27,7 @@ CREATE TABLE users (
 CREATE TABLE breweries (
 	brewery_id int IDENTITY(1,1) NOT NULL,
 	user_id int NOT NULL,
+	brewery_name nvarchar(100) NOT NULL,
 	history nvarchar (2000) NOT NULL,
 	is_active bit NOT NULL,
 	CONSTRAINT PK_brewery_id PRIMARY KEY (brewery_id),
