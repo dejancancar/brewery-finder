@@ -9,8 +9,12 @@
             </td>
 
         </tr>
+        <tr>
+            <td>
+                <button @click="getUsers">Search</button>
+            </td>
+        </tr>
     </table>
-    <button @click="getUsers">Search</button>
     <user-list :users="users" ></user-list>
   </div>
 </template>
