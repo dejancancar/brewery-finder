@@ -17,12 +17,12 @@ GO
 --create tables
 CREATE TABLE users (
 	user_id int IDENTITY(1,1) NOT NULL,
-	username varchar(50) NOT NULL,
+	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
 	salt varchar(200) NOT NULL,
 	user_role varchar(50) NOT NULL
 	CONSTRAINT PK_user_id PRIMARY KEY (user_id)
-	--TO ASK: Shouldn't we make usernames unique?
+	--we changed username to be unique, may be a redundant level of error checking but whatever
 )
 
 CREATE TABLE breweries (
@@ -54,8 +54,8 @@ CREATE TABLE hours (
 	close_time time NOT NULL,
 	CONSTRAINT PK_hours_id PRIMARY KEY (hours_id),
 	CONSTRAINT FK_locations_id FOREIGN KEY (location_id) REFERENCES locations(location_id),
-	-- Add constraint for day of week 1-7
-	-- Add hours constraint for 1-24
+	CONSTRAINT CHK_days_of_week CHECK (days_of_week > 0 AND days_of_week < 8),
+	--pretty sure time constraint is built in for us?
 )
 
 --populate default data
