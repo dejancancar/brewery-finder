@@ -7,7 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import UsersView from '../views/UsersView.vue'
 import User from '../views/User.vue'
-import AddBreweryView from '../views/AddBreweryView.vue'
+
 
 
 Vue.use(Router)
@@ -30,7 +30,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -60,22 +60,20 @@ const router = new Router({
     {
       path: "/users",
       name: "users",
-      component: UsersView
+      component: UsersView,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/users/:username",
       name: "user",
-      component: User
-    },
-
-    {
-      path: "/add-brewery",
-      name: "addBrewery",
-      component: AddBreweryView,
+      component: User,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
+
   ]
 })
 

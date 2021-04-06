@@ -5,6 +5,7 @@
     <p>User Name: {{currentUser.username}}</p>
     <p>User Id: {{currentUser.userId}}</p>
     <p>Role: {{currentUser.role}}</p>
+    <router-link :to="{name: 'users'}" ><button>Search Users</button></router-link>
   </div>
 </template>
 

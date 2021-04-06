@@ -6,11 +6,12 @@
               <td>Username</td>
           </tr>
       </thead>
-      <tbody v-for="user in users" :key="user.userId">
+      <tbody v-for="user in users" :key="user.username">
           <tr>
               <!-- Loop to add all users per row -->
               <td>{{user.userId}}</td>
-              <td><router-link :to="{name: 'userToBrewer', params: {userId: user.userId}}">{{user.username}}</router-link></td>
+              <td><router-link :to="{name: 'user', params: {username: user.username}}">{{user.username}}</router-link></td>
+              
           </tr>
       </tbody>
   </table>
