@@ -58,7 +58,7 @@ CREATE TABLE hours (
 	close_time time NOT NULL,
 	CONSTRAINT PK_hours_id PRIMARY KEY (hours_id),
 	CONSTRAINT FK_brewery_id FOREIGN KEY (brewery_id) REFERENCES breweries(brewery_id),
-	CONSTRAINT CHK_days_of_week CHECK (days_of_week > 0 AND days_of_week < 8),
+	CONSTRAINT CHK_day_of_week CHECK (day_of_week > 0 AND day_of_week < 8),
 	--pretty sure time constraint is built in for us?
 )
 

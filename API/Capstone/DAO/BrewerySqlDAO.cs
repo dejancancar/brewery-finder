@@ -18,7 +18,6 @@ namespace Capstone.DAO
                                                     SELECT * FROM breweries WHERE brewery_id = @@identity;
                                                     Commit Transaction";
         private const string SQL_GET_BREWERIES = "SELECT * FROM breweries;";
-        //private const string SQL_GET_LOCATIONS = "SELECT * FROM locations WHERE brewery_id = @breweryId;";
 
         public BrewerySqlDAO(string dbConnectionString)
         {
@@ -90,10 +89,10 @@ namespace Capstone.DAO
                         createdBrewery.UserId = Convert.ToInt32(reader["user_id"]);
                         createdBrewery.BreweryId = Convert.ToInt32(reader["brewery_id"]);
                         createdBrewery.History = Convert.ToString(reader["history"]);
-                        createdBrewery.History = Convert.ToString(reader["street_address"]);
-                        createdBrewery.History = Convert.ToString(reader["phone"]);
-                        createdBrewery.History = Convert.ToString(reader["city"]);
-                        createdBrewery.History = Convert.ToString(reader["zip_code"]);
+                        createdBrewery.StreetAddress = Convert.ToString(reader["street_address"]);
+                        createdBrewery.Phone = Convert.ToString(reader["phone"]);
+                        createdBrewery.City = Convert.ToString(reader["city"]);
+                        createdBrewery.ZipCode = Convert.ToString(reader["zip_code"]);
                         createdBrewery.IsActive = Convert.ToBoolean(reader["is_active"]);
                     }
                 }
