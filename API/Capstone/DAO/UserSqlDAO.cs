@@ -10,10 +10,72 @@ namespace Capstone.DAO
     public class UserSqlDAO : IUserDAO
     {
         private readonly string connectionString;
+        private const string SQL_GET_USERS = "SELECT user_id, username, user_role FROM users;";
+        private const string SQL_GET_USERS_FILTERED = "SELECT user_id, username, user_role FROM users WHERE username LIKE @username;";
 
         public UserSqlDAO(string dbConnectionString)
         {
             connectionString = dbConnectionString;
+        }
+
+        public List<ReturnUser> GetUsers()
+        {
+            List<ReturnUser> users = new List<ReturnUser>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(SQL_GET_USERS, conn);
+
+                    SqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        ReturnUser user = GetReturnUserFromReader(rdr);
+                        users.Add(user);
+                    }
+                }
+
+                return users;
+            }
+            catch (SqlException ex)
+            {
+
+                throw;
+            }
+        }
+        public List<ReturnUser> GetUsers(string username)
+        {
+            username = $"%{username}%";
+
+            List<ReturnUser> users = new List<ReturnUser>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(SQL_GET_USERS_FILTERED, conn);
+                    cmd.Parameters.AddWithValue("@username", username);
+
+                    SqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        ReturnUser user = GetReturnUserFromReader(rdr);
+                        users.Add(user);
+                    }
+                }
+
+                return users;
+            }
+            catch (SqlException ex)
+            {
+
+                throw;
+            }
         }
 
         public User GetUser(string username)
@@ -84,6 +146,17 @@ namespace Capstone.DAO
             };
 
             return u;
+        }
+
+        private ReturnUser GetReturnUserFromReader(SqlDataReader reader)
+        {
+            ReturnUser user = new ReturnUser();
+
+            user.UserId = Convert.ToInt32(reader["user_id"]);
+            user.Username = Convert.ToString(reader["username"]);
+            user.Role = Convert.ToString(reader["user_role"]);
+
+            return user;
         }
     }
 }
