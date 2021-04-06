@@ -13,12 +13,12 @@ namespace Capstone.DAO
         private readonly string connectionString;
         private const string SQL_CREATE_BREWERY = @"Begin Transaction
                                                     UPDATE users SET user_role = 'brewer' WHERE user_id = @userId;
-                                                    INSERT INTO breweries(brewery_name, user_id, history, is_active) 
-                                                    VALUES(@breweryName, @userId, @history, @isActive); 
+                                                    INSERT INTO breweries(brewery_name, user_id, history, phone, street_address, city, zip_code, is_active) 
+                                                    VALUES(@breweryName, @userId, @history, @phone, @streetAddress, @city, @zipCode, @isActive); 
                                                     SELECT * FROM breweries WHERE brewery_id = @@identity;
                                                     Commit Transaction";
         private const string SQL_GET_BREWERIES = "SELECT * FROM breweries;";
-        private const string SQL_GET_LOCATIONS = "SELECT * FROM locations WHERE brewery_id = @breweryId;";
+        //private const string SQL_GET_LOCATIONS = "SELECT * FROM locations WHERE brewery_id = @breweryId;";
 
         public BrewerySqlDAO(string dbConnectionString)
         {
@@ -46,36 +46,15 @@ namespace Capstone.DAO
                         createdBrewery.BreweryId = Convert.ToInt32(reader["brewery_id"]);
                         createdBrewery.History = Convert.ToString(reader["history"]);
                         createdBrewery.IsActive = Convert.ToBoolean(reader["is_active"]);
-                        
+                        createdBrewery.StreetAddress = Convert.ToString(reader["street_address"]);
+                        createdBrewery.Phone = Convert.ToString(reader["phone"]);
+                        createdBrewery.City = Convert.ToString(reader["city"]);
+                        createdBrewery.ZipCode = Convert.ToString(reader["zip_code"]);
+
 
                         output.Add(createdBrewery);
                     }
 
-                    reader.Close();
-
-                    for (int i = 0; i < output.Count; i++)
-                    {
-                        cmd = new SqlCommand(SQL_GET_LOCATIONS, conn);
-
-                        cmd.Parameters.AddWithValue("@breweryId", output[i].BreweryId);
-                        reader = cmd.ExecuteReader();
-
-                        while (reader.Read())
-                        {
-                            Location location = new Location();
-
-                            location.LocationId = Convert.ToInt32(reader["location_id"]);
-                            location.BreweryId = Convert.ToInt32(reader["brewery_id"]);
-                            location.StreetAddress = Convert.ToString(reader["street_address"]);
-                            location.Phone = Convert.ToString(reader["phone"]);
-                            location.City = Convert.ToString(reader["city"]);
-                            location.ZipCode = Convert.ToString(reader["zip_code"]);
-
-                            output[i].Locations.Add(location);
-                        }
-
-                        reader.Close();
-                    }
                     return output;
                 }
             }
@@ -97,6 +76,10 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@breweryName", brewery.Name);
                     cmd.Parameters.AddWithValue("@userId", brewery.UserId);
                     cmd.Parameters.AddWithValue("@history", "");
+                    cmd.Parameters.AddWithValue("@streetAddress", "");
+                    cmd.Parameters.AddWithValue("@phone", "");
+                    cmd.Parameters.AddWithValue("@city", "");
+                    cmd.Parameters.AddWithValue("@zipCode", "");
                     cmd.Parameters.AddWithValue("@isActive", true);
 
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -107,6 +90,10 @@ namespace Capstone.DAO
                         createdBrewery.UserId = Convert.ToInt32(reader["user_id"]);
                         createdBrewery.BreweryId = Convert.ToInt32(reader["brewery_id"]);
                         createdBrewery.History = Convert.ToString(reader["history"]);
+                        createdBrewery.History = Convert.ToString(reader["street_address"]);
+                        createdBrewery.History = Convert.ToString(reader["phone"]);
+                        createdBrewery.History = Convert.ToString(reader["city"]);
+                        createdBrewery.History = Convert.ToString(reader["zip_code"]);
                         createdBrewery.IsActive = Convert.ToBoolean(reader["is_active"]);
                     }
                 }

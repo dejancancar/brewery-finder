@@ -11,8 +11,12 @@ namespace Capstone.Models
         public string Name { get; set; }
         public int UserId { get; set; }
         public string History { get; set; } = "";
-        public List<Location> Locations { get; set; } = new List<Location>();
+        public string StreetAddress { get; set; } = "";
+        public string Phone { get; set; } = "";
+        public string City { get; set; } = "";
+        public string ZipCode { get; set; } = "";
         public bool IsActive { get; set; } = true;
+
 
 
     }

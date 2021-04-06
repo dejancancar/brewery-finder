@@ -30,30 +30,34 @@ CREATE TABLE breweries (
 	user_id int NOT NULL,
 	brewery_name nvarchar(100) NOT NULL,
 	history nvarchar (2000) NOT NULL,
+	street_address nvarchar(400) NOT NULL,
+	phone nvarchar(15) NOT NULL,
+	city nvarchar(200) NOT NULL,
+	zip_code nvarchar (15) NOT NULL,
 	is_active bit NOT NULL,
 	CONSTRAINT PK_brewery_id PRIMARY KEY (brewery_id),
 	CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id),
 )
 
-CREATE TABLE locations (
-	location_id int IDENTITY(1,1) NOT NULL,
-	brewery_id int NOT NULL,
-	street_address nvarchar(400) NOT NULL,
-	phone nvarchar(15) NOT NULL,
-	city nvarchar(200) NOT NULL,
-	zip_code nvarchar (15) NOT NULL,
-	CONSTRAINT PK_location_id PRIMARY KEY (location_id),
-	CONSTRAINT FK_brewery_id FOREIGN KEY (brewery_id) REFERENCES breweries(brewery_id)
-)
+--CREATE TABLE locations (       this is now part of breweries
+	--location_id int IDENTITY(1,1) NOT NULL,
+	--brewery_id int NOT NULL,
+	--street_address nvarchar(400) NOT NULL,
+	--phone nvarchar(15) NOT NULL,
+	--city nvarchar(200) NOT NULL,
+	--zip_code nvarchar (15) NOT NULL,
+	--CONSTRAINT PK_location_id PRIMARY KEY (location_id),
+	--CONSTRAINT FK_brewery_id FOREIGN KEY (brewery_id) REFERENCES breweries(brewery_id)
+--)
 
 CREATE TABLE hours (
 	hours_id int IDENTITY (1,1) NOT NULL,
-	location_id int NOT NULL,
+	brewery_id int NOT NULL,
 	day_of_week int NOT NULL,
 	open_time time NOT NULL,
 	close_time time NOT NULL,
 	CONSTRAINT PK_hours_id PRIMARY KEY (hours_id),
-	CONSTRAINT FK_locations_id FOREIGN KEY (location_id) REFERENCES locations(location_id),
+	CONSTRAINT FK_brewery_id FOREIGN KEY (brewery_id) REFERENCES breweries(brewery_id),
 	CONSTRAINT CHK_days_of_week CHECK (days_of_week > 0 AND days_of_week < 8),
 	--pretty sure time constraint is built in for us?
 )
@@ -65,5 +69,4 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','Yh
 
 GO
 
---platform,  great lakes,  fat head
 
