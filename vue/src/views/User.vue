@@ -13,7 +13,8 @@
       </table>
       <table>
           <tr>
-              <td><router-link :to="{name: 'addBrewery'}">Add Brewery</router-link></td>
+              <button type="button" @click="addBrewery = true" v-show="!addBrewery">Add New Brewery</button>
+              <new-brewery v-show="addBrewery" />
           </tr>
       </table>
   </div>
@@ -21,8 +22,12 @@
 
 <script>
 import api from '../services/AuthService.js'
+import newBrewery from '../components/NewBreweryForm.vue'
 export default {
     name: "user",
+    components:{
+        newBrewery
+    },
     props:{
         userId: Number
     },
@@ -31,7 +36,8 @@ export default {
             user:{
                 userId:0,
                 username: "",
-            }
+            },
+            addBrewery: false,
         }
     },
     methods:{

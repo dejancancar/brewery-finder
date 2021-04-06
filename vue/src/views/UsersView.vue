@@ -11,7 +11,7 @@
         </tr>
     </table>
     <button @click="getUsers">Search</button>
-    <user-list :users="usersArray" ></user-list>
+    <user-list :users="users" ></user-list>
   </div>
 </template>
 

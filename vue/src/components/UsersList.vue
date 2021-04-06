@@ -20,7 +20,7 @@
 export default {
     name: "users-list",
     props: {
-        usersArray: Array
+        users: Array
     },
     data(){
         return{
