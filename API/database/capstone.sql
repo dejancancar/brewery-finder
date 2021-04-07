@@ -36,7 +36,7 @@ CREATE TABLE breweries (
 	zip_code nvarchar (15) NOT NULL,
 	is_active bit NOT NULL,
 	CONSTRAINT PK_brewery_id PRIMARY KEY (brewery_id),
-	CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id),
+	CONSTRAINT FK_breweries_users FOREIGN KEY (user_id) REFERENCES users(user_id),
 )
 
 --CREATE TABLE locations (       this is now part of breweries
@@ -57,9 +57,17 @@ CREATE TABLE hours (
 	open_time datetime NOT NULL,
 	close_time datetime NOT NULL,
 	CONSTRAINT PK_hours_id PRIMARY KEY (hours_id),
-	CONSTRAINT FK_brewery_id FOREIGN KEY (brewery_id) REFERENCES breweries(brewery_id),
+	CONSTRAINT FK_hours_breweries FOREIGN KEY (brewery_id) REFERENCES breweries(brewery_id),
 	CONSTRAINT CHK_day_of_week CHECK (day_of_week > 0 AND day_of_week < 8),
 	--pretty sure time constraint is built in for us?
+)
+
+CREATE TABLE brewery_images (
+	image_id int IDENTITY (1,1),
+	brewery_id int NOT NULL,
+	file_name nvarchar(200) NOT NULL,
+	CONSTRAINT PK_image_id PRIMARY KEY (image_id),
+	CONSTRAINT FK_brewery_images_breweries FOREIGN KEY (brewery_id) REFERENCES breweries(brewery_id)
 )
 
 --populate default data
