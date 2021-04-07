@@ -15,10 +15,12 @@ namespace Capstone.Controllers
     public class BreweriesController : AuthorizedControllerBase
     {
         IBreweryDAO breweryDAO;
+        IHoursDAO hoursDAO;
 
-        public BreweriesController(IBreweryDAO breweryDAO)
+        public BreweriesController(IBreweryDAO breweryDAO, IHoursDAO hoursDAO)
         {
             this.breweryDAO = breweryDAO;
+            this.hoursDAO = hoursDAO;
         }
 
         [HttpGet]
@@ -41,13 +43,57 @@ namespace Capstone.Controllers
         [Authorize(Roles = "admin")]
         public IActionResult Create(Brewery brewery)
         {
-            Brewery createdBrewery = null;
+            Brewery createdBrewery;
             createdBrewery = this.breweryDAO.CreateBrewery(brewery);
 
             // make sure something's created
             if (createdBrewery != null)
             {
                 return Created($"{createdBrewery.BreweryId}", createdBrewery);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpPut("{id}")]
+        [Authorize(Roles = "brewer")]
+        public ActionResult<Brewery> Update(Brewery brewery, int id)
+        {
+            if (id != brewery.BreweryId)
+            {
+                return BadRequest();
+            }
+
+            Brewery updatedBrewery;
+            updatedBrewery = this.breweryDAO.UpdateBrewery(brewery);
+
+            if (updatedBrewery != null)
+            {
+                return Ok(updatedBrewery);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpPut("{breweryId}/hours/{hoursId}")]
+        [Authorize(Roles = "brewer")]
+        public ActionResult<Hours> UpdateHours(Hours hours, int hoursId)
+        {
+            if (hoursId != hours.HoursId)
+            {
+                return BadRequest();
+            }
+
+            Hours updatedHours;
+            updatedHours = this.hoursDAO.UpdateHours(hours);
+
+            if (updatedHours != null)
+            {
+                return Ok(updatedHours);
             }
             else
             {

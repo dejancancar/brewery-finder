@@ -8,7 +8,7 @@ namespace Capstone.Models
     public class Hours
     {
         public int HoursId { get; set; }
-        public int LocationsId { get; set; }
+        public int BreweryId { get; set; }
         public int DayOfWeek { get; set; }
         public DateTime OpenTime { get; set; }
         public DateTime CloseTime { get; set; }

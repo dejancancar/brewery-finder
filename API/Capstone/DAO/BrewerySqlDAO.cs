@@ -18,6 +18,9 @@ namespace Capstone.DAO
                                                     SELECT * FROM breweries WHERE brewery_id = @@identity;
                                                     Commit Transaction";
         private const string SQL_GET_BREWERIES = "SELECT * FROM breweries;";
+        private const string SQL_UPDATE_BREWERY = @"UPDATE breweries SET user_id = @userId, brewery_name = @breweryName, history = @history, street_address = @streetAddress,
+                                                    phone = @phone, city = @city, zip_code = @zipCode, is_active = @isActive WHERE brewery_id = @breweryId;
+                                                    SELECT * FROM breweries WHERE brewery_id = @breweryId;";
 
         public BrewerySqlDAO(string dbConnectionString)
         {
@@ -38,18 +41,7 @@ namespace Capstone.DAO
 
                     while(reader.Read())
                     {
-                        Brewery createdBrewery = new Brewery();
-                        createdBrewery = new Brewery();
-                        createdBrewery.Name = Convert.ToString(reader["brewery_name"]);
-                        createdBrewery.UserId = Convert.ToInt32(reader["user_id"]);
-                        createdBrewery.BreweryId = Convert.ToInt32(reader["brewery_id"]);
-                        createdBrewery.History = Convert.ToString(reader["history"]);
-                        createdBrewery.IsActive = Convert.ToBoolean(reader["is_active"]);
-                        createdBrewery.StreetAddress = Convert.ToString(reader["street_address"]);
-                        createdBrewery.Phone = Convert.ToString(reader["phone"]);
-                        createdBrewery.City = Convert.ToString(reader["city"]);
-                        createdBrewery.ZipCode = Convert.ToString(reader["zip_code"]);
-
+                        Brewery createdBrewery = RowToObject(reader);
 
                         output.Add(createdBrewery);
                     }
@@ -63,6 +55,8 @@ namespace Capstone.DAO
                 throw;
             }
         }
+
+
         public Brewery CreateBrewery(Brewery brewery)
         {
             Brewery createdBrewery = null;
@@ -102,6 +96,61 @@ namespace Capstone.DAO
             {
                 throw;
             }
+        }
+
+        public Brewery UpdateBrewery(Brewery brewery)
+        {
+            Brewery updatedBrewery = null;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(SQL_UPDATE_BREWERY, conn);
+                    cmd.Parameters.AddWithValue("@userId", brewery.UserId);
+                    cmd.Parameters.AddWithValue("@breweryName", brewery.Name);
+                    cmd.Parameters.AddWithValue("@history", brewery.History);
+                    cmd.Parameters.AddWithValue("@streetAddress", brewery.StreetAddress);
+                    cmd.Parameters.AddWithValue("@phone", brewery.Phone);
+                    cmd.Parameters.AddWithValue("@city", brewery.City);
+                    cmd.Parameters.AddWithValue("@zipCode", brewery.ZipCode);
+                    cmd.Parameters.AddWithValue("@isActive", brewery.IsActive);
+                    cmd.Parameters.AddWithValue("@breweryId", brewery.BreweryId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        updatedBrewery = RowToObject(reader);
+                    }
+
+                }
+
+                return updatedBrewery;
+            }
+            catch (SqlException ex)
+            {
+
+                throw;
+            }
+        }
+        private static Brewery RowToObject(SqlDataReader reader)
+        {
+            Brewery brewery = new Brewery();
+
+            brewery.Name = Convert.ToString(reader["brewery_name"]);
+            brewery.UserId = Convert.ToInt32(reader["user_id"]);
+            brewery.BreweryId = Convert.ToInt32(reader["brewery_id"]);
+            brewery.History = Convert.ToString(reader["history"]);
+            brewery.IsActive = Convert.ToBoolean(reader["is_active"]);
+            brewery.StreetAddress = Convert.ToString(reader["street_address"]);
+            brewery.Phone = Convert.ToString(reader["phone"]);
+            brewery.City = Convert.ToString(reader["city"]);
+            brewery.ZipCode = Convert.ToString(reader["zip_code"]);
+
+            return brewery;
         }
 
     }
