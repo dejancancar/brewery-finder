@@ -1,7 +1,7 @@
 <template>
   <div>
     <form>
-    <h1>Update Brewery</h1>
+    <h1>Update Brewery</h1> 
     <table>
       <tr>
         <td>Phone Number:</td>

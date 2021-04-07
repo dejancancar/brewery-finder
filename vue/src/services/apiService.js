@@ -20,6 +20,5 @@ export default{
 
   getBreweries(){
       return http.get('/breweries');
-  },
-  
+  }
 }

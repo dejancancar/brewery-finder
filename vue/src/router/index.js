@@ -8,6 +8,7 @@ import store from '../store/index'
 import UsersView from '../views/UsersView.vue'
 import User from '../views/User.vue'
 import Brewer from '../views/Brewer.vue'
+// import UpdateBrewery from '../views/UpdateBreweryView.vue'
 
 
 
@@ -67,21 +68,30 @@ const router = new Router({
       }
     },
     {
-      path: "/users/:username", //mind if we change this to userId?? wdy think?
-      name: "user", //pls respond
+      path: "/users/:username",
+      name: "user", 
       component: User,
       meta: {
         requiresAuth: true
       }
     },
     {
-      path: "/brewer/:userId",
+      path: "/brewerdashboard/",
       name: "brewer",
       component: Brewer,
       meta:{
         requiresAuth: true
       }
     },
+    // {
+    //   path: "/brewer/:",
+    //   name: "updateBrewery",
+    //   component: UpdateBrewery,
+    //   meta:{
+    //     requiresAuth: true
+    //   }
+    //}
+
 
   ]
 })
