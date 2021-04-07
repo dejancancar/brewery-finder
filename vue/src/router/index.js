@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import UsersView from '../views/UsersView.vue'
 import User from '../views/User.vue'
+import Brewer from '../views/Brewer.vue'
 
 
 
@@ -70,6 +71,14 @@ const router = new Router({
       name: "user",
       component: User,
       meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/brewer",
+      name: "brewer",
+      component: Brewer,
+      meta:{
         requiresAuth: true
       }
     },

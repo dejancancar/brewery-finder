@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import api from "../services/AuthService.js"
+import api from "../services/apiService.js"
 import UserList from "../components/UsersList.vue"
 export default {
     name: 'users',

@@ -11,20 +11,5 @@ export default {
 
   register(user) {
     return http.post('/register', user)
-  },
-
-  createBrewery(brewery, token){
-    http.defaults.headers.common['Authorization'] = `Bearer ${token}`
-    return http.post('/breweries', brewery)
-  },
-
-  getUsers(username){
-    let path = '/users';
-    if(username){
-      path += `?username=${username}`
-    }
-    return http.get(path);
-  },
-
-
+  }
 }

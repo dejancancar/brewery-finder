@@ -24,7 +24,7 @@
         <div>
           <div>
             <label for="breweryName">Enter Brewery Name:</label>
-            <input type="text" class="form-look" v-model="brewery.name" />
+            <input  type="text" class="form-look" v-model="brewery.name" />
           </div>
           <div>
             <button type="submit" class="btn btn-submit">Submit Brewery</button>
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import api from "../services/AuthService.js";
+import api from "../services/apiService.js";
 // import newBrewery from "../components/NewBreweryForm.vue";
 export default {
   name: "user",
@@ -83,6 +83,7 @@ export default {
           window.alert(
             `A new brewery with the ID# ${this.brewery.breweryId} has been added.`
           );
+            this.$router.push("/users");
         }
       });
     },

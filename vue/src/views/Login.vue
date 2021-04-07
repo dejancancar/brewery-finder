@@ -60,7 +60,15 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
+            if(response.data.user.role === "admin"){
+              this.$router.push("/users")
+            }else if(response.data.user.role === "brewer"){
+              this.$router.push("/brewer")
+            }
+            else{
+               this.$router.push("/");           
+            }
+
           }
         })
         .catch(error => {
