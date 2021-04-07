@@ -67,15 +67,15 @@ const router = new Router({
       }
     },
     {
-      path: "/users/:username",
-      name: "user",
+      path: "/users/:username", //mind if we change this to userId?? wdy think?
+      name: "user", //pls respond
       component: User,
       meta: {
         requiresAuth: true
       }
     },
     {
-      path: "/brewer",
+      path: "/brewer/:userId",
       name: "brewer",
       component: Brewer,
       meta:{
