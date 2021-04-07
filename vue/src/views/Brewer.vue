@@ -1,12 +1,15 @@
 <template>
   <div>
-      "Welcome to the Brewer Page. Currently under construction, check back later."
+      <update-brewery />
   </div>
 </template>
 
 <script>
+import updateBrewery from "../components/UpdateBrewery.vue"
 export default {
-
+  components:{
+    updateBrewery
+  }
 }
 </script>
 
