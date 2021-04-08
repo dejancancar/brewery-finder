@@ -34,6 +34,9 @@ export default{
   },
   getBreweryById(breweryId){
     return http.get(`/breweries/${breweryId}`);
-  }
+  },
+  uploadBreweryImageUrl(breweryId, url) {
+    return http.post(`breweries/${breweryId}/images`, url);
+  },
   
 }

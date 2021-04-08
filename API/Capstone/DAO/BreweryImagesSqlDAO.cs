@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Capstone.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -9,43 +10,54 @@ namespace Capstone.DAO
     public class BreweryImagesSqlDAO : IBreweryImagesDAO
     {
         private readonly string connectionString;
-        //private const string SQL_CREATE_IMAGE = "INSERT INTO brewery_images (brewery_id, file_name) VALUES (@breweryId, @fileName);";
+        private const string SQL_CREATE_IMAGE = "INSERT INTO brewery_images (brewery_id, image_url) VALUES (@breweryId, @imageUrl); SELECT @@IDENTITY;";
+
         public BreweryImagesSqlDAO(string dbConnectionString)
         {
             this.connectionString = dbConnectionString;
         }
-        //public bool CreateImage(int breweryId, string newFileName)
-        //{
-        //    try
-        //    {
-        //        using (SqlConnection conn = new SqlConnection(connectionString))
-        //        {
-        //            conn.Open();
 
-        //            SqlCommand cmd = new SqlCommand(SQL_CREATE_IMAGE, conn);
-        //            cmd.Parameters.AddWithValue("@fileName", newFileName);
-        //            cmd.Parameters.AddWithValue("@breweryId", breweryId);
+        public BreweryImage CreateImage(int breweryId, string url)
+        {
+            BreweryImage bi = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
 
-        //            int affectedRows = cmd.ExecuteNonQuery();
+                    SqlCommand cmd = new SqlCommand(SQL_CREATE_IMAGE, conn);
+                    cmd.Parameters.AddWithValue("@breweryId", breweryId);
+                    cmd.Parameters.AddWithValue("@imageUrl", url);
 
-        //            if (affectedRows == 1)
-        //            {
-        //                return true;
-        //            }
-        //            else
-        //            {
-                        
-        //                return false;
-        //            }
+                    SqlDataReader reader = cmd.ExecuteReader();
 
-        //        }
-        //    }
-        //    catch (SqlException ex)
-        //    {
+                    if (reader.Read())
+                    {
+                        bi = RowToObject(reader);
+                    }
+                }
 
-        //        throw;
-        //    }
-        //}
+                return bi;
+            }
+            catch (SqlException ex)
+            {
+
+                throw;
+            }
+        }
+
+        private static BreweryImage RowToObject(SqlDataReader reader)
+        {
+            BreweryImage bi = new BreweryImage();
+
+            bi.BreweryImageId = Convert.ToInt32(reader["brewery_image_id"]);
+            bi.BreweryId = Convert.ToInt32(reader["brewery_id"]);
+            bi.ImageUrl = Convert.ToString(reader["image_url"]);
+
+            return bi;
+        }
+
 
     }
 }
