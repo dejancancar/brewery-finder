@@ -83,14 +83,6 @@ const router = new Router({
         requiresAuth: true
       }
     },
-    // {
-    //   path: "/brewer/:",
-    //   name: "updateBrewery",
-    //   component: UpdateBrewery,
-    //   meta:{
-    //     requiresAuth: true
-    //   }
-    //}
 
 
   ]
@@ -108,5 +100,7 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
+
+
 
 export default router;

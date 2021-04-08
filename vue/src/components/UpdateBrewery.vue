@@ -40,9 +40,8 @@
       <tr>
           <td>Currently Active: </td>
           <select v-model="updateBrewery.toggleActive" >
-              <option disabled value="">Select One</option>
-              <option>Active</option>
-              <option>Inactive</option>
+              <option value=true>Active</option>
+              <option value=false>Inactive</option>
           </select>
       </tr>
 
@@ -64,7 +63,8 @@ export default {
         state: "",
         zipCode:"",
         history: "",
-        toggleActive: "",
+        // sets it to a string. Make sure there's no error server side
+        toggleActive: true,
         
       },
     };
