@@ -43,10 +43,18 @@ namespace Capstone.Controllers
             }
         }
 
+        [HttpGet("{breweryId}/hours")]
+        public ActionResult<List<Hours>> GetHours()
+        {
+            List<Hours> hours = hoursDAO.GetHours();
+
+            return Ok(hours);
+        }
+
 
         [HttpPost]
         [Authorize(Roles = "admin")]
-        public IActionResult Create(Brewery brewery)
+        public IActionResult CreateBrewery(Brewery brewery)
         {
             Brewery createdBrewery;
             createdBrewery = this.breweryDAO.CreateBrewery(brewery);
@@ -55,6 +63,22 @@ namespace Capstone.Controllers
             if (createdBrewery != null)
             {
                 return Created($"{createdBrewery.BreweryId}", createdBrewery);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpPost("{breweryId}/hours")]
+        public ActionResult<Hours> CreateHours(Hours hours)
+        {
+            Hours createdHours;
+            createdHours = this.hoursDAO.CreateHours(hours);
+
+            if (createdHours != null)
+            {
+                return Created($"{createdHours.BreweryId}/hours/{createdHours.HoursId}", createdHours);
             }
             else
             {
@@ -96,6 +120,7 @@ namespace Capstone.Controllers
                 return BadRequest();
             }
         }
+
 
         [HttpPut("{id}")]
         [Authorize(Roles = "brewer")]
