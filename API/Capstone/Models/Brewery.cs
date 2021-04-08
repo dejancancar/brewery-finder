@@ -17,8 +17,6 @@ namespace Capstone.Models
         public string ZipCode { get; set; } = "";
         public bool IsActive { get; set; } = true;
 
-
-
     }
 
 }
