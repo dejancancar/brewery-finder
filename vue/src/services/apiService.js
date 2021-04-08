@@ -29,14 +29,15 @@ export default{
     }
     return http.get(path);
   },
-  updateBreweryInfo(brewery){
+  updateBreweryInfo(brewery, token){
+    http.defaults.headers.common['Authorization'] = `Bearer ${token}`
     return http.put(`/breweries/${brewery.breweryId}`, brewery);
   },
   getBreweryById(breweryId){
     return http.get(`/breweries/${breweryId}`);
   },
-  uploadBreweryImageUrl(breweryId, url) {
-    return http.post(`breweries/${breweryId}/images`, url);
+  uploadBreweryImageUrl(brewery) {
+    return http.post(`breweries/${brewery.breweryId}/images`, brewery);
   },
   
 }

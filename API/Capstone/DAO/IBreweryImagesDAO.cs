@@ -8,6 +8,6 @@ namespace Capstone.DAO
 {
     public interface IBreweryImagesDAO
     {
-        BreweryImage CreateImage(int breweryId, string url);
+        BreweryImage CreateImage(BreweryImage brewery);
     }
 }

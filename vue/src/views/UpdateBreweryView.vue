@@ -1,15 +1,21 @@
 <template>
     <div>
-        <update-brewery v-show="!showFormButton"></update-brewery>
+        <update-brewery v-show="showFormButton"></update-brewery>
     </div>
 </template>
 
 <script>
 import UpdateBrewery from '../components/UpdateBrewery.vue'
 export default {
+    data(){
+        return {
+            showFormButton: true
+        }
+    },
     components:{
         UpdateBrewery
-    }
+    },
+
 }
 </script>
 

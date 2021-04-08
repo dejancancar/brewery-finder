@@ -108,8 +108,9 @@ export default {
                 if(resp.status === 200){
                     this.updateBrewery = resp.data;
                     window.alert('Information has been updated!')
+                    this.$router.go();
                 }})
-                this.$router.go();
+
       },
       getBreweryById(){
         api.getBreweryById(this.$route.params.breweryId)

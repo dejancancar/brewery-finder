@@ -8,8 +8,8 @@
         v-on:vdropzone-success="getSuccess"
         :useCustomDropzoneOptions="true">
         </vue-dropzone>
-        <button @click="uploadImageUrl">Upload</button>
-        <img v-bind:src="createdImageUrl"/>  <!-- this was just to test that can load image by url after uploading -->
+        <button @click="uploadBreweryImageUrl">Upload</button>
+        <!-- <img v-bind:src="createdImageUrl"/> this was just to test that can load image by url after uploading -->
         </div>
 </template>
 
@@ -39,7 +39,10 @@ export default {
                 addRemoveLinks: true,
                 dictDefaultMessage: 'Drop files here to upload. </br> Alternatively, click to select a file for upload.',                
             }, 
-            createdImageUrl:{ url:""},     
+            brewery:{
+                breweryId: 1,
+                imageUrl: "hello"
+            } 
         }
     },
 
@@ -63,11 +66,11 @@ export default {
          ******************************************************************************************/
         getSuccess(file, response) {
             const imgUrl = response.secure_url;   // store the url for the uploaded image
-            this.createdImageUrl.url = imgUrl;
+            this.brewery.imageUrl = imgUrl;
             this.$emit("image-upload", imgUrl);   // fire custom event with image url in case someone cares  
         },
-        uploadImageUrl() {
-            api.uploadBreweryImageUrl(1, this.createdImageUrl.url)
+        uploadBreweryImageUrl() {
+            api.uploadBreweryImageUrl(this.brewery)
                 .then((resp) => {
                     window.alert("image uploaded")
                 })

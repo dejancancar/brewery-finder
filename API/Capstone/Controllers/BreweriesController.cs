@@ -112,9 +112,9 @@ namespace Capstone.Controllers
         }
 
         [HttpPost("{breweryId}/images")]
-        public ActionResult<BreweryImage> CreateImage(int breweryId, string url)
+        public ActionResult<BreweryImage> CreateImage(BreweryImage brewery)
         {
-            BreweryImage image = this.breweryImagesDAO.CreateImage(breweryId, url);
+            BreweryImage image = this.breweryImagesDAO.CreateImage(brewery);
 
             if (image != null)
             {
