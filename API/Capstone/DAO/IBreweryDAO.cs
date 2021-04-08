@@ -11,5 +11,6 @@ namespace Capstone.DAO
         Brewery CreateBrewery(Brewery brewery);
         List<Brewery> GetBreweries();
         Brewery UpdateBrewery(Brewery brewery);
+        List<Brewery> GetBreweriesByBrewer(int userId);
     }
 }

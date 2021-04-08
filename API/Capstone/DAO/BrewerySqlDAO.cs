@@ -11,13 +11,14 @@ namespace Capstone.DAO
     {
 
         private readonly string connectionString;
+        private const string SQL_GET_BREWERIES = "SELECT * FROM breweries;";
+        private const string SQL_GET_BREWERIES_BY_BREWER = "SELECT * FROM breweries WHERE user_id = @userId;";
         private const string SQL_CREATE_BREWERY = @"Begin Transaction
                                                     UPDATE users SET user_role = 'brewer' WHERE user_id = @userId;
                                                     INSERT INTO breweries(brewery_name, user_id, history, phone, street_address, city, zip_code, is_active) 
                                                     VALUES(@breweryName, @userId, @history, @phone, @streetAddress, @city, @zipCode, @isActive); 
                                                     SELECT * FROM breweries WHERE brewery_id = @@identity;
                                                     Commit Transaction";
-        private const string SQL_GET_BREWERIES = "SELECT * FROM breweries;";
         private const string SQL_UPDATE_BREWERY = @"UPDATE breweries SET user_id = @userId, brewery_name = @breweryName, history = @history, street_address = @streetAddress,
                                                     phone = @phone, city = @city, zip_code = @zipCode, is_active = @isActive WHERE brewery_id = @breweryId;
                                                     SELECT * FROM breweries WHERE brewery_id = @breweryId;";
@@ -48,6 +49,36 @@ namespace Capstone.DAO
 
                     return output;
                 }
+            }
+            catch (SqlException ex)
+            {
+
+                throw;
+            }
+        }
+
+        public List<Brewery> GetBreweriesByBrewer(int userId)
+        {
+            List<Brewery> breweries = new List<Brewery>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(SQL_GET_BREWERIES_BY_BREWER, conn);
+                    cmd.Parameters.AddWithValue("@userId", userId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Brewery brewery = RowToObject(reader);
+                        breweries.Add(brewery);
+                    }
+                }
+
+                return breweries;
             }
             catch (SqlException ex)
             {
