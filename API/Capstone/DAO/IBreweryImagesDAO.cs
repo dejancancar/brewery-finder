@@ -7,6 +7,6 @@ namespace Capstone.DAO
 {
     public interface IBreweryImagesDAO
     {
-        bool CreateImage(int breweryId, string newFileName);
+        //bool CreateImage(int breweryId, string newFileName);
     }
 }

@@ -12,6 +12,7 @@ namespace Capstone.DAO
 
         private readonly string connectionString;
         private const string SQL_GET_BREWERIES = "SELECT * FROM breweries;";
+        private const string SQL_GET_BREWERY = "SELECT * FROM breweries WHERE brewery_id = @breweryId;";
         private const string SQL_GET_BREWERIES_BY_BREWER = "SELECT * FROM breweries WHERE user_id = @userId;";
         private const string SQL_CREATE_BREWERY = @"Begin Transaction
                                                     UPDATE users SET user_role = 'brewer' WHERE user_id = @userId;
@@ -56,6 +57,36 @@ namespace Capstone.DAO
                 throw;
             }
         }
+        public Brewery GetBrewery(int breweryId)
+        {
+            Brewery brewery = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(SQL_GET_BREWERY, conn);
+                    cmd.Parameters.AddWithValue("@breweryId", breweryId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        brewery = RowToObject(reader);
+                    }
+
+                    return brewery;
+                    
+                }
+            }
+            catch (SqlException ex)
+            {
+
+                throw;
+            }
+        }
+
 
         public List<Brewery> GetBreweriesByBrewer(int userId)
         {
