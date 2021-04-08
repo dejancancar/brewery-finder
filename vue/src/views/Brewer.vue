@@ -1,29 +1,54 @@
 <template>
   <div>
-    <div v-show="showFormButton">
-      <button
-        type="button"
-        v-on:click="showFormButton = false"
-        v-show="showFormButton"
-      >
-        Update Brewery
-      </button>
+    <div>
+    <div v-show="showFormButton"> 
+      <button type="button" @click="getBreweriesByBrewerId" v-show="showFormButton">View Breweries</button>
     </div>
-    <update-brewery v-show="!showFormButton"></update-brewery>
+      <table v-show="!showFormButton">
+        <thead>
+          <tr>
+          <td>Brewery Id</td>
+          <td>Brewery Name</td>
+          <td>Brewery Address</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="brewery in breweries" :key="brewery.breweryId">
+            <td>{{brewery.breweryId}}</td>
+            <td><router-link :to="{name: 'brewery-by-id', params:{breweryId: brewery.breweryId}}">{{brewery.name}}</router-link></td>
+            <td>{{brewery.streetAddress}} {{brewery.city}} {{brewery.zipCode}}</td>
+          </tr>
+        </tbody>
+        <button @click="cancelView" v-show="!showFormButton">Cancel</button>
+      </table>
+    </div>
   </div>
 </template>
 
 <script>
-import updateBrewery from "../components/UpdateBrewery.vue";
+import api from '../services/apiService.js'
 export default {
   data() {
     return {
       showFormButton: true,
+      breweries:[],
     };
   },
-  methods: {},
+  methods: {
+    getBreweriesByBrewerId(){
+      this.showFormButton = false;
+      api.getBreweriesByBrewerId(this.$store.state.user.userId)
+        .then( (resp) => {
+          console.log(resp)
+          this.breweries = resp.data;
+        })
+    },
+    cancelView(){
+      this.showFormButton = true;
+    }
+  },
   components: {
-    updateBrewery,
+
   },
   created() {
     //check to make sure the user attempting to access this route is a brewer only

@@ -8,7 +8,7 @@ import store from '../store/index'
 import UsersView from '../views/UsersView.vue'
 import User from '../views/User.vue'
 import Brewer from '../views/Brewer.vue'
-// import UpdateBrewery from '../views/UpdateBreweryView.vue'
+import BreweryById from '../views/UpdateBreweryView.vue'
 
 
 
@@ -83,6 +83,14 @@ const router = new Router({
         requiresAuth: true
       }
     },
+    {
+      path: '/breweries/:breweryId',
+      name: "brewery-by-id",
+      component: BreweryById,
+      meta:{
+        requiresAuth: true
+      }
+    }
 
 
   ]

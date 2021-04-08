@@ -20,5 +20,20 @@ export default{
 
   getBreweries(){
       return http.get('/breweries');
+  },
+
+  getBreweriesByBrewerId(userId){
+    let path = '/breweries';
+    if(userId){
+      path += `?userId=${userId}`
+    }
+    return http.get(path);
+  },
+  updateBreweryInfo(brewery){
+    return http.put(`/breweries/${brewery.breweryId}`, brewery);
+  },
+  getBreweryById(breweryId){
+    return http.get(`/breweries/${breweryId}`);
   }
+  
 }

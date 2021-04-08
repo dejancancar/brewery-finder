@@ -148,7 +148,7 @@ namespace Capstone.Controllers
 
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "brewer")]
+        //[Authorize(Roles = "brewer")]
         public ActionResult<Brewery> Update(Brewery brewery, int id)
         {
             if (id != brewery.BreweryId)
