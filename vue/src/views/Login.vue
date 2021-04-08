@@ -60,10 +60,11 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
+            //added redirect routes once a specific user is logged in, admin, brewer and user all go to different routes upon a successful log in.
             if(response.data.user.role === "admin"){
               this.$router.push("/users")
             }else if(response.data.user.role === "brewer"){
-              this.$router.push("/brewer")
+              this.$router.push("/brewerdashboard")
             }
             else{
                this.$router.push("/");           

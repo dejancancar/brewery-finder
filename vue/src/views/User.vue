@@ -13,18 +13,17 @@
     </table>
     <table>
       <tr>
-        <button type="button" @click="addUserIdToBrewerId" v-show="!addBrewery">
+        <button type="button" @click="addUserIdToBrewerId" v-show="!toggleForm">
           Add New Brewery
         </button>
-        <!-- <new-brewery :userId="brewery.userId" v-show="addBrewery" /> -->
       </tr>
     </table>
-    <div v-show="addBrewery">
+    <div v-show="toggleForm">
       <form class="newBrewery" v-on:submit.prevent="createBrewery">
         <div>
           <div>
             <label for="breweryName">Enter Brewery Name:</label>
-            <input  type="text" class="form-look" v-model="brewery.name" />
+            <input type="text" class="form-look" v-model="brewery.name" />
           </div>
           <div>
             <button type="submit" class="btn btn-submit">Submit Brewery</button>
@@ -44,16 +43,11 @@
 
 <script>
 import api from "../services/apiService.js";
-// import newBrewery from "../components/NewBreweryForm.vue";
 export default {
   name: "user",
-
-  //   components: {
-  //     newBrewery,
-  //   },
-
   data() {
     return {
+      //Returns info for the user selected from the server
       user: {
         userId: 0,
         username: "",
@@ -63,17 +57,19 @@ export default {
         name: "",
         userId: 0,
       },
-      addBrewery: false,
+      toggleForm: false,
     };
   },
   methods: {
+    //Gets info for the user selected by admin so the userId can be associated with the brewery.
     getUser(username) {
       api.getUsers(username).then((resp) => {
         this.user = resp.data[0];
       });
     },
+    //Adds userId to brewerId so when a new brewery is created, the selected userId is transfered, not the logged in user.
     addUserIdToBrewerId() {
-      this.addBrewery = true;
+      this.toggleForm = true;
       return (this.brewery.userId = this.user.userId);
     },
     createBrewery() {
@@ -83,7 +79,7 @@ export default {
           window.alert(
             `A new brewery with the ID# ${this.brewery.breweryId} has been added.`
           );
-            this.$router.push("/users");
+          this.$router.push("/users");
         }
       });
     },
@@ -92,6 +88,10 @@ export default {
     },
   },
   created() {
+    //Checks to see if the user is an admin, if not it reroutes them to home.
+    if (this.$store.state.user.role != "admin") {
+      this.$router.push("/");
+    }
     this.getUser(this.$route.params.username);
   },
 };
