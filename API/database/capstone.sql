@@ -39,17 +39,6 @@ CREATE TABLE breweries (
 	CONSTRAINT FK_breweries_users FOREIGN KEY (user_id) REFERENCES users(user_id),
 )
 
---CREATE TABLE locations (       this is now part of breweries
-	--location_id int IDENTITY(1,1) NOT NULL,
-	--brewery_id int NOT NULL,
-	--street_address nvarchar(400) NOT NULL,
-	--phone nvarchar(15) NOT NULL,
-	--city nvarchar(200) NOT NULL,
-	--zip_code nvarchar (15) NOT NULL,
-	--CONSTRAINT PK_location_id PRIMARY KEY (location_id),
-	--CONSTRAINT FK_brewery_id FOREIGN KEY (brewery_id) REFERENCES breweries(brewery_id)
---)
-
 CREATE TABLE hours (
 	hours_id int IDENTITY (1,1) NOT NULL,
 	brewery_id int NOT NULL,
@@ -65,7 +54,7 @@ CREATE TABLE hours (
 CREATE TABLE brewery_images (
 	image_id int IDENTITY (1,1),
 	brewery_id int NOT NULL,
-	file_name nvarchar(200) NOT NULL,
+	image_url nvarchar(200) NOT NULL,
 	CONSTRAINT PK_image_id PRIMARY KEY (image_id),
 	CONSTRAINT FK_brewery_images_breweries FOREIGN KEY (brewery_id) REFERENCES breweries(brewery_id)
 )

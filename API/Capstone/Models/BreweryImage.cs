@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Capstone.Models
 {
-    public class Image
+    public class BreweryImage
     {
-        public IFormFile File { get; set; }
+        public int BreweryImageId { get; set; }
+        public int BreweryId { get; set; }
+        public string ImageUrl { get; set; }
+
     }
 }

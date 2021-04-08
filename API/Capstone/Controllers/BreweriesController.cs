@@ -111,40 +111,20 @@ namespace Capstone.Controllers
             }
         }
 
-        //[HttpPost("{breweryId}/images")]
-        //public IActionResult CreateImage([FromForm] Image file, int breweryId)
-        //{
-        //    // TODO - check if ext is for an image file
-        //    if (file.File.Length > 0)
-        //    {
-        //        string newFileName = $"{DateTime.Now.ToString("yyyyMMddHHmmss")}{file.File.FileName}";
-        //        string path = $"{_hostingEnvironment.WebRootPath}\\imageuploads\\{newFileName}";
+        [HttpPost("{breweryId}/images")]
+        public ActionResult<BreweryImage> CreateImage(int breweryId, string url)
+        {
+            BreweryImage image = this.breweryImagesDAO.CreateImage(breweryId, url);
 
-        //        using (FileStream fileStream = System.IO.File.Create(path))
-        //        {
-        //            file.File.CopyTo(fileStream);
-        //            fileStream.Flush();
-        //        }
-
-        //        bool addedToDb = breweryImagesDAO.CreateImage(breweryId, newFileName);
-
-        //        if (addedToDb == true)
-        //        {
-        //            return Ok();
-        //        }
-        //        else
-        //        {
-        //            System.IO.File.Delete(path);
-
-        //            return BadRequest();
-        //        }
-        //    }
-
-        //    else
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
+            if (image != null)
+            {
+                return Created($"{image.BreweryId}/images/{image.BreweryImageId}", image);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
 
 
         [HttpPut("{id}")]
