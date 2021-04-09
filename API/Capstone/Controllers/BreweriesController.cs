@@ -108,7 +108,15 @@ namespace Capstone.Controllers
         public ActionResult<Beer> CreateBeer(Beer beer)
         {
             Beer createdBeer;
-            createdBeer = beerDAO.CreateBeer(beer); 
+            createdBeer = beerDAO.CreateBeer(beer);
+            if (createdBeer != null)
+            {
+                return Created($"{createdBeer.BeerId}", createdBeer);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         [HttpPost("{breweryId}/hours")]
