@@ -1,16 +1,19 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Capstone.Models
 {
-    public class BreweryImage
+    public class Beer
     {
-        public int ImageId { get; set; }
+        public int BeerId { get; set; }
         public int BreweryId { get; set; }
         public string ImageUrl { get; set; }
+        public string Abv { get; set; }
+        public string BeerType { get; set; }
+        public bool IsActive { get; set; }
+
 
     }
 }
