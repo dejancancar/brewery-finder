@@ -10,7 +10,11 @@ namespace Capstone.Models
         public int HoursId { get; set; }
         public int BreweryId { get; set; }
         public int DayOfWeek { get; set; }
-        public DateTime OpenTime { get; set; }
-        public DateTime CloseTime { get; set; }
+        public int OpenHour { get; set; }
+        public int OpenMinute { get; set; }
+        public string OpenAmPm { get; set; }
+        public int CloseHour { get; set; }
+        public int CloseMinute { get; set; }
+        public string CloseAmPm { get; set; }
     }
 }
