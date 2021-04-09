@@ -128,7 +128,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(SQL_CREATE_BREWERY, conn);
-                    cmd.Parameters.AddWithValue("@breweryName", brewery.Name);
+                    cmd.Parameters.AddWithValue("@breweryName", brewery.BreweryName);
                     cmd.Parameters.AddWithValue("@userId", brewery.UserId);
                     cmd.Parameters.AddWithValue("@history", "");
                     cmd.Parameters.AddWithValue("@streetAddress", "");
@@ -141,7 +141,7 @@ namespace Capstone.DAO
                     if (reader.Read())
                     {
                         createdBrewery = new Brewery();
-                        createdBrewery.Name = Convert.ToString(reader["brewery_name"]);
+                        createdBrewery.BreweryName = Convert.ToString(reader["brewery_name"]);
                         createdBrewery.UserId = Convert.ToInt32(reader["user_id"]);
                         createdBrewery.BreweryId = Convert.ToInt32(reader["brewery_id"]);
                         createdBrewery.History = Convert.ToString(reader["history"]);
@@ -172,7 +172,7 @@ namespace Capstone.DAO
 
                     SqlCommand cmd = new SqlCommand(SQL_UPDATE_BREWERY, conn);
                     cmd.Parameters.AddWithValue("@userId", brewery.UserId);
-                    cmd.Parameters.AddWithValue("@breweryName", brewery.Name);
+                    cmd.Parameters.AddWithValue("@breweryName", brewery.BreweryName);
                     cmd.Parameters.AddWithValue("@history", brewery.History);
                     cmd.Parameters.AddWithValue("@streetAddress", brewery.StreetAddress);
                     cmd.Parameters.AddWithValue("@phone", brewery.Phone);
@@ -202,7 +202,7 @@ namespace Capstone.DAO
         {
             Brewery brewery = new Brewery();
 
-            brewery.Name = Convert.ToString(reader["brewery_name"]);
+            brewery.BreweryName = Convert.ToString(reader["brewery_name"]);
             brewery.UserId = Convert.ToInt32(reader["user_id"]);
             brewery.BreweryId = Convert.ToInt32(reader["brewery_id"]);
             brewery.History = Convert.ToString(reader["history"]);

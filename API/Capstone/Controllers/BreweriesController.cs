@@ -18,14 +18,15 @@ namespace Capstone.Controllers
         IBreweryDAO breweryDAO;
         IHoursDAO hoursDAO;
         IBreweryImagesDAO breweryImagesDAO;
-        public static IHostingEnvironment _hostingEnvironment;
+        IBeerDAO beerDAO;
 
-        public BreweriesController(IBreweryDAO breweryDAO, IHoursDAO hoursDAO,IBreweryImagesDAO breweryImagesDAO, IHostingEnvironment hostingEnvironment)
+        public BreweriesController(IBreweryDAO breweryDAO, IHoursDAO hoursDAO, IBreweryImagesDAO breweryImagesDAO, IBeerDAO beerDAO)
         {
             this.breweryDAO = breweryDAO;
             this.hoursDAO = hoursDAO;
             this.breweryImagesDAO = breweryImagesDAO;
-            _hostingEnvironment = hostingEnvironment;
+            this.beerDAO = beerDAO;
+
         }
 
         [HttpGet]
@@ -74,7 +75,15 @@ namespace Capstone.Controllers
             List<Hours> hours = hoursDAO.GetHours();
 
             return Ok(hours);
-        } 
+        }
+
+        [HttpGet("{breweryId}/images")]
+        public ActionResult<List<BreweryImage>> GetImages(int breweryId)
+        {
+            List<BreweryImage> images = breweryImagesDAO.GetImages(breweryId);
+
+            return Ok(images);
+        }
 
 
         [HttpPost]
@@ -95,7 +104,23 @@ namespace Capstone.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult<Beer> CreateBeer(Beer beer)
+        {
+            Beer createdBeer;
+            createdBeer = beerDAO.CreateBeer(beer);
+            if (createdBeer != null)
+            {
+                return Created($"{createdBeer.BeerId}", createdBeer);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
         [HttpPost("{breweryId}/hours")]
+        [Authorize(Roles = "brewery")]
         public ActionResult<Hours> CreateHours(Hours hours)
         {
             Hours createdHours;
@@ -112,13 +137,14 @@ namespace Capstone.Controllers
         }
 
         [HttpPost("{breweryId}/images")]
+        [Authorize(Roles = "brewery")]
         public ActionResult<BreweryImage> CreateImage(BreweryImage brewery)
         {
             BreweryImage image = this.breweryImagesDAO.CreateImage(brewery);
 
             if (image != null)
             {
-                return Created($"{image.BreweryId}/images/{image.BreweryImageId}", image);
+                return Created($"{image.BreweryId}/images/{image.ImageId}", image);
             }
             else
             {

@@ -58,6 +58,18 @@ CREATE TABLE brewery_images (
 	CONSTRAINT PK_image_id PRIMARY KEY (image_id),
 	CONSTRAINT FK_brewery_images_breweries FOREIGN KEY (brewery_id) REFERENCES breweries(brewery_id)
 )
+-- Consider making abv a decimal datatype
+CREATE TABLE beers (
+	beer_id int IDENTITY (1, 1),
+	brewery_id int NOT NULL,
+	beer_name nvarchar(100) NOT NULL,
+	image_url nvarchar(200) NOT NULL,
+	abv nvarchar(5) NOT NULL,
+	beer_type nvarchar(50) NOT NULL,
+	is_active bit NOT NULL
+	CONSTRAINT PK_beer_id PRIMARY KEY (beer_id),
+	CONSTRAINT FK_beers_breweries FOREIGN KEY (brewery_id) REFERENCES breweries(brewery_id)
+)
 
 --populate default data
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');

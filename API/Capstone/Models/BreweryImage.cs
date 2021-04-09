@@ -8,7 +8,7 @@ namespace Capstone.Models
 {
     public class BreweryImage
     {
-        public int BreweryImageId { get; set; }
+        public int ImageId { get; set; }
         public int BreweryId { get; set; }
         public string ImageUrl { get; set; }
 
