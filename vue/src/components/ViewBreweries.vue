@@ -1,7 +1,7 @@
 <template>
   <div>
       <ul class="all-breweries">
-          <li v-for="brewery in breweries" :key="brewery.breweryId">{{brewery.name}} {{brewery.streetAddress}} {{brewery.city}} {{brewery.zipCode}} {{brewery.phone}}</li>
+          <li v-for="brewery in breweries" :key="brewery.breweryId">{{brewery.breweryName}} {{brewery.streetAddress}} {{brewery.city}} {{brewery.zipCode}} {{brewery.phone}}</li>
       </ul>
   </div>
 </template>

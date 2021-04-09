@@ -16,7 +16,7 @@
         <tbody>
           <tr v-for="brewery in breweries" :key="brewery.breweryId">
             <td>{{brewery.breweryId}}</td>
-            <td><router-link :to="{name: 'brewery-by-id', params:{breweryId: brewery.breweryId}}">{{brewery.name}}</router-link></td>
+            <td><router-link :to="{name: 'brewery-by-id', params:{breweryId: brewery.breweryId}}">{{brewery.breweryName}}</router-link></td>
             <td>{{brewery.streetAddress}} {{brewery.city}} {{brewery.zipCode}}</td>
           </tr>
         </tbody>

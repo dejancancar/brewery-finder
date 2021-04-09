@@ -47,7 +47,7 @@ export default{
 
   //Brewer Functions - Hours
   updateHours(hours){
-    return axios.put(`/${hours.breweryId}/hours`);
+    return axios.post(`/breweries/${hours.breweryId}/hours`, hours);
   },
   
 }

@@ -27,7 +27,7 @@ export default {
     return{
       brewery:{
         breweryId:0,
-        name:"",
+        breweryName:"",
         userId: "",
       },
     };

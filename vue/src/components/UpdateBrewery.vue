@@ -4,7 +4,7 @@
       <h1>Brewery Info</h1>
       <tr>
         <td>Name:</td>
-        <td>{{brewery.name}}</td>
+        <td>{{brewery.breweryName}}</td>
       </tr>
       <tr>
         <td>Address: </td>
@@ -45,7 +45,7 @@
     <table>
       <tr>
         <td>Name: </td>
-        <td><input type="text" v-model="updateBrewery.name" /></td>
+        <td><input type="text" v-model="updateBrewery.breweryName" /></td>
       </tr>
       <tr>
         <td>Phone Number: </td>
@@ -105,7 +105,7 @@ export default {
       updateBrewery: {
         breweryId:0,
         userId: 0,
-        name: "",
+        breweryName: "",
         phone: "",
         streetAddress: "",
         city:"",

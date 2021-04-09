@@ -23,7 +23,7 @@
         <div>
           <div>
             <label for="breweryName">Enter Brewery Name:</label>
-            <input type="text" class="form-look" v-model="brewery.name" />
+            <input type="text" class="form-look" v-model="brewery.breweryName" />
           </div>
           <div>
             <button type="submit" class="btn btn-submit">Submit Brewery</button>
@@ -54,7 +54,7 @@ export default {
       },
       brewery: {
         breweryId: 0,
-        name: "",
+        breweryName: "",
         userId: 0,
       },
       toggleForm: false,
@@ -73,7 +73,7 @@ export default {
       return (this.brewery.userId = this.user.userId);
     },
     createBrewery() {
-      api.createBrewery(this.brewery, this.$store.state.token).then((resp) => {
+      api.createBrewery(this.brewery).then((resp) => {
         if (resp.status === 201) {
           this.brewery = resp.data;
           window.alert(
@@ -81,7 +81,8 @@ export default {
           );
           this.$router.push("/users");
         }
-      });
+      }).catch(errrrr => {console.log(errrrr)});
+      
     },
     cancelForm() {
       this.$router.push("/");

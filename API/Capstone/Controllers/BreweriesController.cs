@@ -104,7 +104,7 @@ namespace Capstone.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("/breweries/{breweryId}/beers")]
         public ActionResult<Beer> CreateBeer(Beer beer)
         {
             Beer createdBeer;
@@ -120,7 +120,7 @@ namespace Capstone.Controllers
         }
 
         [HttpPost("{breweryId}/hours")]
-        [Authorize(Roles = "brewery")]
+        [Authorize(Roles = "brewer")]
         public ActionResult<Hours> CreateHours(Hours hours)
         {
             Hours createdHours;

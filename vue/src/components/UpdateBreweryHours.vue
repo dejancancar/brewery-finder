@@ -2,7 +2,7 @@
   <div>
       <div class="day-of-week">
           Select Day: 
-          <select v-model.number="breweryHours.dayOfTheWeek"> 
+          <select v-model.number="breweryHours.dayOfWeek"> 
           <option disabled value="">Day</option>
           <option value="1">Monday</option>
           <option value="2">Tuesday</option>
@@ -17,7 +17,7 @@
       <div>
         Open Time: 
         <select v-model.number="breweryHours.openHour">
-            <option disabled value="Hours">Hour</option>
+            <option disabled  value="">Hour</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -68,7 +68,7 @@
         </select>
         :
         <select v-model.number="breweryHours.closeMinute">
-            <option disabled value="">minutes</option>
+            <option disabled  value="">minutes</option>
            <option value="0">00</option>
             <option value="15">15</option>
             <option value="30">30</option>
@@ -76,7 +76,7 @@
         </select>
            
           <select v-model="breweryHours.closeAmPm">
-            <option disabled value="">Select One</option>
+            <option disabled  value="">Select One</option>
             <option >AM</option>
             <option >PM</option>
           </select>
@@ -98,13 +98,13 @@ export default {
         return{
             breweryHours:{
                 breweryId: parseInt(this.$route.params.breweryId),
-                dayOfTheWeek:0,
-                openHour: 0 ,
-                openMinute: 0,
-                openAmPm: 0,
-                closeHour:0,
-                closeMinute: 0,
-                closeAmPm: 0,
+                dayOfWeek: "",
+                openHour: "",
+                openMinute: "",
+                openAmPm: "",
+                closeHour: "",
+                closeMinute: "",
+                closeAmPm: "",
                 
             },
             toggleForm: true,
