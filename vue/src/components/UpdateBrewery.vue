@@ -23,8 +23,25 @@
         <td>{{brewery.isActive ? "Active" : "Inactive"}}</td>
       </tr>
     </table>
-    <form >
+
+    <table>
+      <tr>
+        <td>Day: </td>
+        <td>Open Time: </td>
+        <td>Closing Time: </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+    </table>
+
     <h1>Update Brewery</h1> 
+    <button type="button" v-on:click="toggleUpdateBrewery = true" v-show="!toggleUpdateBrewery">Show Brewery</button>
+    <form v-show="toggleUpdateBrewery">
     <table>
       <tr>
         <td>Name: </td>
@@ -67,14 +84,20 @@
       </tr>
 
     </table>
-    </form>
     <button @click="updateBreweryInfo">Update Info</button>
-    <button @click="cancelUpdate">Cancel Update</button>
+    <button @click="toggleUpdateBrewery = false">Cancel Update</button>
+    </form>
+    <div>
+    <h1>Update Brewery Hours</h1>
+    <button type="button" @click="toggleUpdateHours = true" v-show="!toggleUpdateHours" >Update Hours</button>
+    <hours v-show="toggleUpdateHours" />
+    </div>
   </div>
 </template>
 
 <script>
 import api from '../services/apiService.js'
+import hours from '../components/UpdateBreweryHours.vue'
 export default {
   data() {
     return {
@@ -94,9 +117,14 @@ export default {
       },
       //brewery information to display to user
       brewery: {
-      }
+      },
+      toggleUpdateBrewery: false,
+      toggleUpdateHours: false,
     };
 
+  },
+  components:{
+    hours
   },
   computed:{
 
@@ -121,12 +149,16 @@ export default {
           })
         
       },
-      cancelUpdate(){
-        this.$router.push(`/brewerdashboard`)
-      }
+
+      // cancelUpdate(){
+      //   this.$router.push(`/brewerdashboard`)
+      // }
   },
   created(){
     this.getBreweryById();
+    if (this.$store.state.user.role != "brewer") {
+      this.$router.push("/");
+    }
   }
 
   

@@ -1,43 +1,53 @@
 import axios from 'axios';
 
-const http = axios.create({
-  baseURL: process.env.VUE_APP_REMOTE_API
-})
+// const http = axios.create({
+//   baseURL: process.env.VUE_APP_REMOTE_API
+// })
 export default{ 
   //checks to make sure the user creating a brewery is logged in as admin.
-  createBrewery(brewery, token){
-    http.defaults.headers.common['Authorization'] = `Bearer ${token}`
-    return http.post('/breweries', brewery)
+  createBrewery(brewery){
+    // http.defaults.headers.common['Authorization'] = `Bearer ${token}`
+    return axios.post('/breweries', brewery)
   },
-
+  //Admin functions
   getUsers(username){
     let path = '/users';
     if(username){
       path += `?username=${username}`
     }
-    return http.get(path);
+    return axios.get(path);
   },
 
+
+  //Brewer functions - Breweries
   getBreweries(){
-      return http.get('/breweries');
+      return axios.get('/breweries');
   },
-
   getBreweriesByBrewerId(userId){
     let path = '/breweries';
     if(userId){
       path += `?userId=${userId}`
     }
-    return http.get(path);
+    return axios.get(path);
   },
-  updateBreweryInfo(brewery, token){
-    http.defaults.headers.common['Authorization'] = `Bearer ${token}`
-    return http.put(`/breweries/${brewery.breweryId}`, brewery);
+  updateBreweryInfo(brewery){
+
+    return axios.put(`/breweries/${brewery.breweryId}`, brewery);
   },
   getBreweryById(breweryId){
-    return http.get(`/breweries/${breweryId}`);
+    return axios.get(`/breweries/${breweryId}`);
   },
+
+
+  //Brewer functions - Images
   uploadBreweryImageUrl(brewery) {
-    return http.post(`breweries/${brewery.breweryId}/images`, brewery);
+    return axios.post(`/breweries/${brewery.breweryId}/images`, brewery);
+  },
+
+
+  //Brewer Functions - Hours
+  updateHours(hours){
+    return axios.put(`/${hours.breweryId}/hours`);
   },
   
 }
