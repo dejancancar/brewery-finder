@@ -118,8 +118,9 @@ export default {
           .then( (resp) => {
             this.breweryHours = resp.data;
              window.alert('Hours have been updated!')
-            this.$router.go();
+            
           });
+          this.$router.go();
         },
     },
     created(){
