@@ -52,5 +52,10 @@ export default{
   getBreweryHours(breweryId){
     return axios.get(`/breweries/${breweryId}/hours`);
   },
+
+  //Brewer Functions - Beers
+  getBeers(breweryId){
+    return axios.get(`/breweries/${breweryId}/beers`);
+  }
   
 }
