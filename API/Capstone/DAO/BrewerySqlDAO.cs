@@ -17,8 +17,23 @@ namespace Capstone.DAO
         private const string SQL_CREATE_BREWERY = @"Begin Transaction
                                                     UPDATE users SET user_role = 'brewer' WHERE user_id = @userId;
                                                     INSERT INTO breweries(brewery_name, user_id, history, phone, street_address, city, zip_code, is_active) 
-                                                    VALUES(@breweryName, @userId, @history, @phone, @streetAddress, @city, @zipCode, @isActive); 
-                                                    SELECT * FROM breweries WHERE brewery_id = @@identity;
+                                                    VALUES(@breweryName, @userId, @history, @phone, @streetAddress, @city, @zipCode, @isActive);
+                                                    DECLARE @breweryId int = @@IDENTITY;
+                                                    SELECT * FROM breweries WHERE brewery_id = @breweryId;
+                                                    INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm)
+                                                        VALUES (@breweryId, 1, 0, 0, 'AM', 0, 0, 'AM');
+                                                    INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm)
+                                                        VALUES (@breweryId, 2, 0, 0, 'AM', 0, 0, 'AM');
+                                                    INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm)
+                                                        VALUES (@breweryId, 3, 0, 0, 'AM', 0, 0, 'AM');
+                                                    INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm)
+                                                        VALUES (@breweryId, 4, 0, 0, 'AM', 0, 0, 'AM');
+                                                    INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm)
+                                                        VALUES (@breweryId, 5, 0, 0, 'AM', 0, 0, 'AM');
+                                                    INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm)
+                                                        VALUES (@breweryId, 6, 0, 0, 'AM', 0, 0, 'AM');
+                                                    INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm)
+                                                        VALUES (@breweryId, 7, 0, 0, 'AM', 0, 0, 'AM');
                                                     Commit Transaction";
         private const string SQL_UPDATE_BREWERY = @"UPDATE breweries SET user_id = @userId, brewery_name = @breweryName, history = @history, street_address = @streetAddress,
                                                     phone = @phone, city = @city, zip_code = @zipCode, is_active = @isActive WHERE brewery_id = @breweryId;
@@ -140,16 +155,7 @@ namespace Capstone.DAO
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
-                        createdBrewery = new Brewery();
-                        createdBrewery.BreweryName = Convert.ToString(reader["brewery_name"]);
-                        createdBrewery.UserId = Convert.ToInt32(reader["user_id"]);
-                        createdBrewery.BreweryId = Convert.ToInt32(reader["brewery_id"]);
-                        createdBrewery.History = Convert.ToString(reader["history"]);
-                        createdBrewery.StreetAddress = Convert.ToString(reader["street_address"]);
-                        createdBrewery.Phone = Convert.ToString(reader["phone"]);
-                        createdBrewery.City = Convert.ToString(reader["city"]);
-                        createdBrewery.ZipCode = Convert.ToString(reader["zip_code"]);
-                        createdBrewery.IsActive = Convert.ToBoolean(reader["is_active"]);
+                        createdBrewery = RowToObject(reader);
                     }
                 }
                 return createdBrewery;

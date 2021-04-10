@@ -53,42 +53,42 @@ namespace Capstone.DAO
         }
 
 
-        public Hours CreateHours(Hours hours)
-        {
-            Hours createdHours = null;
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
+        //public Hours CreateHours(Hours hours)
+        //{
+        //    Hours createdHours = null;
+        //    try
+        //    {
+        //        using (SqlConnection conn = new SqlConnection(connectionString))
+        //        {
+        //            conn.Open();
 
-                    SqlCommand cmd = new SqlCommand(SQL_CREATE_HOURS, conn);
-                    cmd.Parameters.AddWithValue("@breweryId", hours.BreweryId);
-                    cmd.Parameters.AddWithValue("@dayOfWeek", hours.DayOfWeek);
-                    cmd.Parameters.AddWithValue("@openHour", hours.OpenHour);
-                    cmd.Parameters.AddWithValue("@openMinute", hours.OpenMinute);
-                    cmd.Parameters.AddWithValue("@openAmPm", hours.OpenAmPm);
-                    cmd.Parameters.AddWithValue("@closeHour", hours.CloseHour);
-                    cmd.Parameters.AddWithValue("@closeMinute", hours.CloseMinute);
-                    cmd.Parameters.AddWithValue("@closeAmPm", hours.CloseAmPm);
+        //            SqlCommand cmd = new SqlCommand(SQL_CREATE_HOURS, conn);
+        //            cmd.Parameters.AddWithValue("@breweryId", hours.BreweryId);
+        //            cmd.Parameters.AddWithValue("@dayOfWeek", hours.DayOfWeek);
+        //            cmd.Parameters.AddWithValue("@openHour", hours.OpenHour);
+        //            cmd.Parameters.AddWithValue("@openMinute", hours.OpenMinute);
+        //            cmd.Parameters.AddWithValue("@openAmPm", hours.OpenAmPm);
+        //            cmd.Parameters.AddWithValue("@closeHour", hours.CloseHour);
+        //            cmd.Parameters.AddWithValue("@closeMinute", hours.CloseMinute);
+        //            cmd.Parameters.AddWithValue("@closeAmPm", hours.CloseAmPm);
 
-                    SqlDataReader reader = cmd.ExecuteReader();
+        //            SqlDataReader reader = cmd.ExecuteReader();
 
-                    if (reader.Read())
-                    {
-                        createdHours = RowToObject(reader);
-                    }
+        //            if (reader.Read())
+        //            {
+        //                createdHours = RowToObject(reader);
+        //            }
 
-                    return createdHours;
+        //            return createdHours;
 
-                }
-            }
-            catch (SqlException ex)
-            {
+        //        }
+        //    }
+        //    catch (SqlException ex)
+        //    {
 
-                throw;
-            }
-        }
+        //        throw;
+        //    }
+        //}
 
 
         public Hours UpdateHours(Hours hours)
