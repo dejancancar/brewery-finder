@@ -16,8 +16,8 @@
     <button type="button" @click="toggleForm = true, toggleButton = false" v-show="toggleButton" >Update Hours</button>
     <div v-show="toggleForm">
       <div class="day-of-week">
-          Select Day: 
-          <select v-model.number="updatedHours.dayOfWeek"> 
+        Select Day: 
+        <select v-model.number="updatedHours.dayOfWeek"> 
           <option disabled value="">Day</option>
           <option value="1">Monday</option>
           <option value="2">Tuesday</option>
@@ -26,7 +26,7 @@
           <option value="5">Friday</option>
           <option value="6">Saturday</option>
           <option value="7">Sunday</option>
-      </select>
+        </select>
       </div>
       <div>
         If closed select: <input type="checkbox" v-model="updatedHours.isClosed">     
@@ -105,8 +105,8 @@
       <div>
 
       </div>
-      <button @click="updateHours" v-show="toggleForm">Update Info</button>
-      <button @click="$router.go()" v-show="toggleForm">Cancel Update</button>
+      <button @click="updateHours" v-show="toggleForm" >Update</button>
+      <button @click="$router.go()" v-show="toggleForm">Cancel</button>
       </div>
 
   </div>
