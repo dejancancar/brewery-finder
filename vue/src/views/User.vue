@@ -81,7 +81,7 @@ export default {
           );
           this.$router.push("/users");
         }
-      }).catch(errrrr => {console.log(errrrr)});
+      })
       
     },
     cancelForm() {

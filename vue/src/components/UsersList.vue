@@ -6,7 +6,7 @@
         <td>Username</td>
       </tr>
     </thead>
-    <tbody v-for="user in users" :key="user.username">
+    <tbody v-for="user in users" :key="user.userId">
       <tr>
         <!-- Loop to add all users per row -->
         <td>{{ user.userId }}</td>

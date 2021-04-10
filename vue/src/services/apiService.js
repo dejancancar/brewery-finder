@@ -43,6 +43,9 @@ export default{
   uploadBreweryImageUrl(brewery) {
     return axios.post(`/breweries/${brewery.breweryId}/images`, brewery);
   },
+  getBreweryImages(breweryId){
+    return axios.get(`/breweries/${breweryId}/images`);
+  },
 
 
   //Brewer Functions - Hours

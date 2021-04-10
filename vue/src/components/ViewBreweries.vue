@@ -1,7 +1,9 @@
 <template>
   <div>
       <ul class="all-breweries">
-          <li v-for="brewery in breweries" :key="brewery.breweryId">{{brewery.breweryName}} {{brewery.streetAddress}} {{brewery.city}} {{brewery.zipCode}} {{brewery.phone}}</li>
+          <li v-for="brewery in breweries" :key="brewery.breweryId">
+              <router-link :to="{ name: 'brewery', params: { breweryId: brewery.breweryId }}">{{brewery.breweryName}} </router-link>
+              {{brewery.streetAddress}} {{brewery.city}} {{brewery.zipCode}} {{brewery.phone}}</li>
       </ul>
   </div>
 </template>
