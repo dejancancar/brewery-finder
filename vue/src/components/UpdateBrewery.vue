@@ -101,6 +101,9 @@
       <button type="button" @click="toggleUpdateImages = false" v-show="toggleUpdateImages">Close Uploads</button>
       
     </div>
+    <div>
+      <beers/>
+    </div>
   </div>
 </template>
 
@@ -108,6 +111,7 @@
 import api from '../services/apiService.js'
 import hours from '../components/UpdateBreweryHours.vue'
 import images from '../components/AddBreweryImage.vue'
+import beers from '../components/BreweryBeers.vue'
 export default {
   data() {
     return {
@@ -136,7 +140,8 @@ export default {
   },
   components:{
     hours,
-    images
+    images,
+    beers
   },
   computed:{
 
