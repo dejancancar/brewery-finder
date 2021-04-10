@@ -24,34 +24,13 @@
       </tr>
     </table>
 
-    <table>
-      <tr>
-        <td>Day: </td>
-        <td>Open Time: </td>
-        <td>Closing Time: </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-    </table>
-
-    <h1>Update Brewery</h1> 
-    <button type="button" v-on:click="toggleUpdateBrewery = true" v-show="!toggleUpdateBrewery">Show Brewery</button>
+    <h2>Brewery</h2> 
+    <button type="button" v-on:click="toggleUpdateBrewery = true" v-show="!toggleUpdateBrewery">Update Info</button>
     <form v-show="toggleUpdateBrewery">
     <table>
       <tr>
         <td>Name: </td>
         <td><input type="text" v-model="updateBrewery.breweryName" /></td>
-      </tr>
-      <tr>
-        <td>Phone Number: </td>
-        <td>
-          <input type="text" v-model="updateBrewery.phone" />
-        </td>
       </tr>
       <tr>
         <td>Street Address: </td>
@@ -71,6 +50,12 @@
               <input type="text" v-model="updateBrewery.zipCode" />
           </td>
       </tr>
+            <tr>
+        <td>Phone Number: </td>
+        <td>
+          <input type="text" v-model="updateBrewery.phone" />
+        </td>
+      </tr>
       <tr>
         <td>Brewery History: </td>
         <textarea type="text-area" v-model="updateBrewery.history" ></textarea>
@@ -87,27 +72,12 @@
     <button @click="updateBreweryInfo">Update Info</button>
     <button @click="toggleUpdateBrewery = false">Cancel Update</button>
     </form>
-    <div>
-    <h1>Update Brewery Hours</h1>
-    <button type="button" @click="toggleUpdateHours = true" v-show="!toggleUpdateHours" >Update Hours</button>
-    <hours v-show="toggleUpdateHours" />
-    </div>
 
-    <div>
-      <h1>Upload Images</h1>
-      <button type="button" @click="toggleUpdateImages = true" v-show="!toggleUpdateImages">Upload Image</button>
-      <p v-show="toggleUpdateImages">Add your images below.</p>
-      <images v-show="toggleUpdateImages" />
-      <button type="button" @click="toggleUpdateImages = false" v-show="toggleUpdateImages">Close Uploads</button>
-      
-    </div>
   </div>
 </template>
 
 <script>
 import api from '../services/apiService.js'
-import hours from '../components/UpdateBreweryHours.vue'
-import images from '../components/AddBreweryImage.vue'
 export default {
   data() {
     return {
@@ -129,18 +99,11 @@ export default {
       brewery: {
       },
       toggleUpdateBrewery: false,
-      toggleUpdateHours: false,
-      toggleUpdateImages: false,
     };
 
   },
-  components:{
-    hours,
-    images
-  },
-  computed:{
-
-  },
+  components:{},
+  computed:{},
   methods:{
       updateBreweryInfo(){
         api.updateBreweryInfo(this.updateBrewery)
@@ -148,7 +111,7 @@ export default {
                 if(resp.status === 200){
                     this.updateBrewery = resp.data;
                     window.alert('Information has been updated!')
-                    this.$router.go();
+                    //this.$router.go();
                 }})
 
       },
@@ -176,7 +139,7 @@ export default {
   }
 
   
-};
+}
 </script>
 
 <style scoped>

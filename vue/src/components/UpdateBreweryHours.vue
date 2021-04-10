@@ -1,8 +1,20 @@
 <template>
   <div>
-    <div v-for="hours in breweryHours" :key="hours.hoursId">
-      <p>{{hours}}</p>
+    <h2>Hours</h2>
+    <div>
+      <ul>
+        <li v-for="displayHours in breweryHours" :key="displayHours.hoursId">
+        {{displayDayOfWeek(displayHours.dayOfWeek)}}: 
+        <span v-show="!displayHours.isClosed">
+        {{displayHours.openHour}}:{{displayMinutesProperly(displayHours.openMinute)}} {{displayHours.openAmPm}} -
+        {{displayHours.closeHour}}:{{displayMinutesProperly(displayHours.closeMinute)}} {{displayHours.closeAmPm}}
+        </span>
+        <span v-show="displayHours.isClosed">CLOSED</span>
+        </li>
+      </ul>
     </div>
+    <button type="button" @click="toggleForm = true, toggleButton = false" v-show="toggleButton" >Update Hours</button>
+    <div v-show="toggleForm">
       <div class="day-of-week">
           Select Day: 
           <select v-model.number="updatedHours.dayOfWeek"> 
@@ -16,7 +28,12 @@
           <option value="7">Sunday</option>
       </select>
       </div>
+      <div>
+        If closed select: <input type="checkbox" v-model="updatedHours.isClosed">     
+      </div>
 
+
+      <div v-show="!updatedHours.isClosed"  >
       <div>
         Open Time: 
         <select v-model.number="updatedHours.openHour">
@@ -83,13 +100,14 @@
             <option >AM</option>
             <option >PM</option>
           </select>
+          </div>
       </div>
       <div>
 
       </div>
       <button @click="updateHours" v-show="toggleForm">Update Info</button>
       <button @click="$router.go()" v-show="toggleForm">Cancel Update</button>
-
+      </div>
 
   </div>
 </template>
@@ -111,16 +129,29 @@ export default {
                 closeHour: "",
                 closeMinute: "",
                 closeAmPm: "",
+                isClosed: false
             },
-            monday: "",
-            toggleForm: true,
+            toggleForm: false,
+            toggleButton: true,
 
         }
+    },
+    computed:{
+      // showDayOfWeek(){
+        
+      // }
     },
     methods:{
         updateHours(){
         this.toggleForm = false;
+        this.toggleButton = false;
         this.updateHoursId();
+        if(this.updatedHours.isClosed){
+          this.updatedHours.openHour = 0;
+          this.updatedHours.openMinute = 0;
+          this.updatedHours.closeHour = 0;
+          this.updatedHours.closeMinute = 0;
+        }
         api.updateHours(this.updatedHours)
           .then( (resp) => {
             let index = this.updatedHours.dayOfWeek - 1;
@@ -144,7 +175,32 @@ export default {
           })
           
 
-        }
+        },
+        displayMinutesProperly(minutes){
+          if(minutes == 0 ){
+            return "00";
+          }else{
+            return minutes;
+          }
+        },
+        displayDayOfWeek(day){
+          if(day === 1){
+            return "Monday";
+          } else if(day === 2){
+            return "Tuesday";
+          }else if(day === 3){
+            return "Wednesday";
+          }else if(day === 4){
+            return "Thursday";
+          }else if(day === 5){
+            return "Friday";
+          }else if(day === 6){
+            return "Saturday";
+          }else{
+            return "Sunday";
+          }
+        },
+
     },
     created(){
       this.getHours();
