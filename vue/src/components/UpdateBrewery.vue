@@ -92,12 +92,22 @@
     <button type="button" @click="toggleUpdateHours = true" v-show="!toggleUpdateHours" >Update Hours</button>
     <hours v-show="toggleUpdateHours" />
     </div>
+
+    <div>
+      <h1>Upload Images</h1>
+      <button type="button" @click="toggleUpdateImages = true" v-show="!toggleUpdateImages">Upload Image</button>
+      <p v-show="toggleUpdateImages">Add your images below.</p>
+      <images v-show="toggleUpdateImages" />
+      <button type="button" @click="toggleUpdateImages = false" v-show="toggleUpdateImages">Close Uploads</button>
+      
+    </div>
   </div>
 </template>
 
 <script>
 import api from '../services/apiService.js'
 import hours from '../components/UpdateBreweryHours.vue'
+import images from '../components/AddBreweryImage.vue'
 export default {
   data() {
     return {
@@ -120,11 +130,13 @@ export default {
       },
       toggleUpdateBrewery: false,
       toggleUpdateHours: false,
+      toggleUpdateImages: false,
     };
 
   },
   components:{
-    hours
+    hours,
+    images
   },
   computed:{
 
@@ -149,6 +161,10 @@ export default {
           })
         
       },
+      getBreweryHours(){
+        
+      }
+      
 
       // cancelUpdate(){
       //   this.$router.push(`/brewerdashboard`)

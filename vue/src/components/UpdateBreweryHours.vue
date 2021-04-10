@@ -98,6 +98,7 @@ export default {
         return{
             breweryHours:{
                 breweryId: parseInt(this.$route.params.breweryId),
+                hoursId: "",
                 dayOfWeek: "",
                 openHour: "",
                 openMinute: "",

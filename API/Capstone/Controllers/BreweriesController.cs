@@ -137,7 +137,7 @@ namespace Capstone.Controllers
         }
 
         [HttpPost("{breweryId}/images")]
-        [Authorize(Roles = "brewery")]
+        [Authorize(Roles = "brewer")]
         public ActionResult<BreweryImage> CreateImage(BreweryImage brewery)
         {
             BreweryImage image = this.breweryImagesDAO.CreateImage(brewery);

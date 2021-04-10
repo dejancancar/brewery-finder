@@ -1,6 +1,5 @@
 <template>
   <div>
-    <image-upload/>
     <div>
     <div v-show="showFormButton"> 
       <button type="button" @click="getBreweriesByBrewerId" v-show="showFormButton">View Breweries</button>
@@ -28,7 +27,7 @@
 
 <script>
 import api from '../services/apiService.js';
-import imageUpload from '../components/AddBreweryImage.vue';
+
 
 export default {
   data() {
@@ -51,7 +50,7 @@ export default {
     }
   },
   components: {
-    imageUpload,
+
   },
   created() {
     //check to make sure the user attempting to access this route is a brewer only
