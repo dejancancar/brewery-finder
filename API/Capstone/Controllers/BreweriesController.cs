@@ -69,10 +69,18 @@ namespace Capstone.Controllers
             }
         }
 
-        [HttpGet("{breweryId}/hours")]
-        public ActionResult<List<Hours>> GetHours()
+        [HttpGet("{breweryId}/beers")]
+        public ActionResult<List<Beer>> GetBeers(int breweryId)
         {
-            List<Hours> hours = hoursDAO.GetHours();
+            List<Beer> beers = beerDAO.GetBeers(breweryId);
+
+            return Ok(beers);
+        }
+
+        [HttpGet("{breweryId}/hours")]
+        public ActionResult<List<Hours>> GetHours(int breweryId)
+        {
+            List<Hours> hours = hoursDAO.GetHours(breweryId);
 
             return Ok(hours);
         }
@@ -93,7 +101,6 @@ namespace Capstone.Controllers
             Brewery createdBrewery;
             createdBrewery = this.breweryDAO.CreateBrewery(brewery);
 
-            // make sure something's created
             if (createdBrewery != null)
             {
                 return Created($"{createdBrewery.BreweryId}", createdBrewery);
@@ -118,23 +125,6 @@ namespace Capstone.Controllers
                 return BadRequest();
             }
         }
-
-        //[HttpPost("{breweryId}/hours")]
-        //[Authorize(Roles = "brewer")]
-        //public ActionResult<Hours> CreateHours(Hours hours)
-        //{
-        //    Hours createdHours;
-        //    createdHours = this.hoursDAO.CreateHours(hours);
-
-        //    if (createdHours != null)
-        //    {
-        //        return Created($"{createdHours.BreweryId}/hours/{createdHours.HoursId}", createdHours);
-        //    }
-        //    else
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
 
         [HttpPost("{breweryId}/images")]
         [Authorize(Roles = "brewer")]

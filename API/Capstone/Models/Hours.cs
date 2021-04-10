@@ -16,5 +16,6 @@ namespace Capstone.Models
         public int CloseHour { get; set; }
         public int CloseMinute { get; set; }
         public string CloseAmPm { get; set; }
+        public bool IsClosed { get; set; } = false;
     }
 }

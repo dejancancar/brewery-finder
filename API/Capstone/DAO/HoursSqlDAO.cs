@@ -10,12 +10,10 @@ namespace Capstone.DAO
     public class HoursSqlDAO : IHoursDAO
     {
         private readonly string connectionString;
-        private const string SQL_GET_HOURS = "SELECT * FROM hours;";
-        private const string SQL_CREATE_HOURS = @"INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm)
-                                                    VALUES (@breweryId, @dayOfWeek, @openHour, @openMinute, @openAmPm, @closeHour, @closeMinute, @closeAmPm);
-                                                    SELECT * FROM hours WHERE hours_id = @@IDENTITY;";
+        private const string SQL_GET_HOURS = "SELECT * FROM hours WHERE brewery_id = @breweryId;";
         private const string SQL_UPDATE_HOURS = @"UPDATE hours SET brewery_id = @breweryId, day_of_week = @dayOfWeek, open_hour = @openHour, open_minute = @openMinute, 
-                                                    open_am_pm = @openAmPm, close_hour = @closeHour, close_minute = @closeMinute, close_am_pm = @closeAmPm;
+                                                    open_am_pm = @openAmPm, close_hour = @closeHour, close_minute = @closeMinute, close_am_pm = @closeAmPm, is_closed = @isCLosed
+                                                    WHERE hours_id = @hoursId;
                                                     SELECT * FROM hours WHERE hours_id = @hoursId;";
 
         public HoursSqlDAO(string connectionString)
@@ -23,7 +21,7 @@ namespace Capstone.DAO
             this.connectionString = connectionString;
         }
 
-        public List<Hours> GetHours()
+        public List<Hours> GetHours(int breweryId)
         {
             List<Hours> hoursList = new List<Hours>();
             try
@@ -33,6 +31,7 @@ namespace Capstone.DAO
                     conn.Open();
 
                     SqlCommand cmd = new SqlCommand(SQL_GET_HOURS, conn);
+                    cmd.Parameters.AddWithValue("@breweryId", breweryId);
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -51,45 +50,6 @@ namespace Capstone.DAO
                 throw;
             }
         }
-
-
-        //public Hours CreateHours(Hours hours)
-        //{
-        //    Hours createdHours = null;
-        //    try
-        //    {
-        //        using (SqlConnection conn = new SqlConnection(connectionString))
-        //        {
-        //            conn.Open();
-
-        //            SqlCommand cmd = new SqlCommand(SQL_CREATE_HOURS, conn);
-        //            cmd.Parameters.AddWithValue("@breweryId", hours.BreweryId);
-        //            cmd.Parameters.AddWithValue("@dayOfWeek", hours.DayOfWeek);
-        //            cmd.Parameters.AddWithValue("@openHour", hours.OpenHour);
-        //            cmd.Parameters.AddWithValue("@openMinute", hours.OpenMinute);
-        //            cmd.Parameters.AddWithValue("@openAmPm", hours.OpenAmPm);
-        //            cmd.Parameters.AddWithValue("@closeHour", hours.CloseHour);
-        //            cmd.Parameters.AddWithValue("@closeMinute", hours.CloseMinute);
-        //            cmd.Parameters.AddWithValue("@closeAmPm", hours.CloseAmPm);
-
-        //            SqlDataReader reader = cmd.ExecuteReader();
-
-        //            if (reader.Read())
-        //            {
-        //                createdHours = RowToObject(reader);
-        //            }
-
-        //            return createdHours;
-
-        //        }
-        //    }
-        //    catch (SqlException ex)
-        //    {
-
-        //        throw;
-        //    }
-        //}
-
 
         public Hours UpdateHours(Hours hours)
         {
@@ -111,6 +71,7 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@closeHour", hours.CloseHour);
                     cmd.Parameters.AddWithValue("@closeMinute", hours.CloseMinute);
                     cmd.Parameters.AddWithValue("@closeAmPm", hours.CloseAmPm);
+                    cmd.Parameters.AddWithValue("@isClosed", hours.IsClosed);
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -143,6 +104,7 @@ namespace Capstone.DAO
             hours.CloseHour = Convert.ToInt32(reader["close_hour"]);
             hours.CloseMinute = Convert.ToInt32(reader["close_minute"]);
             hours.CloseAmPm = Convert.ToString(reader["close_am_pm"]);
+            hours.IsClosed = Convert.ToBoolean(reader["is_closed"]);
 
             return hours;
         }

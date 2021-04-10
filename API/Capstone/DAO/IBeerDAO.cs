@@ -9,5 +9,6 @@ namespace Capstone.DAO
     public interface IBeerDAO
     {
         Beer CreateBeer(Beer beer);
+        List<Beer> GetBeers(int breweryId);
     }
 }

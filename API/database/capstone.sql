@@ -48,7 +48,8 @@ CREATE TABLE hours (
 	open_am_pm nvarchar(2) NOT NULL,
 	close_hour int NOT NULL,
 	close_minute int NOT NULL,
-	close_am_pm nvarchar(2) NOT NULL
+	close_am_pm nvarchar(2) NOT NULL,
+	is_closed bit NOT NULL,
 	CONSTRAINT PK_hours_id PRIMARY KEY (hours_id),
 	CONSTRAINT FK_hours_breweries FOREIGN KEY (brewery_id) REFERENCES breweries(brewery_id),
 	CONSTRAINT CHK_day_of_week CHECK (day_of_week > 0 AND day_of_week <= 7),

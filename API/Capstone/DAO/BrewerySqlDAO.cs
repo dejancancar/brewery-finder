@@ -20,20 +20,20 @@ namespace Capstone.DAO
                                                     VALUES(@breweryName, @userId, @history, @phone, @streetAddress, @city, @zipCode, @isActive);
                                                     DECLARE @breweryId int = @@IDENTITY;
                                                     SELECT * FROM breweries WHERE brewery_id = @breweryId;
-                                                    INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm)
-                                                        VALUES (@breweryId, 1, 0, 0, 'AM', 0, 0, 'AM');
-                                                    INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm)
-                                                        VALUES (@breweryId, 2, 0, 0, 'AM', 0, 0, 'AM');
-                                                    INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm)
-                                                        VALUES (@breweryId, 3, 0, 0, 'AM', 0, 0, 'AM');
-                                                    INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm)
-                                                        VALUES (@breweryId, 4, 0, 0, 'AM', 0, 0, 'AM');
-                                                    INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm)
-                                                        VALUES (@breweryId, 5, 0, 0, 'AM', 0, 0, 'AM');
-                                                    INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm)
-                                                        VALUES (@breweryId, 6, 0, 0, 'AM', 0, 0, 'AM');
-                                                    INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm)
-                                                        VALUES (@breweryId, 7, 0, 0, 'AM', 0, 0, 'AM');
+                                                    INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
+                                                        VALUES (@breweryId, 1, 0, 0, 'AM', 0, 0, 'AM', 1);
+                                                    INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
+                                                        VALUES (@breweryId, 2, 0, 0, 'AM', 0, 0, 'AM', 1);
+                                                    INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
+                                                        VALUES (@breweryId, 3, 0, 0, 'AM', 0, 0, 'AM', 1);
+                                                    INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
+                                                        VALUES (@breweryId, 4, 0, 0, 'AM', 0, 0, 'AM',1);
+                                                    INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
+                                                        VALUES (@breweryId, 5, 0, 0, 'AM', 0, 0, 'AM', 1);
+                                                    INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
+                                                        VALUES (@breweryId, 6, 0, 0, 'AM', 0, 0, 'AM', 1);
+                                                    INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
+                                                        VALUES (@breweryId, 7, 0, 0, 'AM', 0, 0, 'AM', 1);
                                                     Commit Transaction";
         private const string SQL_UPDATE_BREWERY = @"UPDATE breweries SET user_id = @userId, brewery_name = @breweryName, history = @history, street_address = @streetAddress,
                                                     phone = @phone, city = @city, zip_code = @zipCode, is_active = @isActive WHERE brewery_id = @breweryId;

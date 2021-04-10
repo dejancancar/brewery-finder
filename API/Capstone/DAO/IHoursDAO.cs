@@ -9,7 +9,6 @@ namespace Capstone.DAO
     public interface IHoursDAO
     {
         Hours UpdateHours(Hours hours);
-        //Hours CreateHours(Hours hours);
-        List<Hours> GetHours();
+        List<Hours> GetHours(int breweryId);
     }
 }
