@@ -119,25 +119,25 @@ namespace Capstone.Controllers
             }
         }
 
-        [HttpPost("{breweryId}/hours")]
-        [Authorize(Roles = "brewer")]
-        public ActionResult<Hours> CreateHours(Hours hours)
-        {
-            Hours createdHours;
-            createdHours = this.hoursDAO.CreateHours(hours);
+        //[HttpPost("{breweryId}/hours")]
+        //[Authorize(Roles = "brewer")]
+        //public ActionResult<Hours> CreateHours(Hours hours)
+        //{
+        //    Hours createdHours;
+        //    createdHours = this.hoursDAO.CreateHours(hours);
 
-            if (createdHours != null)
-            {
-                return Created($"{createdHours.BreweryId}/hours/{createdHours.HoursId}", createdHours);
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
+        //    if (createdHours != null)
+        //    {
+        //        return Created($"{createdHours.BreweryId}/hours/{createdHours.HoursId}", createdHours);
+        //    }
+        //    else
+        //    {
+        //        return BadRequest();
+        //    }
+        //}
 
         [HttpPost("{breweryId}/images")]
-        [Authorize(Roles = "brewery")]
+        [Authorize(Roles = "brewer")]
         public ActionResult<BreweryImage> CreateImage(BreweryImage brewery)
         {
             BreweryImage image = this.breweryImagesDAO.CreateImage(brewery);

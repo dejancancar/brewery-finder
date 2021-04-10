@@ -51,9 +51,9 @@ CREATE TABLE hours (
 	close_am_pm nvarchar(2) NOT NULL
 	CONSTRAINT PK_hours_id PRIMARY KEY (hours_id),
 	CONSTRAINT FK_hours_breweries FOREIGN KEY (brewery_id) REFERENCES breweries(brewery_id),
-	CONSTRAINT CHK_day_of_week CHECK (day_of_week > 0 AND day_of_week < 8),
-	CONSTRAINT CHK_open_hours CHECK (open_hour > 0 AND open_hour <= 12),
-	CONSTRAINT CHK_close_hours CHECK (close_hour > 0 AND close_hour <= 12),
+	CONSTRAINT CHK_day_of_week CHECK (day_of_week > 0 AND day_of_week <= 7),
+	CONSTRAINT CHK_open_hours CHECK (open_hour >= 0 AND open_hour <= 12),
+	CONSTRAINT CHK_close_hours CHECK (close_hour >= 0 AND close_hour <= 12),
 	CONSTRAINT CHK_open_minute CHECK (open_minute >= 0 AND open_minute < 60),
 	CONSTRAINT CHK_close_minute CHECK (close_minute >= 0 AND close_minute < 60)
 )
