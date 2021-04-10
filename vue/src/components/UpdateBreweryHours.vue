@@ -1,8 +1,11 @@
 <template>
   <div>
+    <div v-for="hours in breweryHours" :key="hours.hoursId">
+      <p>{{hours}}</p>
+    </div>
       <div class="day-of-week">
           Select Day: 
-          <select v-model.number="breweryHours.dayOfWeek"> 
+          <select v-model.number="updatedHours.dayOfWeek"> 
           <option disabled value="">Day</option>
           <option value="1">Monday</option>
           <option value="2">Tuesday</option>
@@ -16,7 +19,7 @@
 
       <div>
         Open Time: 
-        <select v-model.number="breweryHours.openHour">
+        <select v-model.number="updatedHours.openHour">
             <option disabled  value="">Hour</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -32,7 +35,7 @@
             <option value="12">12</option>
         </select>
         :
-        <select v-model.number="breweryHours.openMinute">
+        <select v-model.number="updatedHours.openMinute">
             <option disabled value="">minutes</option>
             <option value="0">00</option>
             <option value="15">15</option>
@@ -41,7 +44,7 @@
         </select>
 
 
-          <select v-model="breweryHours.openAmPm">
+          <select v-model="updatedHours.openAmPm">
             <option disabled value="">Select One</option>
             <option >AM</option>
             <option >PM</option>
@@ -51,7 +54,7 @@
 
         <div>
         Closing Time: 
-        <select v-model.number="breweryHours.closeHour">
+        <select v-model.number="updatedHours.closeHour">
             <option disabled value="">Hour</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -67,7 +70,7 @@
             <option value="12">12</option>
         </select>
         :
-        <select v-model.number="breweryHours.closeMinute">
+        <select v-model.number="updatedHours.closeMinute">
             <option disabled  value="">minutes</option>
            <option value="0">00</option>
             <option value="15">15</option>
@@ -75,7 +78,7 @@
             <option value="45">45</option>
         </select>
            
-          <select v-model="breweryHours.closeAmPm">
+          <select v-model="updatedHours.closeAmPm">
             <option disabled  value="">Select One</option>
             <option >AM</option>
             <option >PM</option>
@@ -96,7 +99,9 @@ import api from '../services/apiService.js'
 export default {
     data(){
         return{
-            breweryHours:{
+            breweryHours:[
+            ],
+            updatedHours:{
                 breweryId: parseInt(this.$route.params.breweryId),
                 hoursId: "",
                 dayOfWeek: "",
@@ -106,8 +111,8 @@ export default {
                 closeHour: "",
                 closeMinute: "",
                 closeAmPm: "",
-                
             },
+            monday: "",
             toggleForm: true,
 
         }
@@ -115,17 +120,34 @@ export default {
     methods:{
         updateHours(){
         this.toggleForm = false;
-        api.updateHours(this.breweryHours)
+        this.updateHoursId();
+        api.updateHours(this.updatedHours)
           .then( (resp) => {
-            this.breweryHours = resp.data;
+            let index = this.updatedHours.dayOfWeek - 1;
+            this.breweryHours[index] = resp.data;
              window.alert('Hours have been updated!')
             
           });
           this.$router.go();
         },
+        getHours(){
+          api.getBreweryHours(this.$route.params.breweryId)
+            .then( (resp) => {
+              this.breweryHours = resp.data;
+            })
+        },
+        updateHoursId(){
+          this.breweryHours.forEach( (hours) =>{
+            if(hours.dayOfWeek === this.updatedHours.dayOfWeek){
+              this.updatedHours.hoursId = hours.hoursId;
+            }
+          })
+          
+
+        }
     },
     created(){
-
+      this.getHours();
     },
 }
 </script>

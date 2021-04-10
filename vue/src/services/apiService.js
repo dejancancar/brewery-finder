@@ -49,5 +49,8 @@ export default{
   updateHours(hours){
     return axios.put(`/breweries/${hours.breweryId}/hours/${hours.hoursId}`, hours);
   },
+  getBreweryHours(breweryId){
+    return axios.get(`/breweries/${breweryId}/hours`);
+  },
   
 }
