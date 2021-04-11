@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import BreweryBeers from "../components/BreweryBeers.vue";
+import BreweryBeers from "./DisplayBreweryBeers.vue";
 import vue2Dropzone from "vue2-dropzone";
 import "vue2-dropzone/dist/vue2Dropzone.min.css";
 import api from "../services/apiService.js";

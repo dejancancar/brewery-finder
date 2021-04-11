@@ -83,6 +83,11 @@ namespace Capstone.DAO
                 throw;
             }
         }
+
+        //public Beer UpdateBeer(Beer beer)
+        //{
+
+        //}
         private static Beer RowToObject(SqlDataReader reader)
         {
             Beer beer = new Beer();

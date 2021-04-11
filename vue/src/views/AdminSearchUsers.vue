@@ -22,7 +22,6 @@
 import api from "../services/apiService.js";
 import UserList from "../components/UsersList.vue";
 export default {
-  name: "users",
   components: {
     UserList,
   },
