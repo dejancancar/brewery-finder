@@ -28,7 +28,7 @@ export default {
     methods: {
     getBreweryInfo() {
       api.getBreweryById(this.$route.params.breweryId).then((resp) => {
-        this.brewery = resp.data;
+        this.breweryInfo = resp.data;
       });
     },
     },
