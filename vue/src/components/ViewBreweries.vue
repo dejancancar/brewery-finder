@@ -1,5 +1,6 @@
 <template>
   <div>
+      <h2>Breweries</h2>
       <ul class="all-breweries">
           <li v-for="brewery in breweries" :key="brewery.breweryId">
               <router-link :to="{ name: 'brewery', params: { breweryId: brewery.breweryId }}">{{brewery.breweryName}} </router-link>
