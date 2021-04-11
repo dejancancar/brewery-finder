@@ -1,13 +1,17 @@
 <template>
   <div>
     <ul>
+      
       <li v-for="beer in beers" :key="beer.beerId">
+        <router-link :to="{name: 'beer', params: {beerId: beer.beerId }}">
         <h2>{{ beer.beerName }}</h2>
         <div>{{beer.description}}</div>
         <div>{{ beer.beerType }}</div>
         <div>ABV: {{ beer.abv }}</div>
         <img class="image" :src="beer.imageUrl" alt="Beer Picture" />
+        </router-link>
       </li>
+      
     </ul>
   </div>
 </template>
