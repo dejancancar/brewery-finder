@@ -7,7 +7,7 @@
         <div>{{beer.description}}</div>
         <div>{{ beer.beerType }}</div>
         <div>ABV: {{ beer.abv }}</div>
-        <img src="beer.imageUrl" alt="Beer Picture" />
+        <img :src="beer.imageUrl" alt="Beer Picture" />
       </li>
     </ul>
   </div>
