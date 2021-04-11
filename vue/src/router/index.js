@@ -10,6 +10,7 @@ import User from '../views/User.vue'
 import Brewer from '../views/Brewer.vue'
 import BreweryById from '../views/UpdateBreweryView.vue'
 import UserBrewery from '../views/ViewBreweryInfo.vue'
+import BeerList from '../components/BreweryBeers.vue'
 
 
 
@@ -96,6 +97,14 @@ const router = new Router({
       path: '/brewery/:breweryId',
       name: "brewery",
       component: UserBrewery,
+      meta:{
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/brewery/:breweryId/beer-list',
+      name: 'beer-list',
+      component: BeerList,
       meta:{
         requiresAuth: false
       }
