@@ -1,13 +1,12 @@
 <template>
   <div>
-      <h2>Beers</h2>
     <ul>
       <li v-for="beer in beers" :key="beer.beerId">
         <h2>{{ beer.beerName }}</h2>
         <div>{{beer.description}}</div>
         <div>{{ beer.beerType }}</div>
         <div>ABV: {{ beer.abv }}</div>
-        <img src="beer.imageUrl" alt="Beer Picture" />
+        <img class="image" :src="beer.imageUrl" alt="Beer Picture" />
       </li>
     </ul>
   </div>
@@ -34,5 +33,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+  .image {
+    max-height: 15%;
+    max-width: 15%;
+  }
 </style>

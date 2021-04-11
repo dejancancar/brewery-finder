@@ -1,7 +1,8 @@
 <template>
   <div>
-      <brewery-beers/>
-      <button @click="toggleAddBeer = true">Add Beer</button>
+    <h2>Beers</h2>
+    <button v-show="!toggleAddBeer" @click="toggleAddBeer = true">Add Beer</button>
+
     <form v-show="toggleAddBeer">
       <table>
         <tr>
@@ -58,6 +59,7 @@
       <button @click="addBeer">Submit</button>
       <button @click="toggleAddBeer = false">Cancel</button>
     </form>
+    <brewery-beers />
   </div>
 </template>
 
@@ -130,6 +132,6 @@ export default {
 
 <style>
 li {
-    list-style-type: none;
+  list-style-type: none;
 }
 </style>
