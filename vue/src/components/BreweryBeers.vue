@@ -1,39 +1,38 @@
 <template>
-  <ul>
+  <div>
+      <h2>Beers</h2>
+    <ul>
       <li v-for="beer in beers" :key="beer.beerId">
-          <h2>{{beer.beerName}}</h2>
-          <div>{{beer.beerType}}</div>
-          <div>{{beer.abv}}</div>
-          <img src="beer.imageUrl" alt="Beer Picture">
+        <h2>{{ beer.beerName }}</h2>
+        <div>{{beer.description}}</div>
+        <div>{{ beer.beerType }}</div>
+        <div>ABV: {{ beer.abv }}</div>
+        <img src="beer.imageUrl" alt="Beer Picture" />
       </li>
-  </ul>
+    </ul>
+  </div>
 </template>
 
 <script>
-import api from '../services/apiService.js'
+import api from "../services/apiService.js";
 export default {
-    data() {
-        return {
-            beers:[],
-        }
+  data() {
+    return {
+      beers: [],
+    };
+  },
+  methods: {
+    getBeers() {
+      api.getBeers(this.$route.params.breweryId).then((resp) => {
+        this.beers = resp.data;
+      });
     },
-    methods: {
-        getBeers(){
-            api.getBeers(this.$route.params.breweryId)
-                .then((resp) => {
-                    this.beers = resp.data;
-                })
-
-        }
-    },
-    created() {
-        this.getBeers();
-    }
-
-
-}
+  },
+  created() {
+    this.getBeers();
+  },
+};
 </script>
 
 <style>
-
 </style>

@@ -3,6 +3,7 @@
         <update-brewery></update-brewery>
         <update-hours />
         <upload-images />
+        <add-beer />
     </div>
 </template>
 
@@ -10,6 +11,7 @@
 import UpdateBrewery from '../components/UpdateBrewery.vue'
 import UpdateHours from '../components/UpdateBreweryHours.vue'
 import UploadImages from '../components/AddBreweryImage.vue'
+import AddBeer from '../components/AddBeer.vue'
 export default {
     data(){
         return {
@@ -20,6 +22,7 @@ export default {
         UpdateBrewery,
         UpdateHours,
         UploadImages,
+        AddBeer
     },
 
 }

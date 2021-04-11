@@ -59,6 +59,9 @@ export default{
   //Brewer Functions - Beers
   getBeers(breweryId){
     return axios.get(`/breweries/${breweryId}/beers`);
+  },
+  addBeer(beer) {
+    return axios.post(`/breweries/${beer.breweryId}/beers`, beer);
   }
   
 }

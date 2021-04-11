@@ -111,7 +111,7 @@ namespace Capstone.Controllers
             }
         }
 
-        [HttpPost("breweries/{breweryId}/beers")]
+        [HttpPost("{breweryId}/beers")]
         public ActionResult<Beer> CreateBeer(Beer beer)
         {
             Beer createdBeer;

@@ -11,7 +11,8 @@ namespace Capstone.DAO
     {
         private readonly string connectionString;
         private const string SQL_GET_BEERS = "SELECT * FROM beers WHERE brewery_id = @breweryId;";
-        private const string SQL_CREATE_BEER = @"INSERT INTO beers (brewery_id, beer_name, image_url, abv, beer_type, is_active) VALUES (@breweryId, @beerName, @imageUrl, @abv, @beerType, @isActive)
+        private const string SQL_CREATE_BEER = @"INSERT INTO beers (brewery_id, beer_name, description, image_url, abv, beer_type, is_active) 
+                                                    VALUES (@breweryId, @beerName, @description, @imageUrl, @abv, @beerType, @isActive)
                                                     SELECT * FROM beers WHERE beer_id = @@IDENTITY;";
         public BeerSqlDAO(string dbConnectionString)
         {
@@ -60,6 +61,7 @@ namespace Capstone.DAO
 
                     SqlCommand cmd = new SqlCommand(SQL_CREATE_BEER, conn);
                     cmd.Parameters.AddWithValue("@beerName", beer.BeerName);
+                    cmd.Parameters.AddWithValue("@description", beer.Description);
                     cmd.Parameters.AddWithValue("@breweryId", beer.BreweryId);
                     cmd.Parameters.AddWithValue("@imageUrl", beer.ImageUrl);
                     cmd.Parameters.AddWithValue("@abv", beer.Abv);
@@ -86,6 +88,7 @@ namespace Capstone.DAO
             Beer beer = new Beer();
 
             beer.BeerName = Convert.ToString(reader["beer_name"]);
+            beer.Description = Convert.ToString(reader["description"]);
             beer.BreweryId = Convert.ToInt32(reader["brewery_id"]);
             beer.BeerId = Convert.ToInt32(reader["beer_id"]);
             beer.ImageUrl = Convert.ToString(reader["image_url"]);

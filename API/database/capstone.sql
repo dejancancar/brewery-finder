@@ -71,6 +71,7 @@ CREATE TABLE beers (
 	beer_id int IDENTITY (1, 1),
 	brewery_id int NOT NULL,
 	beer_name nvarchar(100) NOT NULL,
+	description nvarchar(1000) NOT NULL,
 	image_url nvarchar(200) NOT NULL,
 	abv nvarchar(5) NOT NULL,
 	beer_type nvarchar(50) NOT NULL,
