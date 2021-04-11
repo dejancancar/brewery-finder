@@ -6,12 +6,15 @@
     <p>User Id: {{currentUser.userId}}</p>
     <p>Role: {{currentUser.role}}</p> -->
     <!-- <router-link :to="{name: 'users'}" ><button>Search Users</button></router-link> -->
+    <view-breweries/>
   </div>
 </template>
 
 <script>
+import ViewBreweries from "../components/ViewBreweries.vue";
 export default {
   components:{
+    ViewBreweries
   },
   name: "home",
   computed: {
