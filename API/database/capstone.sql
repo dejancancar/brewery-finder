@@ -96,7 +96,7 @@ CREATE TABLE reviews (
 	user_id int NOT NULL,
 	rating int NOT NULL,
 	review_title nvarchar(100) NOT NULL,
-	review nvarchar(1000) NOT NULL,
+	review_body nvarchar(1000) NOT NULL,
 	date_of_review datetime NOT NULL,
 	CONSTRAINT PK_beer_review_id PRIMARY KEY (beer_review_id),
 	CONSTRAINT FK_reviews_beers FOREIGN KEY (beer_id) REFERENCES beers(beer_id),
@@ -125,30 +125,30 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Hansa Brew
 
 --breweries data
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('3','Masthead_Brewing_Co.', 'Expansive brewery & taproom pouring American & Belgian beer paired with wood-fired pizza.', '1261 Superior Ave', '216-206-6176', 'Cleveland', '44114', 'true');
+VALUES ('1','Masthead_Brewing_Co.', 'Expansive brewery & taproom pouring American & Belgian beer paired with wood-fired pizza.', '1261 Superior Ave', '216-206-6176', 'Cleveland', '44114', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('4','Southern_Tier_Brewery', 'Exploration is the line from local beer maker to World-Class Brewer.', '811 Prospect Ave E,', '440-484-4045', 'Cleveland', '44115', 'true');
+VALUES ('2','Southern_Tier_Brewery', 'Exploration is the line from local beer maker to World-Class Brewer.', '811 Prospect Ave E,', '440-484-4045', 'Cleveland', '44115', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('5','Forest_City_Brewery', 'Great atmosphere. Off the beaten path.Feels like a hidden treasure', ' 2135 Columbus Rd, Cleveland', '2162289116', 'Cleveland', '44113', 'true');
+VALUES ('3','Forest_City_Brewery', 'Great atmosphere. Off the beaten path.Feels like a hidden treasure', ' 2135 Columbus Rd, Cleveland', '2162289116', 'Cleveland', '44113', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('6','Platform_Beer_Co.', 'Opened in 2014, this 100+ seat tasting room and patio offers 20+ house beers and food options. ', '4125 Lorain Ave', '216-202-1386', 'Cleveland', '44113', 'true');
+VALUES ('4','Platform_Beer_Co.', 'Opened in 2014, this 100+ seat tasting room and patio offers 20+ house beers and food options. ', '4125 Lorain Ave', '216-202-1386', 'Cleveland', '44113', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('7','Noble_Beast_Brewing_Co', 'Lively taproom for house-brewed beers & elevated bar snacks, sandwiches and salads.', '1470 Lakeside Ave E', '216-417-8588', 'Cleveland', '44114', 'true');
+VALUES ('5','Noble_Beast_Brewing_Co', 'Lively taproom for house-brewed beers & elevated bar snacks, sandwiches and salads.', '1470 Lakeside Ave E', '216-417-8588', 'Cleveland', '44114', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('8','Bookhouse_Brewing', 'Bookhouse Brewing focuses on making understated, slightly different beers and ciders, served in a
+VALUES ('6','Bookhouse_Brewing', 'Bookhouse Brewing focuses on making understated, slightly different beers and ciders, served in a
 cozy, welcoming atmosphere.', '1526 W 25th St', '216-862-4048', 'Cleveland', '44113', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('9','Market_Garden_Brewing', 'American gastropub with a patio, house beers, a distillery & a menu of creative sandwiches & tacos.', '1947 W 25th St', '216-621-4000', 'Cleveland', '44113', 'true');
+VALUES ('7','Market_Garden_Brewing', 'American gastropub with a patio, house beers, a distillery & a menu of creative sandwiches & tacos.', '1947 W 25th St', '216-621-4000', 'Cleveland', '44113', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('10','Saucy_Brew_Works', 'Two-tiered brewery offering housemade European-style beer & customizable thin-crust pizzas.', '2885 Detroit Ave', '216-666-2568', 'Cleveland', '44113', 'true');
+VALUES ('8','Saucy_Brew_Works', 'Two-tiered brewery offering housemade European-style beer & customizable thin-crust pizzas.', '2885 Detroit Ave', '216-666-2568', 'Cleveland', '44113', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('11','Terrestrial_Brewing_Company', 'Two-tiered brewery offering housemade European-style beer & customizable thin-crust pizzas.', '7524 Father Frascati', '216-465-9999', 'Cleveland', '44102', 'true');
+VALUES ('9','Terrestrial_Brewing_Company', 'Two-tiered brewery offering housemade European-style beer & customizable thin-crust pizzas.', '7524 Father Frascati', '216-465-9999', 'Cleveland', '44102', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('12','Brick_And_Barrel', 'Taphouse offering house-brewed ales & wine in a cozy space with beer-centric decor.', '1844 Columbus Rd', '216-331-3308', 'Cleveland', '44113', 'true');
+VALUES ('10','Brick_And_Barrel', 'Taphouse offering house-brewed ales & wine in a cozy space with beer-centric decor.', '1844 Columbus Rd', '216-331-3308', 'Cleveland', '44113', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('13','Collision_Bend_Brewing_Company', 'Fashionable waterfront brewery & taproom for house-brewed beers & New American small plates.', '1250 Old River Rd', '216-273-7879', 'Cleveland', '44113', 'true');
+VALUES ('11','Collision_Bend_Brewing_Company', 'Fashionable waterfront brewery & taproom for house-brewed beers & New American small plates.', '1250 Old River Rd', '216-273-7879', 'Cleveland', '44113', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('14','Hansa_Brewery', 'Brewery, biergarten & eatery offering German-style beer & European eats in modern digs with a patio.', ' 2717 Lorain Ave', '216-631-6585', 'Cleveland', '44113', 'true');
+VALUES ('12','Hansa_Brewery', 'Brewery, biergarten & eatery offering German-style beer & European eats in modern digs with a patio.', ' 2717 Lorain Ave', '216-631-6585', 'Cleveland', '44113', 'true');
 
 --hours data
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
@@ -334,88 +334,88 @@ VALUES (12, '7', '0', '0', '0', '0', '0', '0','0');
 
 --brewery images data
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (3, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618175380/jphovma3jurugvtnhxul.jpg');
+VALUES (1, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618175380/jphovma3jurugvtnhxul.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (3, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618175377/mirjlbykemkvjgabkfuy.jpg');
+VALUES (1, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618175377/mirjlbykemkvjgabkfuy.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (3, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618181008/rltilfui6kcaco6fm2yx.jpg');
+VALUES (1, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618181008/rltilfui6kcaco6fm2yx.jpg');
 
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (4, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618181372/slhiog2l8ldzu0cwrbbg.jpg');
+VALUES (2, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618181372/slhiog2l8ldzu0cwrbbg.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (4, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618181379/nle8fimghyz05muqenms.jpg');
+VALUES (2, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618181379/nle8fimghyz05muqenms.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (4, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618181476/rmdfq9apm8j7lu2thdf3.jpg');
+VALUES (2, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618181476/rmdfq9apm8j7lu2thdf3.jpg');
 
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (5, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618181822/mdrypkcwnarqgg6mstx5.png');
+VALUES (3, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618181822/mdrypkcwnarqgg6mstx5.png');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (5, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618181826/xu7uic8wlyt6tlmxfcy3.jpg');
+VALUES (3, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618181826/xu7uic8wlyt6tlmxfcy3.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (5, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618181831/rf527qomkc70iuzsuzbb.jpg');
+VALUES (3, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618181831/rf527qomkc70iuzsuzbb.jpg');
 
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (6, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618182100/yaxe8fqkhgnw4maybn9b.jpg');
+VALUES (4, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618182100/yaxe8fqkhgnw4maybn9b.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (6, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618182104/nvfoidgezn8odc9mhbki.jpg');
+VALUES (4, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618182104/nvfoidgezn8odc9mhbki.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (6, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618182107/bhzaep1loytmhkrjmuvx.jpg');
+VALUES (4, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618182107/bhzaep1loytmhkrjmuvx.jpg');
 
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (7, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618182476/flmd2iwx1aovcxlp2pe5.jpg');
+VALUES (5, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618182476/flmd2iwx1aovcxlp2pe5.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (7, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618182479/urelulfllknebmb6y0gn.jpg');
+VALUES (5, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618182479/urelulfllknebmb6y0gn.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (7, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618182483/meecslltpfkxdcbhtcrp.jpg');
+VALUES (5, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618182483/meecslltpfkxdcbhtcrp.jpg');
 
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (8, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618182718/epudo5agw7rnmuxdjmll.jpg');
+VALUES (6, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618182718/epudo5agw7rnmuxdjmll.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (8, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618182721/xi4oddx6fyqtlyfb8jjx.jpg');
+VALUES (6, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618182721/xi4oddx6fyqtlyfb8jjx.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (8, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618182726/ue85dfrrvzd4xyf6ptwr.jpg');
+VALUES (6, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618182726/ue85dfrrvzd4xyf6ptwr.jpg');
 
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (9, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618183090/waycotlsfd3jvsqys8ww.jpg');
+VALUES (7, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618183090/waycotlsfd3jvsqys8ww.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (9, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618183093/ph8n4pdgtwgnkmz7pml3.jpg');
+VALUES (7, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618183093/ph8n4pdgtwgnkmz7pml3.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (9, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618183097/uzfbd0itxytzvrpch7xp.jpg');
+VALUES (7, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618183097/uzfbd0itxytzvrpch7xp.jpg');
 
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (10, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618183630/ddcd8rpilegnynphffrb.jpg');
+VALUES (8, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618183630/ddcd8rpilegnynphffrb.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (10, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618183633/hxbkhcdsduzltt4fz7lx.jpg');
+VALUES (8, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618183633/hxbkhcdsduzltt4fz7lx.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (10, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618183637/q8thzmg38jyo5srsdyhm.jpg');
+VALUES (8, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618183637/q8thzmg38jyo5srsdyhm.jpg');
 
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (11, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618184759/foyw5jkzwvtv7jbgqjrq.jpg');
+VALUES (9, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618184759/foyw5jkzwvtv7jbgqjrq.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (11, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618184763/benflhsl3lnu7bod2bbk.jpg');
+VALUES (9, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618184763/benflhsl3lnu7bod2bbk.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (11, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618184766/zq7ztnxbn5phrduoq3vv.jpg');
+VALUES (9, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618184766/zq7ztnxbn5phrduoq3vv.jpg');
 
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (12, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618185425/cmm1joj93xsjttnlzyin.jpg');
+VALUES (10, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618185425/cmm1joj93xsjttnlzyin.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (12, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618185429/hobizh0gal8bpztf5dtg.jpg');
+VALUES (10, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618185429/hobizh0gal8bpztf5dtg.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (12, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618185433/crhpn4jwlvuzqci7hlkn.jpg');
+VALUES (10, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618185433/crhpn4jwlvuzqci7hlkn.jpg');
 
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (13, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618185651/xifrglvr4wl2j4wvnzgp.jpg');
+VALUES (11, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618185651/xifrglvr4wl2j4wvnzgp.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (13, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618185654/cg6mto3x25p5nq01ptuw.jpg');
+VALUES (11, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618185654/cg6mto3x25p5nq01ptuw.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (13, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618185665/srwhpii3oqvnogaaq1x4.png');
+VALUES (11, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618185665/srwhpii3oqvnogaaq1x4.png');
 
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (14, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618185917/khdf2nlqeidqransbpdt.jpg');
+VALUES (12, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618185917/khdf2nlqeidqransbpdt.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (14, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618185921/kll3kbycfgbdrzpdlvl8.jpg');
+VALUES (12, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618185921/kll3kbycfgbdrzpdlvl8.jpg');
 INSERT INTO brewery_images (brewery_id, image_url)
-VALUES (14, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618185983/hoj9erozy2ci1urt3mdh.jpg');
+VALUES (12, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618185983/hoj9erozy2ci1urt3mdh.jpg');
 
 
 
