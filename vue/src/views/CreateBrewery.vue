@@ -1,23 +1,13 @@
 <template>
-  <div>
+  <div class="bubble">
     <h1>Details</h1>
-    <table>
-      <tr>
-        <td>UserId:</td>
-        <td>{{ user.userId }}</td>
-      </tr>
-      <tr>
-        <td>Username:</td>
-        <td>{{ user.username }}</td>
-      </tr>
-    </table>
-    <table>
-      <tr>
+        <h3>UserId: {{ user.userId }}</h3>
+        <h3>Username: {{ user.username }}</h3>
+        <div>
         <button type="button" @click="addUserIdToBrewerId" v-show="!toggleForm">
           Add New Brewery
         </button>
-      </tr>
-    </table>
+        </div>
     <div v-show="toggleForm">
       <form class="newBrewery" v-on:submit.prevent="createBrewery">
         <div>

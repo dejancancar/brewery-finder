@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="brewery-images">
     <h2>Images</h2>
     <button
       type="button"
@@ -94,4 +94,8 @@ export default {
 </script>
 
 <style>
+.brewery-images {
+    max-height: 320px;
+    padding-bottom: 0px;
+}
 </style>
