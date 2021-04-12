@@ -58,7 +58,7 @@ body {
   font-size: 1.5em;
   align-content: left;
 }
-table:not(.unstyled), .brewery-basic-info, .brewery-beers, .brewery-hours, .brewery-images {
+table:not(.unstyled), .brewery-basic-info, .brewery-beers, .brewery-hours, .brewery-images, .update-beer {
     height: 340px;
     align-content: center;
     background-color: #c5e5ff;

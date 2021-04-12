@@ -1,7 +1,6 @@
 <template>
   <div>
     <ul>
-      
       <li v-for="beer in beers" :key="beer.beerId">
         <router-link :to="{name: 'beer', params: {beerId: beer.beerId }}">
         <h2>{{ beer.beerName }}</h2>

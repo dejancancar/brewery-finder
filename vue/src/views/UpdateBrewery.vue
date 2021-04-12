@@ -3,9 +3,14 @@
     <div class="flex-box">
         <update-brewery-basic-info/>
         <update-hours />
-        <upload-images />     
-        <add-beer />
-        <update-beer />  
+        <upload-images />   
+        <span class="update-beer">  
+            <add-beer />
+            <update-beer />
+            <display-brewery-beers />
+        </span>
+
+    </div>
     </div>
 </template>
 
@@ -15,6 +20,7 @@ import UpdateHours from '../components/UpdateBreweryHours.vue'
 import UploadImages from '../components/AddBreweryImage.vue'
 import AddBeer from '../components/AddBeer.vue'
 import UpdateBeer from '../components/UpdateBeer.vue'
+import DisplayBreweryBeers from '../components/DisplayBreweryBeers.vue'
 export default {
     data(){
         return {
@@ -27,6 +33,7 @@ export default {
         UploadImages,
         AddBeer,
         UpdateBeer,
+        DisplayBreweryBeers
     },
 
 }
