@@ -1,20 +1,43 @@
 <template>
-  <div>
+  <div class = "beerflow">
+    <div class = "bubble">
     <h1>Select a user to add brewery:</h1>
-    <table>
-      <tr>
-        <td>Username:</td>
-        <td>
-          <input type="text" v-model="searchUsername" />
-        </td>
-      </tr>
-      <tr>
-        <td>
+    <!--
+      <div class="fields">
+      <label for="username" class="label">Username:</label>
+      <input
+        type="text"
+        id="username"
+        class="text-box"
+        placeholder="Username"
+        v-model="user.username"
+        required
+        autofocus
+      />
+        </div>
+        <button type="submit" class="submit-button">Sign in</button>
+        <div class="hyperlink">
+                <router-link :to="{ name: 'register' }" class="router-link">Need an account?</router-link>
+
+        </div>
+
+      --->
+    
+      <div class="fields">
+        <label for="username" class="label">Username:</label>
+        <input
+        type="text"
+        id="username"
+        class="text-box"
+        placeholder=""
+        v-model="searchUsername"
+        required
+        autofocus
+      />
+        </div>
           <button @click="getUsers">Search</button>
-        </td>
-      </tr>
-    </table>
     <user-list v-show="toggleUsersList" :users="users"></user-list>
+  </div>
   </div>
 </template>
 
