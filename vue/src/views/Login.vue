@@ -62,9 +62,9 @@ export default {
             this.$store.commit("SET_USER", response.data.user);
             //added redirect routes once a specific user is logged in, admin, brewer and user all go to different routes upon a successful log in.
             if(response.data.user.role === "admin"){
-              this.$router.push("/users")
+              this.$router.push("/admin/users")
             }else if(response.data.user.role === "brewer"){
-              this.$router.push("/brewerdashboard")
+              this.$router.push("/brewer")
             }
             else{
                this.$router.push("/");           

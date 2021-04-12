@@ -1,22 +1,20 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
+    <h1>Welcome to BreweryFinder!</h1>
     <!-- <p>You must be authenticated to see this</p>
     <p>User Name: {{currentUser.username}}</p>
     <p>User Id: {{currentUser.userId}}</p>
     <p>Role: {{currentUser.role}}</p> -->
     <!-- <router-link :to="{name: 'users'}" ><button>Search Users</button></router-link> -->
-    <div>
-      <breweries />
-    </div>
+    <view-breweries/>
   </div>
 </template>
 
 <script>
-import breweries from "../components/ViewBreweries.vue"
+import ViewBreweries from "../components/ViewBreweries.vue";
 export default {
   components:{
-    breweries
+    ViewBreweries
   },
   name: "home",
   computed: {

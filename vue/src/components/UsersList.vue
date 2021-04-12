@@ -12,7 +12,7 @@
         <td>{{ user.userId }}</td>
         <td>
           <router-link
-            :to="{ name: 'user', params: { username: user.username } }"
+            :to="{ name: 'create-brewery', params: { username: user.username } }"
             >{{ user.username }}</router-link
           >
         </td>

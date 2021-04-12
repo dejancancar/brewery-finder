@@ -11,9 +11,13 @@ namespace Capstone.DAO
     {
         private readonly string connectionString;
         private const string SQL_GET_BEERS = "SELECT * FROM beers WHERE brewery_id = @breweryId;";
+        private const string SQL_GET_BEER_BY_ID = "SELECT * FROM beers WHERE beer_id = @beerId;";
         private const string SQL_CREATE_BEER = @"INSERT INTO beers (brewery_id, beer_name, description, image_url, abv, beer_type, is_active) 
                                                     VALUES (@breweryId, @beerName, @description, @imageUrl, @abv, @beerType, @isActive)
                                                     SELECT * FROM beers WHERE beer_id = @@IDENTITY;";
+        private const string SQL_UPDATE_BEER = @"UPDATE beers SET brewery_id = @breweryId, beer_name = @beerName, description = @description, image_url = @imageUrl,
+                                                    abv = @abv, beer_type = @beerType, is_active = @isActive WHERE beer_id = @beerId;
+                                                    SELECT * FROM beers WHERE beer_id = @beerId;";
         public BeerSqlDAO(string dbConnectionString)
         {
             this.connectionString = dbConnectionString;
@@ -50,6 +54,36 @@ namespace Capstone.DAO
             }
         }
 
+        public Beer GetBeerById(int beerId)
+        {
+            Beer beer = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(SQL_GET_BEER_BY_ID, conn);
+                    cmd.Parameters.AddWithValue("@beerId", beerId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        beer = RowToObject(reader);
+                    }
+
+                    return beer;
+                }
+
+            }
+            catch (SqlException ex)
+            {
+
+                throw;
+            }
+        }
+
         public Beer CreateBeer(Beer beer)
         {
             Beer createdBeer = null;
@@ -75,6 +109,45 @@ namespace Capstone.DAO
                     }
 
                     return createdBeer;
+                }
+            }
+            catch (SqlException ex)
+            {
+
+                throw;
+            }
+        }
+
+        public Beer UpdateBeer(Beer beer)
+        {
+            Beer updatedBeer = null;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(SQL_UPDATE_BEER, conn);
+
+                    cmd.Parameters.AddWithValue("@breweryId", beer.BreweryId);
+                    cmd.Parameters.AddWithValue("@beerName", beer.BeerName);
+                    cmd.Parameters.AddWithValue("@description", beer.Description);
+                    cmd.Parameters.AddWithValue("@imageUrl", beer.ImageUrl);
+                    cmd.Parameters.AddWithValue("@abv", beer.Abv);
+                    cmd.Parameters.AddWithValue("@beerType", beer.BeerType);
+                    cmd.Parameters.AddWithValue("@isActive", beer.IsActive);
+                    cmd.Parameters.AddWithValue("@beerId", beer.BeerId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        updatedBeer = RowToObject(reader);
+                    }
+
+                    return updatedBeer;
+
                 }
             }
             catch (SqlException ex)

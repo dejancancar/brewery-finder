@@ -14,7 +14,7 @@
         </td>
       </tr>
     </table>
-    <user-list :users="users"></user-list>
+    <user-list v-show="toggleUsersList" :users="users"></user-list>
   </div>
 </template>
 
@@ -22,7 +22,6 @@
 import api from "../services/apiService.js";
 import UserList from "../components/UsersList.vue";
 export default {
-  name: "users",
   components: {
     UserList,
   },
@@ -30,10 +29,12 @@ export default {
     return {
       searchUsername: "",
       users: [],
+      toggleUsersList: false,
     };
   },
   methods: {
     getUsers() {
+      this.toggleUsersList = true;
       api.getUsers(this.searchUsername).then((resp) => {
         this.users = resp.data;
       });

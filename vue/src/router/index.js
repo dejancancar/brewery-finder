@@ -5,11 +5,12 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-import UsersView from '../views/UsersView.vue'
-import User from '../views/User.vue'
-import Brewer from '../views/Brewer.vue'
-import BreweryById from '../views/UpdateBreweryView.vue'
-import UserBrewery from '../views/ViewBreweryInfo.vue'
+import AdminSearchUsers from '../views/AdminSearchUsers.vue'
+import CreateBrewery from '../views/CreateBrewery.vue'
+import BrewerBreweries from '../views/BrewerBreweries.vue'
+import UpdateBrewery from '../views/UpdateBrewery.vue'
+import Brewery from '../views/Brewery.vue'
+import Beer from '../views/Beer.vue'
 
 
 
@@ -61,33 +62,33 @@ const router = new Router({
       }
     },
     {
-      path: "/users",
-      name: "users",
-      component: UsersView,
+      path: "/admin/users",
+      name: "admin-search-users",
+      component: AdminSearchUsers,
       meta: {
         requiresAuth: true
       }
     },
     {
-      path: "/users/:username",
-      name: "user", 
-      component: User,
+      path: "/admin/users/:username",
+      name: "create-brewery", 
+      component: CreateBrewery,
       meta: {
         requiresAuth: true
       }
     },
     {
-      path: "/brewerdashboard/",
-      name: "brewer",
-      component: Brewer,
+      path: "/brewer/",
+      name: "brewer-breweries",
+      component: BrewerBreweries,
       meta:{
         requiresAuth: true
       }
     },
     {
       path: '/breweries/:breweryId',
-      name: "brewery-by-id",
-      component: BreweryById,
+      name: "update-brewery",
+      component: UpdateBrewery,
       meta:{
         requiresAuth: true
       }
@@ -95,7 +96,15 @@ const router = new Router({
     {
       path: '/brewery/:breweryId',
       name: "brewery",
-      component: UserBrewery,
+      component: Brewery,
+      meta:{
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/beers/:beerId',
+      name: "beer",
+      component: Beer,
       meta:{
         requiresAuth: false
       }

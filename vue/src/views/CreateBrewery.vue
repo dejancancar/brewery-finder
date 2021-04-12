@@ -79,7 +79,7 @@ export default {
           window.alert(
             `A new brewery with the ID# ${this.brewery.breweryId} has been added.`
           );
-          this.$router.push("/users");
+          this.$router.push("/admin/users");
         }
       })
       

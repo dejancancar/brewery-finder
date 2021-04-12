@@ -186,5 +186,26 @@ namespace Capstone.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpPut("{brewewryId}/beers/{beerId}")]
+        public ActionResult<Beer> UpdateBeer(Beer beer, int beerId)
+        {
+            if (beerId != beer.BeerId)
+            {
+                return BadRequest();
+            }
+
+            Beer updatedBeer;
+            updatedBeer = this.beerDAO.UpdateBeer(beer);
+
+            if (updatedBeer != null)
+            {
+                return Ok(updatedBeer);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
     }
 }
