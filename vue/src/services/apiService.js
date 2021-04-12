@@ -65,6 +65,14 @@ export default{
   },
   addBeer(beer) {
     return axios.post(`/breweries/${beer.breweryId}/beers`, beer);
+  },
+
+  // Reviews
+  getReviews(beerId) {
+    return axios.get(`/beers/${beerId}/reviews`);
+  },
+  addReview(review) {
+    return axios.post(`/beers/${review.beerId}/reviews`, review);
   }
   
 }

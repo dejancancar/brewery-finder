@@ -14,10 +14,12 @@ namespace Capstone.Controllers
     public class BeersController : AuthorizedControllerBase
     {
         IBeerDAO beerDAO;
+        IReviewDAO reviewDAO;
 
-        public BeersController(IBeerDAO beerDAO)
+        public BeersController(IBeerDAO beerDAO, IReviewDAO reviewDAO)
         {
             this.beerDAO = beerDAO;
+            this.reviewDAO = reviewDAO;
         }
 
         [HttpGet("{beerId}")]
@@ -28,6 +30,29 @@ namespace Capstone.Controllers
             if (beer != null)
             {
                 return Ok(beer);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet("{beerId}/reviews")]
+        public ActionResult<List<Review>> GetReviews(int beerId)
+        {
+            List<Review> reviews = reviewDAO.GetReviews(beerId);
+
+            return Ok(reviews);
+        }
+
+        [HttpPost("{beersId}/reviews")]
+        public ActionResult<Review> CreateReview(Review review)
+        {
+            Review createdReview = reviewDAO.CreateReview(review);
+
+            if (createdReview != null)
+            {
+                return Created($"{createdReview.BeerReviewId}", createdReview);
             }
             else
             {

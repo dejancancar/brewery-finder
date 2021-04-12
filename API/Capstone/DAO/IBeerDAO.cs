@@ -12,5 +12,6 @@ namespace Capstone.DAO
         List<Beer> GetBeers(int breweryId);
         Beer UpdateBeer(Beer beer);
         Beer GetBeerById(int beerId);
+        
     }
 }
