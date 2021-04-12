@@ -80,6 +80,20 @@ CREATE TABLE beers (
 	CONSTRAINT FK_beers_breweries FOREIGN KEY (brewery_id) REFERENCES breweries(brewery_id)
 )
 
+CREATE TABLE reviews (
+	beer_review_id int IDENTITY (1, 1),
+	beer_id int NOT NULL,
+	user_id int NOT NULL,
+	rating int NOT NULL,
+	review_title nvarchar(100) NOT NULL,
+	review nvarchar(1000) NOT NULL,
+	date_of_review datetime NOT NULL,
+	CONSTRAINT PK_beer_review_id PRIMARY KEY (beer_review_id),
+	CONSTRAINT FK_reviews_beers FOREIGN KEY (beer_id) REFERENCES beers(beer_id),
+	CONSTRAINT FK_reviews_users FOREIGN KEY (user_id) REFERENCES users(user_id),
+	CONSTRAINT CHK_rating CHECK (rating >= 1 AND rating <= 5)
+)
+
 --populate default data
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
