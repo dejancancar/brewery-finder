@@ -1,5 +1,6 @@
 <template>
-  <div class="home">
+<div class="beerflow">
+  <div class="bubble">
     <h1>Welcome to BreweryFinder!</h1>
     <!-- <p>You must be authenticated to see this</p>
     <p>User Name: {{currentUser.username}}</p>
@@ -7,6 +8,7 @@
     <p>Role: {{currentUser.role}}</p> -->
     <!-- <router-link :to="{name: 'users'}" ><button>Search Users</button></router-link> -->
     <view-breweries/>
+    </div>
   </div>
 </template>
 

@@ -1,39 +1,54 @@
 <template>
-  <div id="login" class="text-center">
+  <div id="login" class="beerflow">
+  <div>
+    <div>
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        v-if="invalidCredentials"
-      >Invalid username and password!</div>
-      <div
-        class="alert alert-success"
-        role="alert"
-        v-if="this.$route.query.registration"
-      >Thank you for registering, please sign in.</div>
-      <label for="username" class="sr-only">Username</label>
+      <div class="bubble">
+        <h1 class="header">Please Sign In</h1>
+        <div class="fields">
+      <label for="username" class="label">Username:</label>
       <input
         type="text"
         id="username"
-        class="form-control"
+        class="text-box"
         placeholder="Username"
         v-model="user.username"
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+      <div class="fields-spacer"></div>
+      <label for="password" class="label">Password:</label>
       <input
         type="password"
         id="password"
-        class="form-control"
+        class="text-box"
         placeholder="Password"
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
+        </div>
+        <button type="submit" class="submit-button">Sign in</button>
+        <div class="hyperlink">
+                <router-link :to="{ name: 'register' }" class="router-link">Need an account?</router-link>
+
+        </div>
+        <div
+        class="badthing"
+        role="alert"
+        v-if="invalidCredentials"
+      >Invalid username and password!</div>
+      <div
+        class="goodthing"
+        role="alert"
+        v-if="this.$route.query.registration"
+      >Thank you for registering, please sign in.</div>
+
+      </div>
+      
     </form>
+    </div>
+    </div>
+
   </div>
 </template>
 

@@ -24,8 +24,7 @@
       </tr>
     </table>
 
-    <h2>Brewery</h2> 
-    <button type="button" v-on:click="toggleUpdateBrewery = true" v-show="!toggleUpdateBrewery">Update Info</button>
+    <button class="medium-button" type="button" v-on:click="toggleUpdateBrewery = true" v-show="!toggleUpdateBrewery">Update Info</button>
     <form v-show="toggleUpdateBrewery">
     <table>
       <tr>
@@ -72,7 +71,6 @@
     <button @click="updateBreweryInfo">Update Info</button>
     <button @click="toggleUpdateBrewery = false">Cancel Update</button>
     </form>
-
   </div>
 </template>
 

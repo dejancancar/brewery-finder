@@ -1,18 +1,20 @@
 <template>
   <div>
-    <div>
+    <h2>
       {{ breweryInfo.breweryName }}
-    </div>
+    </h2>
+    <div class="brewery-basic-info">
     <div>
       {{ breweryInfo.streetAddress }}
     </div>
-    <div>{{ breweryInfo.city }}, {{ breweryInfo.zipCode }}</div>
+    <div>{{ breweryInfo.city }} {{ breweryInfo.zipCode }}</div>
 
     <div>
       {{ breweryInfo.phone }}
     </div>
     <div>
       {{ breweryInfo.history }}
+    </div>
     </div>
   </div>
 </template>

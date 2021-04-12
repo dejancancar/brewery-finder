@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <div>
+  <div >
+    <div class="beerflow">
     <div v-show="showFormButton"> 
-      <button type="button" @click="getBreweriesByBrewerId" v-show="showFormButton">View Breweries</button>
+      <button type="button" @click="getBreweriesByBrewerId" v-show="showFormButton" class="big-button">View Breweries</button>
     </div>
       <table v-show="!showFormButton">
         <thead>

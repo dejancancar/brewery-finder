@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul>
+    <ul class = "brewery-hours">
       <li v-for="displayHours in breweryHours" :key="displayHours.hoursId">
         {{ displayDayOfWeek(displayHours.dayOfWeek) }}:
         <span v-show="!displayHours.isClosed">

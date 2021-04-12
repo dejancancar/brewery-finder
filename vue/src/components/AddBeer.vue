@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="brewery-beers">
     <h2>Beers</h2>
     <button v-show="!toggleAddBeer" @click="toggleAddBeer = true">Add Beer</button>
 
     <form v-show="toggleAddBeer">
-      <table>
+      <table id="add-beer-table">
         <tr>
           <td>Beer Name:</td>
           <td>
@@ -130,8 +130,12 @@ export default {
 };
 </script>
 
-<style>
-li {
-  list-style-type: none;
+<style scoped>
+.brewery-beers {
+    max-height: 320px;
+    padding-bottom: 0px;
+}
+#add-beer-table{
+  margin-top:269px
 }
 </style>

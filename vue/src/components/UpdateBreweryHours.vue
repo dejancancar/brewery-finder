@@ -1,7 +1,7 @@
 <template>
   <div>
+    <div class = "brewery-hours">
     <h2>Hours</h2>
-    <div>
       <ul>
         <li v-for="displayHours in breweryHours" :key="displayHours.hoursId">
         {{displayDayOfWeek(displayHours.dayOfWeek)}}: 
@@ -14,7 +14,7 @@
       </ul>
     </div>
     <button type="button" @click="toggleForm = true, toggleButton = false" v-show="toggleButton" >Update Hours</button>
-    <div id="select-boxes" v-show="toggleForm">
+    <div v-show="toggleForm" class = "brewery-hours">
       <div class="day-of-week">
         Select Day: 
         <select v-model.number="updatedHours.dayOfWeek"> 
@@ -208,6 +208,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.brewery-hours {
+    max-height: 320px;
+    padding-bottom: 0px;
+}
 </style>
