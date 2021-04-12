@@ -14,7 +14,7 @@
       </ul>
     </div>
     <button type="button" @click="toggleForm = true, toggleButton = false" v-show="toggleButton" >Update Hours</button>
-    <div v-show="toggleForm">
+    <div id="select-boxes" v-show="toggleForm">
       <div class="day-of-week">
         Select Day: 
         <select v-model.number="updatedHours.dayOfWeek"> 

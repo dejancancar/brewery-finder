@@ -100,6 +100,15 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    // {
+    //   path: "/breweries/:breweryId/update",
+    //   name: "update-beer",
+    //   component: UpdateBrewery,
+    //   meta:{
+    //     requiresAuth: true
+    //   }
+
+    // }
 
 
   ]

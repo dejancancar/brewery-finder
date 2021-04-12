@@ -3,8 +3,8 @@
     <ul>
       <li v-for="beer in beers" :key="beer.beerId">
         <h2>{{ beer.beerName }}</h2>
-        <div>{{beer.description}}</div>
-        <div>{{ beer.beerType }}</div>
+        <div>Description: {{beer.description}}</div>
+        <div>Type: {{ beer.beerType }}</div>
         <div>ABV: {{ beer.abv }}</div>
         <img class="image" :src="beer.imageUrl" alt="Beer Picture" />
       </li>

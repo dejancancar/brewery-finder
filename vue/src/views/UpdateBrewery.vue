@@ -2,8 +2,9 @@
     <div>
         <update-brewery-basic-info/>
         <update-hours />
-        <upload-images />
+        <upload-images />     
         <add-beer />
+        <update-beer />  
     </div>
 </template>
 
@@ -12,6 +13,7 @@ import UpdateBreweryBasicInfo from '../components/UpdateBreweryBasicInfo.vue'
 import UpdateHours from '../components/UpdateBreweryHours.vue'
 import UploadImages from '../components/AddBreweryImage.vue'
 import AddBeer from '../components/AddBeer.vue'
+import UpdateBeer from '../components/UpdateBeer.vue'
 export default {
     data(){
         return {
@@ -22,7 +24,8 @@ export default {
         UpdateBreweryBasicInfo,
         UpdateHours,
         UploadImages,
-        AddBeer
+        AddBeer,
+        UpdateBeer,
     },
 
 }
