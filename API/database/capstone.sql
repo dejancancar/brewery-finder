@@ -423,30 +423,6 @@ VALUES (12, 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618185983
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 GO
 
 

@@ -1,11 +1,13 @@
 <template>
   <div>
-      <h2>Breweries</h2>
+      <h1>Breweries</h1>
+      <div class="container">
       <ul class="all-breweries">
-          <li v-for="brewery in breweries" :key="brewery.breweryId">
+          <li class="breweries" v-for="brewery in breweries" :key="brewery.breweryId">
               <router-link :to="{ name: 'brewery', params: { breweryId: brewery.breweryId }}">{{brewery.breweryName}} </router-link>
               {{brewery.streetAddress}} {{brewery.city}} {{brewery.zipCode}} {{brewery.phone}}</li>
       </ul>
+      </div>
   </div>
 </template>
 
@@ -33,7 +35,39 @@ export default {
 </script>
 
 <style scoped>
-.all-breweries{
-    list-style: none;
+.container{
+    display: grid;
+    align-items: center;
+}
+ul {
+    display: flex;
+    flex-wrap:wrap;
+    flex-direction: row;
+    justify-content: center;
+}   
+li {
+    background-color: #d3d3d3;
+    border: 1px solid #858585;
+    border-radius: 5px;
+    padding: 20px;
+    list-style-type: none;
+    width: 390px;
+    height: 250px;
+    margin: 2%;
+    align-content:space-around;
+}
+@media(max-width: 1024px) {
+    li{
+        width: 340px;
+        height: 200px;
+    }
+}
+
+@media(max-width: 425px) {
+    li{
+        width: 340px;
+        height: 200px;
+    }
+
 }
 </style>
