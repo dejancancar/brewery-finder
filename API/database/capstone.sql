@@ -124,212 +124,212 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Hansa Brew
 
 
 --breweries data
-INSERT INTO breweries (brewery_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
+INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
 VALUES ('3','Masthead_Brewing_Co.', 'Expansive brewery & taproom pouring American & Belgian beer paired with wood-fired pizza.', '1261 Superior Ave', '216-206-6176', 'Cleveland', '44114', 'true');
-INSERT INTO breweries (brewery_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
+INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
 VALUES ('4','Southern_Tier_Brewery', 'Exploration is the line from local beer maker to World-Class Brewer.', '811 Prospect Ave E,', '440-484-4045', 'Cleveland', '44115', 'true');
-INSERT INTO breweries (brewery_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
+INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
 VALUES ('5','Forest_City_Brewery', 'Great atmosphere. Off the beaten path.Feels like a hidden treasure', ' 2135 Columbus Rd, Cleveland', '2162289116', 'Cleveland', '44113', 'true');
-INSERT INTO breweries (brewery_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
+INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
 VALUES ('6','Platform_Beer_Co.', 'Opened in 2014, this 100+ seat tasting room and patio offers 20+ house beers and food options. ', '4125 Lorain Ave', '216-202-1386', 'Cleveland', '44113', 'true');
-INSERT INTO breweries (brewery_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
+INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
 VALUES ('7','Noble_Beast_Brewing_Co', 'Lively taproom for house-brewed beers & elevated bar snacks, sandwiches and salads.', '1470 Lakeside Ave E', '216-417-8588', 'Cleveland', '44114', 'true');
-INSERT INTO breweries (brewery_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
+INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
 VALUES ('8','Bookhouse_Brewing', 'Bookhouse Brewing focuses on making understated, slightly different beers and ciders, served in a
 cozy, welcoming atmosphere.', '1526 W 25th St', '216-862-4048', 'Cleveland', '44113', 'true');
-INSERT INTO breweries (brewery_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
+INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
 VALUES ('9','Market_Garden_Brewing', 'American gastropub with a patio, house beers, a distillery & a menu of creative sandwiches & tacos.', '1947 W 25th St', '216-621-4000', 'Cleveland', '44113', 'true');
-INSERT INTO breweries (brewery_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
+INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
 VALUES ('10','Saucy_Brew_Works', 'Two-tiered brewery offering housemade European-style beer & customizable thin-crust pizzas.', '2885 Detroit Ave', '216-666-2568', 'Cleveland', '44113', 'true');
-INSERT INTO breweries (brewery_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
+INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
 VALUES ('11','Terrestrial_Brewing_Company', 'Two-tiered brewery offering housemade European-style beer & customizable thin-crust pizzas.', '7524 Father Frascati', '216-465-9999', 'Cleveland', '44102', 'true');
-INSERT INTO breweries (brewery_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
+INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
 VALUES ('12','Brick_And_Barrel', 'Taphouse offering house-brewed ales & wine in a cozy space with beer-centric decor.', '1844 Columbus Rd', '216-331-3308', 'Cleveland', '44113', 'true');
-INSERT INTO breweries (brewery_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
+INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
 VALUES ('13','Collision_Bend_Brewing_Company', 'Fashionable waterfront brewery & taproom for house-brewed beers & New American small plates.', '1250 Old River Rd', '216-273-7879', 'Cleveland', '44113', 'true');
-INSERT INTO breweries (brewery_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
+INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
 VALUES ('14','Hansa_Brewery', 'Brewery, biergarten & eatery offering German-style beer & European eats in modern digs with a patio.', ' 2717 Lorain Ave', '216-631-6585', 'Cleveland', '44113', 'true');
 
 --hours data
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (3, '1', '0', '0', '0', '0', '0', '0','0');
+VALUES (1, '1', '0', '0', '0', '0', '0', '0','0');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (3, '2', '11', '30', 'am', '10', '00', 'pm','1');
+VALUES (1, '2', '11', '30', 'am', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (3, '3', '11', '30', 'am', '10', '00', 'pm','1');
+VALUES (1, '3', '11', '30', 'am', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (3, '4', '11', '30', 'am', '10', '00', 'pm','1');
+VALUES (1, '4', '11', '30', 'am', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (3, '5', '11', '30', 'am', '11', '00', 'pm','1');
+VALUES (1, '5', '11', '30', 'am', '11', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (3, '6', '11', '30', 'am', '11', '00', 'pm','1');
+VALUES (1, '6', '11', '30', 'am', '11', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (3, '7', '11', '30', 'am', '8', '00', 'pm','1');
+VALUES (1, '7', '11', '30', 'am', '8', '00', 'pm','1');
 
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (4, '1', '11', '00', 'am', '8', '00', 'pm','1');
+VALUES (2, '1', '11', '00', 'am', '8', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (4, '2', '11', '00', 'am', '10', '00', 'pm','1');
+VALUES (2, '2', '11', '00', 'am', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (4, '3', '3', '00', 'pm', '10', '00', 'pm','1');
+VALUES (2, '3', '3', '00', 'pm', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (4, '4', '11', '00', 'am', '10', '00', 'pm','1');
+VALUES (2, '4', '11', '00', 'am', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (4, '5', '3', '00', 'am', '10', '00', 'pm','1');
+VALUES (2, '5', '3', '00', 'am', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (4, '6', '11', '00', 'am', '12', '00', 'am','1');
+VALUES (2, '6', '11', '00', 'am', '12', '00', 'am','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (4, '7', '11', '00', 'am', '12', '00', 'am','1');
+VALUES (2, '7', '11', '00', 'am', '12', '00', 'am','1');
+
+INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
+VALUES (3, '1', '0', '0', '0', '0', '0', '0','0');
+INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
+VALUES (3, '2', '4', '00', 'pm', '10', '00', 'pm','1');
+INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
+VALUES (3, '3', '4', '00', 'pm', '10', '00', 'pm','1');
+INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
+VALUES (3, '4', '4', '00', 'pm', '10', '00', 'pm','1');
+INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
+VALUES (3, '5', '4', '00', 'pm', '10', '00', 'pm','1');
+INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
+VALUES (3, '6', '12', '00', 'pm', '10', '00', 'pm','1');
+INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
+VALUES (3, '7', '12', '00', 'pm', '10', '00', 'pm','1');
+
+INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
+VALUES (4, '1', '3', '00', 'pm', '12', '00', 'am','1');
+INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
+VALUES (4, '2', '3', '00', 'pm', '12', '00', 'am','1');
+INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
+VALUES (4, '3', '3', '00', 'pm', '12', '00', 'am','1');
+INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
+VALUES (4, '4', '3', '00', 'pm', '12', '00', 'am','1');
+INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
+VALUES (4, '5', '3', '00', 'pm', '2', '00', 'am','1');
+INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
+VALUES (4, '6', '11', '00', 'am', '2', '00', 'am','1');
+INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
+VALUES (4, '7', '11', '00', 'am', '10', '00', 'pm','1');
 
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
 VALUES (5, '1', '0', '0', '0', '0', '0', '0','0');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (5, '2', '4', '00', 'pm', '10', '00', 'pm','1');
+VALUES (5, '2', '11', '30', 'am', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (5, '3', '4', '00', 'pm', '10', '00', 'pm','1');
+VALUES (5, '3', '11', '30', 'am', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (5, '4', '4', '00', 'pm', '10', '00', 'pm','1');
+VALUES (5, '4', '11', '30', 'am', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (5, '5', '4', '00', 'pm', '10', '00', 'pm','1');
+VALUES (5, '5', '11', '30', 'am', '11', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (5, '6', '12', '00', 'pm', '10', '00', 'pm','1');
+VALUES (5, '6', '11', '30', 'am', '11', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (5, '7', '12', '00', 'pm', '10', '00', 'pm','1');
+VALUES (5, '7', '11', '30', 'am', '10', '00', 'pm','1');
 
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (6, '1', '3', '00', 'pm', '12', '00', 'am','1');
+VALUES (6, '1', '0', '0', '0', '0', '0', '0','0');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (6, '2', '3', '00', 'pm', '12', '00', 'am','1');
+VALUES (6, '2', '4', '00', 'pm', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (6, '3', '3', '00', 'pm', '12', '00', 'am','1');
+VALUES (6, '3', '4', '00', 'pm', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (6, '4', '3', '00', 'pm', '12', '00', 'am','1');
+VALUES (6, '4', '4', '00', 'pm', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (6, '5', '3', '00', 'pm', '2', '00', 'am','1');
+VALUES (6, '5', '3', '00', 'pm', '12', '00', 'am','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (6, '6', '11', '00', 'am', '2', '00', 'am','1');
+VALUES (6, '6', '12', '00', 'am', '12', '00', 'am','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (6, '7', '11', '00', 'am', '10', '00', 'pm','1');
+VALUES (6, '7', '1', '00', 'pm', '6', '00', 'pm','1');
 
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
 VALUES (7, '1', '0', '0', '0', '0', '0', '0','0');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (7, '2', '11', '30', 'am', '10', '00', 'pm','1');
+VALUES (7, '2', '0', '0', '0', '0', '0', '0','0');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (7, '3', '11', '30', 'am', '10', '00', 'pm','1');
+VALUES (7, '3', '3', '00', 'pm', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (7, '4', '11', '30', 'am', '10', '00', 'pm','1');
+VALUES (7, '4', '3', '00', 'pm', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (7, '5', '11', '30', 'am', '11', '00', 'pm','1');
+VALUES (7, '5', '2', '00', 'pm', '12', '00', 'am','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (7, '6', '11', '30', 'am', '11', '00', 'pm','1');
+VALUES (7, '6', '11', '00', 'am', '12', '00', 'am','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (7, '7', '11', '30', 'am', '10', '00', 'pm','1');
+VALUES (7, '7', '11', '00', 'am', '10', '00', 'pm','1');
 
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (8, '1', '0', '0', '0', '0', '0', '0','0');
+VALUES (8, '1', '11', '00', 'am', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (8, '2', '4', '00', 'pm', '10', '00', 'pm','1');
+VALUES (8, '2', '11', '00', 'am', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (8, '3', '4', '00', 'pm', '10', '00', 'pm','1');
+VALUES (8, '3', '11', '00', 'am', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (8, '4', '4', '00', 'pm', '10', '00', 'pm','1');
+VALUES (8, '4', '11', '00', 'am', '12', '00', 'am','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (8, '5', '3', '00', 'pm', '12', '00', 'am','1');
+VALUES (8, '5', '11', '00', 'am', '12', '00', 'am','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (8, '6', '12', '00', 'am', '12', '00', 'am','1');
+VALUES (8, '6', '11', '00', 'am', '12', '00', 'am','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (8, '7', '1', '00', 'pm', '6', '00', 'pm','1');
+VALUES (8, '7', '11', '00', 'am', '10', '00', 'pm','1');
 
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (9, '1', '0', '0', '0', '0', '0', '0','0');
+VALUES (9, '1', '4', '00', 'pm', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (9, '2', '0', '0', '0', '0', '0', '0','0');
+VALUES (9, '2', '4', '00', 'pm', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (9, '3', '3', '00', 'pm', '10', '00', 'pm','1');
+VALUES (9, '3', '4', '00', 'pm', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (9, '4', '3', '00', 'pm', '10', '00', 'pm','1');
+VALUES (9, '4', '4', '00', 'pm', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (9, '5', '2', '00', 'pm', '12', '00', 'am','1');
+VALUES (9, '5', '4', '00', 'pm', '12', '00', 'am','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (9, '6', '11', '00', 'am', '12', '00', 'am','1');
+VALUES (9, '6', '10', '00', 'am', '12', '00', 'am','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (9, '7', '11', '00', 'am', '10', '00', 'pm','1');
+VALUES (9, '7', '10', '00', 'am', '10', '00', 'pm','1');
 
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (10, '1', '11', '00', 'am', '10', '00', 'pm','1');
+VALUES (10, '1', '0', '0', '0', '0', '0', '0','0');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (10, '2', '11', '00', 'am', '10', '00', 'pm','1');
+VALUES (10, '2', '0', '0', '0', '0', '0', '0','0');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (10, '3', '11', '00', 'am', '10', '00', 'pm','1');
+VALUES (10, '3', '4', '00', 'pm', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (10, '4', '11', '00', 'am', '12', '00', 'am','1');
+VALUES (10, '4', '4', '00', 'pm', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (10, '5', '11', '00', 'am', '12', '00', 'am','1');
+VALUES (10, '5', '2', '00', 'pm', '12', '00', 'am','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (10, '6', '11', '00', 'am', '12', '00', 'am','1');
+VALUES (10, '6', '12', '00', 'pm', '12', '00', 'am','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (10, '7', '11', '00', 'am', '10', '00', 'pm','1');
+VALUES (10, '7', '12', '00', 'am', '8', '00', 'pm','1');
 
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (11, '1', '4', '00', 'pm', '10', '00', 'pm','1');
+VALUES (11, '1', '0', '0', '0', '0', '0', '0','0');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (11, '2', '4', '00', 'pm', '10', '00', 'pm','1');
+VALUES (11, '2', '0', '0', '0', '0', '0', '0','0');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (11, '3', '4', '00', 'pm', '10', '00', 'pm','1');
+VALUES (11, '3', '0', '0', '0', '0', '0', '0','0');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
 VALUES (11, '4', '4', '00', 'pm', '10', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (11, '5', '4', '00', 'pm', '12', '00', 'am','1');
+VALUES (11, '5', '3', '00', 'pm', '9', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (11, '6', '10', '00', 'am', '12', '00', 'am','1');
+VALUES (11, '6', '3', '00', 'pm', '11', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (11, '7', '10', '00', 'am', '10', '00', 'pm','1');
+VALUES (11, '7', '11', '30', 'am', '5', '00', 'pm','1');
 
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
 VALUES (12, '1', '0', '0', '0', '0', '0', '0','0');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
 VALUES (12, '2', '0', '0', '0', '0', '0', '0','0');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (12, '3', '4', '00', 'pm', '10', '00', 'pm','1');
+VALUES (12, '3', '12', '00', 'pm', '8', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (12, '4', '4', '00', 'pm', '10', '00', 'pm','1');
+VALUES (12, '4', '12', '00', 'pm', '8', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (12, '5', '2', '00', 'pm', '12', '00', 'am','1');
+VALUES (12, '5', '12', '00', 'pm', '9', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (12, '6', '12', '00', 'pm', '12', '00', 'am','1');
+VALUES (12, '6', '12', '00', 'pm', '9', '00', 'pm','1');
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (12, '7', '12', '00', 'am', '8', '00', 'pm','1');
-
-INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (13, '1', '0', '0', '0', '0', '0', '0','0');
-INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (13, '2', '0', '0', '0', '0', '0', '0','0');
-INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (13, '3', '0', '0', '0', '0', '0', '0','0');
-INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (13, '4', '4', '00', 'pm', '10', '00', 'pm','1');
-INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (13, '5', '3', '00', 'pm', '9', '00', 'pm','1');
-INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (13, '6', '3', '00', 'pm', '11', '00', 'pm','1');
-INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (13, '7', '11', '30', 'am', '5', '00', 'pm','1');
-
-INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (14, '1', '0', '0', '0', '0', '0', '0','0');
-INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (14, '2', '0', '0', '0', '0', '0', '0','0');
-INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (14, '3', '12', '00', 'pm', '8', '00', 'pm','1');
-INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (14, '4', '12', '00', 'pm', '8', '00', 'pm','1');
-INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (14, '5', '12', '00', 'pm', '9', '00', 'pm','1');
-INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (14, '6', '12', '00', 'pm', '9', '00', 'pm','1');
-INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (14, '7', '0', '0', '0', '0', '0', '0','0');
+VALUES (12, '7', '0', '0', '0', '0', '0', '0','0');
 
 
 --brewery images data
