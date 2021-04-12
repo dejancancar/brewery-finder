@@ -5,11 +5,13 @@
     <div>{{ beer.beerType }}</div>
     <div>ABV: {{ beer.abv }}</div>
     <img class="image" :src="beer.imageUrl" alt="Beer Picture" />
+    <beer-reviews/>
   </div>
 </template>
 
 <script>
 import api from "../services/apiService.js";
+import BeerReviews from "../components/BeerReviews.vue";
 export default {
   data() {
     return {
@@ -22,6 +24,9 @@ export default {
         this.beer = resp.data;
       });
     },
+  },
+  components: {
+      BeerReviews,
   },
   created() {
     this.getBeer();

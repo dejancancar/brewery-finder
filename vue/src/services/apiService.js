@@ -3,16 +3,16 @@ import axios from 'axios';
 // const http = axios.create({
 //   baseURL: process.env.VUE_APP_REMOTE_API
 // })
-export default{ 
+export default {
   //checks to make sure the user creating a brewery is logged in as admin.
-  createBrewery(brewery){
+  createBrewery(brewery) {
     // http.defaults.headers.common['Authorization'] = `Bearer ${token}`
     return axios.post('/breweries', brewery)
   },
   //Admin functions
-  getUsers(username){
+  getUsers(username) {
     let path = '/users';
-    if(username){
+    if (username) {
       path += `?username=${username}`
     }
     return axios.get(path);
@@ -20,21 +20,21 @@ export default{
 
 
   //Brewer functions - Breweries
-  getBreweries(){
-      return axios.get('/breweries');
+  getBreweries() {
+    return axios.get('/breweries');
   },
-  getBreweriesByBrewerId(userId){
+  getBreweriesByBrewerId(userId) {
     let path = '/breweries';
-    if(userId){
+    if (userId) {
       path += `?userId=${userId}`
     }
     return axios.get(path);
   },
-  updateBreweryInfo(brewery){
+  updateBreweryInfo(brewery) {
 
     return axios.put(`/breweries/${brewery.breweryId}`, brewery);
   },
-  getBreweryById(breweryId){
+  getBreweryById(breweryId) {
     return axios.get(`/breweries/${breweryId}`);
   },
 
@@ -43,31 +43,38 @@ export default{
   uploadBreweryImageUrl(brewery) {
     return axios.post(`/breweries/${brewery.breweryId}/images`, brewery);
   },
-  getBreweryImages(breweryId){
+  getBreweryImages(breweryId) {
     return axios.get(`/breweries/${breweryId}/images`);
   },
 
 
   //Brewer Functions - Hours
-  updateHours(hours){
+  updateHours(hours) {
     return axios.put(`/breweries/${hours.breweryId}/hours/${hours.hoursId}`, hours);
   },
-  getBreweryHours(breweryId){
+  getBreweryHours(breweryId) {
     return axios.get(`/breweries/${breweryId}/hours`);
   },
 
   //Brewer Functions - Beers
-  getBeers(breweryId){
+  getBeers(breweryId) {
     return axios.get(`/breweries/${breweryId}/beers`);
   },
-  getBeerById(beerId){
+  getBeerById(beerId) {
     return axios.get(`beers/${beerId}`);
   },
   addBeer(beer) {
     return axios.post(`/breweries/${beer.breweryId}/beers`, beer);
   },
-  updateBeer(updatedBeer){
-    return axios.put(`/breweries/${updatedBeer.breweryId}/beers/${updatedBeer.beerId}`,updatedBeer);
+  updateBeer(updatedBeer) {
+    return axios.put(`/breweries/${updatedBeer.breweryId}/beers/${updatedBeer.beerId}`, updatedBeer);
+  },
+  // Reviews
+  getReviews(beerId) {
+    return axios.get(`/beers/${beerId}/reviews`);
+  },
+  addReview(review) {
+    return axios.post(`/beers/${review.beerId}/reviews`, review);
   }
-  
+
 }

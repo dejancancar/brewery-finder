@@ -10,11 +10,11 @@ namespace Capstone.Models
         public int BeerReviewId { get; set; }
         public int BeerId { get; set; }
         public int UserId { get; set; }
-        public string UserName { get; set; }
+        public string Username { get; set; }
         public int Rating { get; set; }
         public string ReviewTitle { get; set; }
         public string ReviewBody { get; set; }
-        public DateTime DateOfReview { get; set; }
+        public DateTime DateOfReview { get; set; } = DateTime.Now;
 
     }
 }
