@@ -15,6 +15,7 @@ namespace Capstone.Models
         public string Phone { get; set; } = "";
         public string City { get; set; } = "";
         public string ZipCode { get; set; } = "";
+        public string DefaultImageUrl { get; set; }
         public bool IsActive { get; set; } = true;
 
     }

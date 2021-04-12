@@ -11,9 +11,20 @@ namespace Capstone.DAO
     {
 
         private readonly string connectionString;
-        private const string SQL_GET_BREWERIES = "SELECT * FROM breweries;";
+        private const string SQL_GET_BREWERIES = @"SELECT b.*, bi.image_url
+	                                                FROM breweries b
+	                                                JOIN (SELECT MIN(image_id) as min_id, brewery_id
+			                                            FROM brewery_images
+			                                            GROUP BY brewery_id) i ON i.brewery_id = b.brewery_id
+			                                            JOIN brewery_images bi ON bi.image_id = i.min_id;";
         private const string SQL_GET_BREWERY = "SELECT * FROM breweries WHERE brewery_id = @breweryId;";
-        private const string SQL_GET_BREWERIES_BY_BREWER = "SELECT * FROM breweries WHERE user_id = @userId;";
+        private const string SQL_GET_BREWERIES_BY_BREWER = @"SELECT b.*, bi.image_url
+	                                                        FROM breweries b
+	                                                        JOIN (SELECT MIN(image_id) as min_id, brewery_id
+			                                                    FROM brewery_images
+			                                                    GROUP BY brewery_id) i ON i.brewery_id = b.brewery_id
+			                                                    JOIN brewery_images bi ON bi.image_id = i.min_id
+			                                                    WHERE b.user_id = @userId;";
         private const string SQL_CREATE_BREWERY = @"Begin Transaction
                                                     UPDATE users SET user_role = 'brewer' WHERE user_id = @userId;
                                                     INSERT INTO breweries(brewery_name, user_id, history, phone, street_address, city, zip_code, is_active) 
@@ -46,7 +57,7 @@ namespace Capstone.DAO
 
         public List<Brewery> GetBreweries()
         {
-            List<Brewery> output = new List<Brewery>();
+            List<Brewery> breweries = new List<Brewery>();
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -59,11 +70,12 @@ namespace Capstone.DAO
                     while(reader.Read())
                     {
                         Brewery createdBrewery = RowToObject(reader);
+                        createdBrewery.DefaultImageUrl = Convert.ToString(reader["image_url"]);
 
-                        output.Add(createdBrewery);
+                        breweries.Add(createdBrewery);
                     }
 
-                    return output;
+                    return breweries;
                 }
             }
             catch (SqlException ex)
@@ -120,6 +132,8 @@ namespace Capstone.DAO
                     while (reader.Read())
                     {
                         Brewery brewery = RowToObject(reader);
+                        brewery.DefaultImageUrl = Convert.ToString(reader["image_url"]);
+
                         breweries.Add(brewery);
                     }
                 }
