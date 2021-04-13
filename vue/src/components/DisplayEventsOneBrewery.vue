@@ -3,9 +3,9 @@
     <h2>Upcoming Events!</h2>
     <ul>
       <li v-for="event in events" :key="event.breweryEventId">
-        <h2>{{ event.breweryName }}-{{ event.title }}</h2>
-        <div>{{ formatDate(event.dateAndTime) }}</div>
-        <div>{{ event.description }}</div>
+        <h2>{{ event.title }}</h2>
+        <div>{{ formatDate(event.dateAndTime) }} </div>
+        <div>{{event.description}}</div>
       </li>
     </ul>
   </div>
@@ -21,8 +21,8 @@ export default {
     };
   },
   methods: {
-    getEvents() {
-      api.getEvents().then((resp) => {
+    getEventsByBrewery() {
+      api.getEventsByBrewery(this.$route.params.breweryId).then((resp) => {
         this.events = resp.data;
       });
     },
@@ -31,7 +31,7 @@ export default {
     },
   },
   created() {
-    this.getEvents();
+    this.getEventsByBrewery();
   },
 };
 </script>

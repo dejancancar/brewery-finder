@@ -81,6 +81,15 @@ export default {
   // Events
   getEvents() {
     return axios.get(`/events`);
+  },
+  getEventsByBrewery(breweryId) {
+    return axios.get(`/events?byBrewery=true&breweryId=${breweryId}`);
+  },
+  addEvent(newEvent) {
+    return axios.post(`/events`, newEvent);
+  },
+  deleteEvent(eventId) {
+    return axios.delete(`/events/${eventId}`);
   }
 
 }

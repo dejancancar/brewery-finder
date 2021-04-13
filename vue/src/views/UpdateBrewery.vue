@@ -9,6 +9,9 @@
             <update-beer />
             <display-brewery-beers />
         </span>
+        <display-events-one-brewery/>
+        <new-event-form/>
+        <delete-event/>
 
     </div>
     </div>
@@ -21,6 +24,10 @@ import UploadImages from '../components/AddBreweryImage.vue'
 import AddBeer from '../components/AddBeer.vue'
 import UpdateBeer from '../components/UpdateBeer.vue'
 import DisplayBreweryBeers from '../components/DisplayBreweryBeers.vue'
+import DisplayEventsOneBrewery from '../components/DisplayEventsOneBrewery.vue'
+import NewEventForm from '../components/NewEventForm.vue'
+import DeleteEvent from '../components/DeleteEvent.vue'
+
 export default {
     data(){
         return {
@@ -33,7 +40,10 @@ export default {
         UploadImages,
         AddBeer,
         UpdateBeer,
-        DisplayBreweryBeers
+        DisplayBreweryBeers,
+        DisplayEventsOneBrewery,
+        NewEventForm,
+        DeleteEvent
     },
 
 }

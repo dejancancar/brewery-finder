@@ -9,17 +9,25 @@ namespace Capstone.DAO
 {
     public class EventSqlDAO : IEventDAO
     {
-        public readonly string connectionString;
-        public const string SQL_GET_EVENTS = @"SELECT TOP 15 be.*, b.brewery_name
+        private readonly string connectionString;
+        private const string SQL_GET_EVENTS = @"SELECT TOP 15 be.*, b.brewery_name
 	                                            FROM brewery_events be
 	                                            JOIN breweries b ON b.brewery_id = be.brewery_id
 	                                            WHERE date_and_time >= CURRENT_TIMESTAMP
 	                                            ORDER BY date_and_time ASC";
-        public const string SQL_GET_EVENTS_BY_BREWERY = @"SELECT TOP 15 be.*, b.brewery_name
+        private const string SQL_GET_EVENTS_BY_BREWERY = @"SELECT TOP 15 be.*, b.brewery_name
                                                 FROM brewery_events be
                                                 JOIN breweries b ON b.brewery_id = be.brewery_id
                                                 WHERE date_and_time >= CURRENT_TIMESTAMP AND b.brewery_id = @breweryId
                                                 ORDER BY date_and_time ASC";
+        private const string SQL_CREATE_EVENT = @"INSERT INTO brewery_events (brewery_id, title, description, date_and_time)
+                                                    VALUES (@breweryId, @title, @description, @dateAndTime);
+                                                    SELECT be.*, b.brewery_name
+	                                                    FROM brewery_events be
+	                                                    JOIN breweries b ON b.brewery_id = be.brewery_id
+	                                                    WHERE brewery_event_id = @@IDENTITY;";
+        private const string SQL_DELETE_EVENT = "DELETE FROM brewery_events WHERE brewery_event_id = @eventId;";
+
         public EventSqlDAO(string dbConnectionString)
         {
             this.connectionString = dbConnectionString;
@@ -86,6 +94,71 @@ namespace Capstone.DAO
                 throw;
             }
         }
+
+        public BreweryEvent CreateEvent(BreweryEvent breweryEvent)
+        {
+            BreweryEvent createdEvent = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(SQL_CREATE_EVENT, conn);
+                    cmd.Parameters.AddWithValue("@breweryId", breweryEvent.BreweryId);
+                    cmd.Parameters.AddWithValue("@title", breweryEvent.Title);
+                    cmd.Parameters.AddWithValue("@description", breweryEvent.Description);
+                    cmd.Parameters.AddWithValue("@dateAndTime", breweryEvent.DateAndTime);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    
+                    if (reader.Read())
+                    {
+                        createdEvent = RowToObject(reader);
+                    }
+
+                    return createdEvent;
+                }
+            }
+            catch (SqlException ex)
+            {
+
+                throw;
+            }
+        }
+
+        public bool DeleteEvent(int eventId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(SQL_DELETE_EVENT, conn);
+
+                    cmd.Parameters.AddWithValue("@eventId", eventId);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected == 1)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+
+                throw;
+            }
+        }
+
+
 
 
         private static BreweryEvent RowToObject(SqlDataReader r)

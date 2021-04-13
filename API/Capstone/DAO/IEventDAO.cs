@@ -10,5 +10,7 @@ namespace Capstone.DAO
     {
         List<BreweryEvent> GetEvents();
         List<BreweryEvent> GetEventsByBrewery(int breweryId);
+        BreweryEvent CreateEvent(BreweryEvent breweryEvent);
+        bool DeleteEvent(int eventId);
     }
 }

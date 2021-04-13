@@ -35,5 +35,35 @@ namespace Capstone.Controllers
 
             return Ok(events);
         }
+
+        [HttpPost]
+        public ActionResult<BreweryEvent> CreateEvent(BreweryEvent breweryEvent)
+        {
+            BreweryEvent createdEvent = eventDAO.CreateEvent(breweryEvent);
+
+            if (createdEvent != null)
+            {
+                return Created($"{createdEvent.BreweryEventId}", createdEvent);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpDelete("{eventId}")]
+        public ActionResult DeleteEvent(int eventId)
+        {
+            bool wasDeleted = eventDAO.DeleteEvent(eventId);
+
+            if (wasDeleted)
+            {
+                return NoContent();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
     }
 }

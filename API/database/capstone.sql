@@ -119,46 +119,46 @@ CREATE TABLE brewery_events (
 --user data
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Masthead_Brewing_Co.','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','user');
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Southern_Tier_Brewing_Cleveland','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','user');
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Forest_City_Brewery','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','user');
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Platform_Beer_Co','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','user');
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Noble_Beast_Brewing_Co','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','user');
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Bookhouse_Brewing','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','user');
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Market_Garden_Brewing','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','user');
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Saucy_Brew_Works','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','user');
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Terrestrial_Brewing_Company','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','user');
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Brick_And_Barrel','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','user');
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Collision_Bend_Brewing_Company','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','user');
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Hansa_Brewery','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','user');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Masthead_Brewing_Co.','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','brewer');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Southern_Tier_Brewing_Cleveland','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','brewer');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Forest_City_Brewery','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','brewer');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Platform_Beer_Co','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','brewer');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Noble_Beast_Brewing_Co','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','brewer');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Bookhouse_Brewing','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','brewer');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Market_Garden_Brewing','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','brewer');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Saucy_Brew_Works','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','brewer');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Terrestrial_Brewing_Company','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','brewer');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Brick_And_Barrel','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','brewer');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Collision_Bend_Brewing_Company','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','brewer');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Hansa_Brewery','Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'LHxP4Xh7bN0=','brewer');
 
 
 --breweries data
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('1','Masthead Brewing Co.', 'Expansive brewery & taproom pouring American & Belgian beer paired with wood-fired pizza.', '1261 Superior Ave', '216-206-6176', 'Cleveland', '44114', 'true');
+VALUES ('3','Masthead Brewing Co.', 'Expansive brewery & taproom pouring American & Belgian beer paired with wood-fired pizza.', '1261 Superior Ave', '216-206-6176', 'Cleveland', '44114', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('2','Southern Tier Brewery', 'Exploration is the line from local beer maker to World-Class Brewer.', '811 Prospect Ave E,', '440-484-4045', 'Cleveland', '44115', 'true');
+VALUES ('4','Southern Tier Brewery', 'Exploration is the line from local beer maker to World-Class Brewer.', '811 Prospect Ave E,', '440-484-4045', 'Cleveland', '44115', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('3','Forest City Brewery', 'Great atmosphere. Off the beaten path.Feels like a hidden treasure', ' 2135 Columbus Rd, Cleveland', '2162289116', 'Cleveland', '44113', 'true');
+VALUES ('5','Forest City Brewery', 'Great atmosphere. Off the beaten path.Feels like a hidden treasure', ' 2135 Columbus Rd, Cleveland', '2162289116', 'Cleveland', '44113', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('4','Platform Beer Co.', 'Opened in 2014, this 100+ seat tasting room and patio offers 20+ house beers and food options. ', '4125 Lorain Ave', '216-202-1386', 'Cleveland', '44113', 'true');
+VALUES ('6','Platform Beer Co.', 'Opened in 2014, this 100+ seat tasting room and patio offers 20+ house beers and food options. ', '4125 Lorain Ave', '216-202-1386', 'Cleveland', '44113', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('5','Noble Beast Brewing Co', 'Lively taproom for house-brewed beers & elevated bar snacks, sandwiches and salads.', '1470 Lakeside Ave E', '216-417-8588', 'Cleveland', '44114', 'true');
+VALUES ('7','Noble Beast Brewing Co', 'Lively taproom for house-brewed beers & elevated bar snacks, sandwiches and salads.', '1470 Lakeside Ave E', '216-417-8588', 'Cleveland', '44114', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('6','Bookhouse Brewing', 'Bookhouse Brewing focuses on making understated, slightly different beers and ciders, served in a
+VALUES ('8','Bookhouse Brewing', 'Bookhouse Brewing focuses on making understated, slightly different beers and ciders, served in a
 cozy, welcoming atmosphere.', '1526 W 25th St', '216-862-4048', 'Cleveland', '44113', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('7','Market Garden Brewing', 'American gastropub with a patio, house beers, a distillery & a menu of creative sandwiches & tacos.', '1947 W 25th St', '216-621-4000', 'Cleveland', '44113', 'true');
+VALUES ('9','Market Garden Brewing', 'American gastropub with a patio, house beers, a distillery & a menu of creative sandwiches & tacos.', '1947 W 25th St', '216-621-4000', 'Cleveland', '44113', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('8','Saucy Brew Works', 'Two-tiered brewery offering housemade European-style beer & customizable thin-crust pizzas.', '2885 Detroit Ave', '216-666-2568', 'Cleveland', '44113', 'true');
+VALUES ('10','Saucy Brew Works', 'Two-tiered brewery offering housemade European-style beer & customizable thin-crust pizzas.', '2885 Detroit Ave', '216-666-2568', 'Cleveland', '44113', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('9','Terrestrial Brewing Company', 'Two-tiered brewery offering housemade European-style beer & customizable thin-crust pizzas.', '7524 Father Frascati', '216-465-9999', 'Cleveland', '44102', 'true');
+VALUES ('11','Terrestrial Brewing Company', 'Two-tiered brewery offering housemade European-style beer & customizable thin-crust pizzas.', '7524 Father Frascati', '216-465-9999', 'Cleveland', '44102', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('10','Brick And Barrel', 'Taphouse offering house-brewed ales & wine in a cozy space with beer-centric decor.', '1844 Columbus Rd', '216-331-3308', 'Cleveland', '44113', 'true');
+VALUES ('12','Brick And Barrel', 'Taphouse offering house-brewed ales & wine in a cozy space with beer-centric decor.', '1844 Columbus Rd', '216-331-3308', 'Cleveland', '44113', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('11','Collision Bend Brewing Company', 'Fashionable waterfront brewery & taproom for house-brewed beers & New American small plates.', '1250 Old River Rd', '216-273-7879', 'Cleveland', '44113', 'true');
+VALUES ('13','Collision Bend Brewing Company', 'Fashionable waterfront brewery & taproom for house-brewed beers & New American small plates.', '1250 Old River Rd', '216-273-7879', 'Cleveland', '44113', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('12','Hansa Brewery', 'Brewery, biergarten & eatery offering German-style beer & European eats in modern digs with a patio.', ' 2717 Lorain Ave', '216-631-6585', 'Cleveland', '44113', 'true');
+VALUES ('14','Hansa Brewery', 'Brewery, biergarten & eatery offering German-style beer & European eats in modern digs with a patio.', ' 2717 Lorain Ave', '216-631-6585', 'Cleveland', '44113', 'true');
 
 --hours data
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
