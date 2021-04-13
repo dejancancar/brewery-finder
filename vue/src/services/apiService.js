@@ -87,6 +87,9 @@ export default {
   getEvents() {
     return axios.get(`/events`);
   },
+  getEventsLoggedInUser(userId) {
+    return axios.get(`/events?byFavorites=true&userId=${userId}`);
+  },
   getEventsByBrewery(breweryId) {
     return axios.get(`/events?byBrewery=true&breweryId=${breweryId}`);
   },
