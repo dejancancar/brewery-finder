@@ -69,12 +69,32 @@ export default {
   updateBeer(updatedBeer) {
     return axios.put(`/breweries/${updatedBeer.breweryId}/beers/${updatedBeer.beerId}`, updatedBeer);
   },
+
   // Reviews
   getReviews(beerId) {
     return axios.get(`/beers/${beerId}/reviews`);
   },
   addReview(review) {
     return axios.post(`/beers/${review.beerId}/reviews`, review);
+  },
+
+  // Events
+  getEvents() {
+    return axios.get(`/events`);
+  },
+  getEventsByBrewery(breweryId) {
+    return axios.get(`/events?byBrewery=true&breweryId=${breweryId}`);
+  },
+  addEvent(newEvent) {
+    return axios.post(`/events`, newEvent);
+  },
+  deleteEvent(eventId) {
+    return axios.delete(`/events/${eventId}`);
+  },
+
+  //Favorites
+  checkIfFavorite(breweryId) {
+    return axios.get(`/users/${this.store.state.user.userId}/favorites?brewery=${breweryId}`)
   }
 
 }

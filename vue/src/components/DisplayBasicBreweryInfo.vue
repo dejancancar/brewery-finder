@@ -1,5 +1,7 @@
 <template>
   <div>
+    <button v-show="isFavorite = false">Add To Favorites</button>
+    <button v-show="isFavorite = true">Remove From Favorites</button>
     <h2>
       {{ breweryInfo.breweryName }}
     </h2>
@@ -13,7 +15,9 @@
       {{ breweryInfo.phone }}
     </div>
     <div>
-      {{ breweryInfo.history }}
+      <span v-if="!readMore">{{ breweryInfo.history.slice(0,30)}}...<a v-show="!readMore" @click="readMore = true" href="#">(read more)</a></span>
+      <span v-if="readMore">{{breweryInfo.history}}</span>
+
     </div>
     </div>
   </div>
@@ -25,7 +29,10 @@ export default {
     data() {
         return {
             breweryInfo: {},
+            readMore: false,
+            isFavorite: false
         }
+        
     },
     methods: {
     getBreweryInfo() {
@@ -33,9 +40,16 @@ export default {
         this.breweryInfo = resp.data;
       });
     },
+    checkIfFavorite() {
+      api.checkIfFavorite(this.$route.params.breweryId)
+        .then((resp) => {
+          this.isFavorite = resp.data;
+        })
+    }
     },
     created() {
         this.getBreweryInfo();
+        this.checkIfFavorite();
     }
 };
 </script>

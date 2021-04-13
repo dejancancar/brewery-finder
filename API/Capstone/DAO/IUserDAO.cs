@@ -9,5 +9,7 @@ namespace Capstone.DAO
         User AddUser(string username, string password, string role);
         List<ReturnUser> GetUsers();
         List<ReturnUser> GetUsers(string username);
+        bool CreateFavorite(BreweryFavorite favorite);
+        bool DeleteFavorite(int userId, int breweryId);
     }
 }

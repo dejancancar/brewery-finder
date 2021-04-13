@@ -42,6 +42,36 @@ namespace Capstone.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpPost("{userId}/favorites")]
+        public ActionResult CreateFavorite(int userId, BreweryFavorite favorite)
+        {
+            bool addedToFavorites = userDAO.CreateFavorite(favorite);
+
+            if (addedToFavorites)
+            {
+                return NoContent();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpDelete("{userId}/favorites")]
+        public ActionResult DeleteFavorite(int userId, int breweryId)
+        {
+            bool deletedFromFavorites = userDAO.DeleteFavorite(userId, breweryId);
+
+            if (deletedFromFavorites == true)
+            {
+                return NoContent();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
     }
 
 

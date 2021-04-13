@@ -17,7 +17,14 @@ namespace Capstone.Models
         public string ZipCode { get; set; } = "";
         public string DefaultImageUrl { get; set; }
         public bool IsActive { get; set; } = true;
+        public bool IsFavorite { get; set; } = false;
 
+    }
+
+    public class BreweryFavorite
+    {
+        public int BreweryId { get; set; }
+        public int UserId { get; set; }
     }
 
 }
