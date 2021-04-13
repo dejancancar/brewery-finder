@@ -77,7 +77,7 @@
           <textarea type="text-area" v-model="updateBrewery.history"></textarea>
         </tr>
       </table>
-      <button @click="updateBreweryInfo">Update Info</button>
+      <button @click.prevent="updateBreweryInfo">Update Info</button>
       <button @click="toggleUpdateBrewery = false">Cancel Update</button>
     </form>
   </div>
