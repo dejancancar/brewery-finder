@@ -114,6 +114,12 @@ CREATE TABLE brewery_events (
 	CONSTRAINT FK_events_breweries FOREIGN KEY (brewery_id) REFERENCES breweries(brewery_id)
 )
 
+CREATE TABLE breweries_users (
+brewery_id int NOT NULL,
+user_id int NOT NULL,
+CONSTRAINT PK_breweries_users_brewery_id_user_id PRIMARY KEY (brewery_id, user_id)
+)
+
 --populate default data
 
 --user data
