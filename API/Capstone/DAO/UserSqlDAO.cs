@@ -12,7 +12,8 @@ namespace Capstone.DAO
         private readonly string connectionString;
         private const string SQL_GET_USERS = "SELECT user_id, username, user_role FROM users;";
         private const string SQL_GET_USERS_FILTERED = "SELECT user_id, username, user_role FROM users WHERE username LIKE @username;";
-
+        private const string SQL_CREATE_FAVORITE = "INSERT INTO breweries_users (brewery_id, user_id) VALUES (@breweryId, @userId);";
+        private const string SQL_DELETE_FAVORITE = "DELETE FROM breweries_users WHERE user_id = @userId AND brewery_id = @breweryId";
         public UserSqlDAO(string dbConnectionString)
         {
             connectionString = dbConnectionString;
@@ -133,6 +134,69 @@ namespace Capstone.DAO
 
             return GetUser(username);
         }
+
+        public bool CreateFavorite(BreweryFavorite favorite)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(SQL_CREATE_FAVORITE, conn);
+                    cmd.Parameters.AddWithValue("@userId", favorite.UserId);
+                    cmd.Parameters.AddWithValue("@breweryId", favorite.BreweryId);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected == 1)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+
+                throw;
+            }
+        }
+
+        public bool DeleteFavorite(int userId, int breweryId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(SQL_DELETE_FAVORITE, conn);
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.Parameters.AddWithValue("@breweryId", breweryId);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected == 1)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+
+                throw;
+            }
+        }
+
 
         private User GetUserFromReader(SqlDataReader reader)
         {

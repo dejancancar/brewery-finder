@@ -90,6 +90,11 @@ export default {
   },
   deleteEvent(eventId) {
     return axios.delete(`/events/${eventId}`);
+  },
+
+  //Favorites
+  checkIfFavorite(breweryId) {
+    return axios.get(`/users/${this.store.state.user.userId}/favorites?brewery=${breweryId}`)
   }
 
 }

@@ -1,6 +1,7 @@
 <template>
   <div>
-    <input type="checkbox">
+    <button v-show="isFavorite = false">Add To Favorites</button>
+    <button v-show="isFavorite = true">Remove From Favorites</button>
     <h2>
       {{ breweryInfo.breweryName }}
     </h2>
@@ -29,6 +30,7 @@ export default {
         return {
             breweryInfo: {},
             readMore: false,
+            isFavorite: false
         }
         
     },
@@ -38,9 +40,16 @@ export default {
         this.breweryInfo = resp.data;
       });
     },
+    checkIfFavorite() {
+      api.checkIfFavorite(this.$route.params.breweryId)
+        .then((resp) => {
+          this.isFavorite = resp.data;
+        })
+    }
     },
     created() {
         this.getBreweryInfo();
+        this.checkIfFavorite();
     }
 };
 </script>
