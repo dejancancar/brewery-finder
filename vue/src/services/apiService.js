@@ -26,7 +26,7 @@ export default {
   getBreweriesByBrewerId(userId) {
     let path = '/breweries';
     if (userId) {
-      path += `?userId=${userId}`
+      path += `?userId=${userId}&isBrewer=true`
     }
     return axios.get(path);
   },

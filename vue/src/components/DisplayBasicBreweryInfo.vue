@@ -1,7 +1,5 @@
 <template>
   <div>
-    <button v-show="isFavorite = false">Add To Favorites</button>
-    <button v-show="isFavorite = true">Remove From Favorites</button>
     <h2>
       {{ breweryInfo.breweryName }}
     </h2>
