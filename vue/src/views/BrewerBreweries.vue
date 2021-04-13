@@ -1,7 +1,7 @@
 <template>
     <div v-show="showFormButton"> 
       <button type="button" @click="getBreweriesByBrewerId" v-show="showFormButton" class="big-button">View Breweries</button>
-      <table v-show="!showFormButton">
+      <table v-show="showFormButton = false">
         <thead>
           <tr>
           <td>Brewery Id</td>
