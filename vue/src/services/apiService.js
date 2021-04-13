@@ -31,7 +31,7 @@ export default {
   getBreweryLoggedInUser(userId, breweryId){
     let path = `/breweries/${breweryId}`;
     if (userId) {
-      path += `?userId=${userId}`
+      path += `?userId=${userId}&isBrewer=true`
     }
     return axios.get(path);
   },
@@ -86,6 +86,9 @@ export default {
   // Events
   getEvents() {
     return axios.get(`/events`);
+  },
+  getEventsLoggedInUser(userId) {
+    return axios.get(`/events?byFavorites=true&userId=${userId}`);
   },
   getEventsByBrewery(breweryId) {
     return axios.get(`/events?byBrewery=true&breweryId=${breweryId}`);
