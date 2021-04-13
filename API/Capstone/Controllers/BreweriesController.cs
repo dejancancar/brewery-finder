@@ -93,7 +93,6 @@ namespace Capstone.Controllers
             return Ok(images);
         }
 
-
         [HttpPost]
         [Authorize(Roles = "admin")]
         public IActionResult CreateBrewery(Brewery brewery)

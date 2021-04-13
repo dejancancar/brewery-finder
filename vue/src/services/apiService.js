@@ -69,12 +69,18 @@ export default {
   updateBeer(updatedBeer) {
     return axios.put(`/breweries/${updatedBeer.breweryId}/beers/${updatedBeer.beerId}`, updatedBeer);
   },
+
   // Reviews
   getReviews(beerId) {
     return axios.get(`/beers/${beerId}/reviews`);
   },
   addReview(review) {
     return axios.post(`/beers/${review.beerId}/reviews`, review);
+  },
+
+  // Events
+  getEvents() {
+    return axios.get(`/events`);
   }
 
 }
