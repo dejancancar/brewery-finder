@@ -135,7 +135,7 @@ namespace Capstone.DAO
             return GetUser(username);
         }
 
-        public bool CreateFavorite(BreweryFavorite favorite)
+        public bool CreateFavorite(int userId, BreweryFavorite favorite)
         {
             try
             {
@@ -144,7 +144,7 @@ namespace Capstone.DAO
                     conn.Open();
 
                     SqlCommand cmd = new SqlCommand(SQL_CREATE_FAVORITE, conn);
-                    cmd.Parameters.AddWithValue("@userId", favorite.UserId);
+                    cmd.Parameters.AddWithValue("@userId", userId);
                     cmd.Parameters.AddWithValue("@breweryId", favorite.BreweryId);
 
                     int rowsAffected = cmd.ExecuteNonQuery();

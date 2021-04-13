@@ -46,7 +46,7 @@ namespace Capstone.Controllers
         [HttpPost("{userId}/favorites")]
         public ActionResult CreateFavorite(int userId, BreweryFavorite favorite)
         {
-            bool addedToFavorites = userDAO.CreateFavorite(favorite);
+            bool addedToFavorites = userDAO.CreateFavorite(userId, favorite);
 
             if (addedToFavorites)
             {
@@ -58,7 +58,7 @@ namespace Capstone.Controllers
             }
         }
 
-        [HttpDelete("{userId}/favorites")]
+        [HttpDelete("{userId}/favorites/{breweryId}")]
         public ActionResult DeleteFavorite(int userId, int breweryId)
         {
             bool deletedFromFavorites = userDAO.DeleteFavorite(userId, breweryId);
