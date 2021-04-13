@@ -1,7 +1,7 @@
 <template>
-    <div v-show="showFormButton"> 
-      <button type="button" @click="getBreweriesByBrewerId" v-show="showFormButton" class="big-button">View Breweries</button>
-      <table v-show="!showFormButton">
+    <div> 
+      <!-- <button class="big-button" type="button" @click="getBreweriesByBrewerId" v-show="showFormButton" >View Breweries</button> -->
+      <table>
         <thead>
           <tr>
           <td>Brewery Id</td>
@@ -16,7 +16,7 @@
             <td>{{brewery.streetAddress}} {{brewery.city}} {{brewery.zipCode}}</td>
           </tr>
         </tbody>
-        <button @click="cancelView" v-show="!showFormButton">Cancel</button>
+        <!-- <button @click="cancelView" v-show="!showFormButton">Cancel</button> -->
       </table>
     </div>
 </template>
@@ -34,10 +34,9 @@ export default {
   },
   methods: {
     getBreweriesByBrewerId(){
-      this.showFormButton = false;
+      // this.showFormButton = false;
       api.getBreweriesByBrewerId(this.$store.state.user.userId)
         .then( (resp) => {
-          console.log(resp)
           this.breweries = resp.data;
         })
     },
@@ -53,6 +52,7 @@ export default {
     if (this.$store.state.user.role != "brewer") {
       this.$router.push("/");
     }
+    this.getBreweriesByBrewerId();
   },
 };
 </script>

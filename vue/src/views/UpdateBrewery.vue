@@ -2,20 +2,16 @@
     <div>
         <update-brewery-basic-info/>
         <update-hours />
-        <upload-images />   
         <span class="update-beer">  
             <add-beer />
             <update-beer />
             <display-brewery-beers />
         </span>
-<<<<<<< HEAD
-=======
         <display-events-one-brewery/>
         <new-event-form/>
         <delete-event/>
+        <upload-images />   
 
-    </div>
->>>>>>> 4f58b8b707bcb8313cb4ffb15189effcdbd8811a
     </div>
 </template>
 
