@@ -1,12 +1,7 @@
 <template>
-  <div id="login" class="beerflow">
-  <div>
-    <div>
     <form class="form-signin" @submit.prevent="login">
-      <div class="bubble">
-        <h1 class="header">Please Sign In</h1>
-        <div class="fields">
-      <label for="username" class="label">Username:</label>
+      <h1 class="header">Please Sign In</h1>
+      <label for="username">Username:</label>
       <input
         type="text"
         id="username"
@@ -16,8 +11,7 @@
         required
         autofocus
       />
-      <div class="fields-spacer"></div>
-      <label for="password" class="label">Password:</label>
+      <label for="password">Password:</label>
       <input
         type="password"
         id="password"
@@ -26,30 +20,19 @@
         v-model="user.password"
         required
       />
-        </div>
-        <button type="submit" class="submit-button">Sign in</button>
-        <div class="hyperlink">
-                <router-link :to="{ name: 'register' }" class="router-link">Need an account?</router-link>
-
-        </div>
+      <button type="submit">Sign in</button>
+      <div class="hyperlink">
+        <router-link :to="{ name: 'register' }" class="router-link">Need an account?</router-link>
         <div
-        class="badthing"
         role="alert"
         v-if="invalidCredentials"
-      >Invalid username and password!</div>
-      <div
-        class="goodthing"
+        >Invalid username and password!</div>
+        <div
         role="alert"
         v-if="this.$route.query.registration"
-      >Thank you for registering, please sign in.</div>
-
+        >Thank you for registering, please sign in.</div>
       </div>
-      
     </form>
-    </div>
-    </div>
-
-  </div>
 </template>
 
 <script>
@@ -99,13 +82,4 @@ export default {
 };
 </script>
 <style scoped>
-  .label{
-    display: block; 
-    font-size: 2em; 
-    margin-top: 0.67em; 
-    margin-bottom: 0.67em; 
-    margin-left: 0; 
-    margin-right: 0; 
-    font-weight: bold;
-  }
 </style>

@@ -1,14 +1,11 @@
 <template>
-<div class="beerflow">
-  <div class = "flex-box">
+  <div>
     <display-basic-brewery-info />
     <display-brewery-hours />
     <display-brewery-beers />
     <display-brewery-images />
     <display-events-one-brewery />
   </div>
-    </div>
-
 </template>
 
 <script>

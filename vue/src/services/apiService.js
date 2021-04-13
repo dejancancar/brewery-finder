@@ -17,14 +17,19 @@ export default {
     }
     return axios.get(path);
   },
-
-
   //Brewer functions - Breweries
   getBreweries() {
     return axios.get('/breweries');
   },
-  getBreweriesByBrewerId(userId) {
+  getBreweriesByBrewerId(brewerId) {
     let path = '/breweries';
+    if (brewerId) {
+      path += `?userId=${brewerId}&isBrewer=true`
+    }
+    return axios.get(path);
+  },
+  getBreweryLoggedInUser(userId, breweryId){
+    let path = `/breweries/${breweryId}`;
     if (userId) {
       path += `?userId=${userId}`
     }
@@ -90,6 +95,17 @@ export default {
   },
   deleteEvent(eventId) {
     return axios.delete(`/events/${eventId}`);
+  },
+
+  //Favorites
+  addFavoriteBrewery(breweryFavorite, userId){
+    return axios.post(`/users/${userId}/favorites`, breweryFavorite)
+  },
+  deleteFavoriteBrewery(userId, breweryId){
+    return axios.delete(`/users/${userId}/favorites/${breweryId}`)
   }
+  // checkIfFavorite(breweryId) {
+  //   return axios.get(`/users/${this.store.state.user.userId}/favorites?brewery=${breweryId}`)
+  // }
 
 }

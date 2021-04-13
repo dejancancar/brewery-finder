@@ -30,13 +30,17 @@ namespace Capstone.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Brewery>> GetListBreweries(int userId = 0)
+        public ActionResult<List<Brewery>> GetListBreweries(int userId = 0, bool isBrewer = false)
         {
             List<Brewery> breweries;
 
             if (userId == 0)
             {
                 breweries = breweryDAO.GetBreweries();
+            }
+            else if (isBrewer == false)
+            {
+                breweries = breweryDAO.GetBreweries(userId);
             }
             else
             {
@@ -55,9 +59,18 @@ namespace Capstone.Controllers
         }
 
         [HttpGet("{breweryid}")]
-        public ActionResult<Brewery> GetBrewery(int breweryId)
+        public ActionResult<Brewery> GetBrewery(int breweryId, int userId = 0)
         {
-            Brewery brewery = breweryDAO.GetBrewery(breweryId);
+            Brewery brewery = null;
+
+            if (userId == 0)
+            {
+                brewery = breweryDAO.GetBrewery(breweryId);
+            }
+            else
+            {
+                brewery = breweryDAO.GetBrewery(breweryId, userId);
+            }
 
             if (brewery != null)
             {

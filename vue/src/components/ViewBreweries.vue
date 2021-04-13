@@ -4,8 +4,8 @@
       <div class="container">
       <ul class="all-breweries">
           <li class="breweries" v-for="brewery in breweries" :key="brewery.breweryId">
-              <router-link :to="{ name: 'brewery', params: { breweryId: brewery.breweryId }}">{{brewery.breweryName}} </router-link>
-              {{brewery.streetAddress}} {{brewery.city}} {{brewery.zipCode}} {{brewery.phone}}</li>
+              <router-link class="link" :to="{ name: 'brewery', params: { breweryId: brewery.breweryId }}">{{brewery.breweryName}} </router-link>
+              <div>{{brewery.streetAddress}} {{brewery.city}} {{brewery.zipCode}} {{brewery.phone}}</div></li>
       </ul>
       </div>
   </div>
@@ -46,8 +46,8 @@ ul {
     justify-content: center;
 }   
 li {
-    background-color: #d3d3d3;
-    border: 1px solid #858585;
+    background-color: white;
+    border: 1px solid grey;
     border-radius: 5px;
     padding: 20px;
     list-style-type: none;
@@ -55,6 +55,13 @@ li {
     height: 250px;
     margin: 2%;
     align-content:space-around;
+}
+.link{
+      color: #d29f13;
+      text-decoration: none;
+}
+.link:hover{
+    text-decoration: underline;
 }
 @media(max-width: 1024px) {
     li{
