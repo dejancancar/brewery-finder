@@ -24,7 +24,7 @@
         <tr>
           <td>ABV:</td>
           <td>
-            <input type="text" v-model="newBeer.abv" />
+            <input type="number" step=".1" min="0" max="100" v-model="newBeer.abv" value="0.00"/>
           </td>
         </tr>
         <tr>

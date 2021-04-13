@@ -1,9 +1,9 @@
 <template>
   <div>
     <h2>{{ beer.beerName }}</h2>
-    <div>{{ beer.description }}</div>
-    <div>{{ beer.beerType }}</div>
-    <div>ABV: {{ beer.abv }}</div>
+    <div> Description: {{ beer.description }}</div>
+    <div>Type: {{ beer.beerType }}</div>
+    <div>ABV: {{ beer.abv }}%</div>
     <img class="image" :src="beer.imageUrl" alt="Beer Picture" />
     <beer-reviews/>
   </div>

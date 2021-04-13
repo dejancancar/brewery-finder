@@ -1,7 +1,7 @@
 <template>
   <div>
       <h2>Reviews</h2>
-      <button v-show="!toggleAddReview" @click="toggleAddReview = true" :disabled="checkUser()">Add Review</button>
+      <button v-show="$store.state.token" @click="toggleAddReview = true" >Add Review</button>
       <form v-show="toggleAddReview">
           <table>
               <tr>
@@ -34,8 +34,8 @@
       </form>
       <ul>
           <li v-for="review in reviews" :key="review.beerReviewId">
+              <div>User: {{review.username}} - rating: {{review.rating}}</div>
               <h3>{{review.reviewTitle}}</h3>
-              <div>username: {{review.username}} - rating: {{review.rating}}</div>
               <div>{{review.reviewBody}}</div>
           </li>
       </ul>
@@ -73,7 +73,7 @@ export default {
                 })
         },
         checkUser() {
-            if (this.$store.state.token === "") {
+            if (this.$store.state.token) {
                 return true;
             }
             else {
