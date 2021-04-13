@@ -82,6 +82,7 @@ export default {
       const imgUrl = response.secure_url; // store the url for the uploaded image
       this.brewery.imageUrl = imgUrl;
       this.$emit("image-upload", imgUrl); // fire custom event with image url in case someone cares
+      this.toggleUploadForm = true;
       this.uploadBreweryImageUrl();
     },
     uploadBreweryImageUrl() {

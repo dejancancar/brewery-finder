@@ -13,7 +13,9 @@
       {{ breweryInfo.phone }}
     </div>
     <div>
-      {{ breweryInfo.history }}
+      <span v-if="!readMore">{{ breweryInfo.history.slice(0,30)}}...<a v-show="!readMore" @click="readMore = true" href="#">(read more)</a></span>
+      <span v-if="readMore">{{breweryInfo.history}}</span>
+
     </div>
     </div>
   </div>
@@ -25,7 +27,9 @@ export default {
     data() {
         return {
             breweryInfo: {},
+            readMore: false,
         }
+        
     },
     methods: {
     getBreweryInfo() {
