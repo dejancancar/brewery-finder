@@ -1,6 +1,5 @@
 <template>
-    <div class="beerflow">
-    <div class="flex-box">
+    <div>
         <update-brewery-basic-info/>
         <update-hours />
         <upload-images />   
@@ -9,8 +8,6 @@
             <update-beer />
             <display-brewery-beers />
         </span>
-
-    </div>
     </div>
 </template>
 

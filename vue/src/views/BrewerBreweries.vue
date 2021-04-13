@@ -1,9 +1,6 @@
 <template>
-  <div >
-    <div class="beerflow">
     <div v-show="showFormButton"> 
       <button type="button" @click="getBreweriesByBrewerId" v-show="showFormButton" class="big-button">View Breweries</button>
-    </div>
       <table v-show="!showFormButton">
         <thead>
           <tr>
@@ -22,7 +19,6 @@
         <button @click="cancelView" v-show="!showFormButton">Cancel</button>
       </table>
     </div>
-  </div>
 </template>
 
 <script>

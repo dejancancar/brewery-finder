@@ -1,21 +1,15 @@
 <template>
-  <div class="bubble">
+  <div>
     <h1>Details</h1>
         <h3>UserId: {{ user.userId }}</h3>
         <h3>Username: {{ user.username }}</h3>
-        <div>
         <button type="button" @click="addUserIdToBrewerId" v-show="!toggleForm">
           Add New Brewery
         </button>
-        </div>
     <div v-show="toggleForm">
       <form class="newBrewery" v-on:submit.prevent="createBrewery">
-        <div>
-          <div>
             <label for="breweryName">Enter Brewery Name:</label>
             <input type="text" class="form-look" v-model="brewery.breweryName" />
-          </div>
-          <div>
             <button type="submit" class="btn btn-submit">Submit Brewery</button>
             <button
               type="button"
@@ -24,8 +18,7 @@
             >
               Cancel
             </button>
-          </div>
-        </div>
+            <!-- i dont like how cancel redirects us to home -todd -->
       </form>
     </div>
   </div>

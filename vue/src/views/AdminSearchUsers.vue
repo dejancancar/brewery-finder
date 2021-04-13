@@ -1,6 +1,5 @@
 <template>
-  <div class = "beerflow">
-    <div class = "bubble">
+    <div>
     <h1>Select a user to add brewery:</h1>
     <!--
       <div class="fields">
@@ -23,21 +22,20 @@
 
       --->
     
-      <div class="fields">
-        <label for="username" class="label">Username:</label>
-        <input
-        type="text"
-        id="username"
-        class="text-box"
-        placeholder=""
-        v-model="searchUsername"
-        required
-        autofocus
-      />
-        </div>
-          <button @click="getUsers">Search</button>
+    <div>
+      <label for="username">Username:</label>
+      <input
+      type="text"
+      id="username"
+      class="text-box"
+      placeholder=""
+      v-model="searchUsername"
+      required
+      autofocus
+    />
+    </div>
+    <button @click="getUsers">Search</button>
     <user-list v-show="toggleUsersList" :users="users"></user-list>
-  </div>
   </div>
 </template>
 
