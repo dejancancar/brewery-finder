@@ -1,5 +1,6 @@
 <template>
   <div>
+    <input type="checkbox">
     <h2>
       {{ breweryInfo.breweryName }}
     </h2>

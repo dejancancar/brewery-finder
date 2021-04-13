@@ -34,7 +34,12 @@
       </form>
       <ul>
           <li v-for="review in reviews" :key="review.beerReviewId">
-              <div>User: {{review.username}} - rating: {{review.rating}}</div>
+              <div>
+                  User: {{review.username}} - rating: 
+                  <span v-for="star in review.rating" :key="star">
+                     <img class="ratingImg" src="../images/star.png" alt="star">
+                  </span>
+                   </div>
               <h3>{{review.reviewTitle}}</h3>
               <div>{{review.reviewBody}}</div>
           </li>
@@ -89,5 +94,8 @@ export default {
 </script>
 
 <style>
-
+    .ratingImg {
+        
+        width: 2%;
+    }
 </style>
