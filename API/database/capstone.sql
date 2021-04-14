@@ -88,7 +88,7 @@ CREATE TABLE beers (
 	CONSTRAINT FK_beers_breweries FOREIGN KEY (brewery_id) REFERENCES breweries(brewery_id)
 --INSERT INTO beers (brewery_id, beer_name, description, image_url, abv, beer_type, is_active)
 --VALUES (1, 'Fleeb Juice', 'Fleeb Juice is a hazy, soft, and juicy IPA carefully
---crafted to exhibit notes of bright papaya, stone fruit, and mango.', 'https://res.cloudinary.com/breweryfinderte/image/upload/v1618328482/wm9iiblo2ml9esv65a1j.jpg',
+--crafted to exhibit notes of bright papaya, stone fruit, and mango.', '',
 --'FLJ','IPA','1')
 
 
@@ -107,6 +107,7 @@ CREATE TABLE reviews (
 	CONSTRAINT FK_reviews_users FOREIGN KEY (user_id) REFERENCES users(user_id),
 	CONSTRAINT CHK_rating CHECK (rating >= 1 AND rating <= 5)
 )
+--
 
 CREATE TABLE brewery_events (
 	brewery_event_id int IDENTITY (1, 1),
@@ -116,12 +117,6 @@ CREATE TABLE brewery_events (
 	date_and_time datetime NOT NULL,
 	CONSTRAINT PK_brewery_event_id PRIMARY KEY (brewery_event_id),
 	CONSTRAINT FK_events_breweries FOREIGN KEY (brewery_id) REFERENCES breweries(brewery_id)
-)
-
-CREATE TABLE breweries_users (
-brewery_id int NOT NULL,
-user_id int NOT NULL,
-CONSTRAINT PK_breweries_users_brewery_id_user_id PRIMARY KEY (brewery_id, user_id)
 )
 
 --populate default data
