@@ -60,8 +60,22 @@ export default {
 </script>
 
 <style scoped>
-  .image {
-    max-height: 15%;
-    max-width: 15%;
-  }
+ul{
+  display: flex;
+  justify-content: space-between;
+}
+li {
+  height: 40vh;
+  flex-grow: 1;
+  margin: 1%;
+}
+
+img {
+  max-height: 100%;
+  min-width: 100%;
+  object-fit: cover;
+  vertical-align: bottom;
+}
+
+  
 </style>

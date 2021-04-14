@@ -36,5 +36,15 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+ul{
+    display: flex;
+    justify-content: space-between;
+  }
+  li{
+    margin: 5%;
+  }
+  .image{
+    max-width: 100%;
+  }
 </style>

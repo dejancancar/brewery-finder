@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <display-basic-brewery-info />
-    <display-brewery-hours />
-    <display-brewery-beers />
-    <display-brewery-images />
-    <display-events-one-brewery />
-  </div>
+<div class="container">
+    <display-basic-brewery-info class ="info"/>
+    <display-brewery-hours class ="hours"/>
+    <display-brewery-beers class="beers"/>
+    <display-events-one-brewery class="events"/>
+    <display-brewery-images class="images"/>
+</div>
 </template>
 
 <script>
@@ -24,6 +24,32 @@ export default {
   },
 };
 </script>
-
-<style>
+<style scoped>
+.info{
+  grid-area: info;
+}
+.hours{
+  grid-area: hours;
+}
+.events{
+  grid-area: events;
+}
+.beers{
+  grid-area: beers;
+}
+.images{
+  grid-area: images;
+}
+.container{
+  display: grid;
+  grid-template-areas: 
+  "info hours"
+  "beers beers"
+  "events events"
+  "images images"
+  ;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  height: 90vh;
+}
 </style>
