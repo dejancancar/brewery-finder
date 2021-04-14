@@ -2,13 +2,11 @@
   <div>
     <ul>
       <li v-for="beer in activeBeer" :key="beer.beerId">
-        <router-link :to="{name: 'beer', params: {beerId: beer.beerId }}">
-        <h2>{{ beer.beerName }}</h2>
-        <!-- <div>Description: {{beer.description}}</div>
-        <div>Type: {{ beer.beerType }}</div>
-        <div>ABV: {{ beer.abv }}%</div> -->
+        <router-link id="beer-row" :to="{name: 'beer', params: {beerId: beer.beerId }}">
+
         <div v-if="showOnTapBrewer">Currently on tap: {{beer.isActive ? "Yes" : "No"}}</div>
         <img class="image" :src="beer.imageUrl" alt="Beer Picture" />
+        <h2 id="beer-name">{{ beer.beerName }}</h2>
         </router-link>
       </li>
       
@@ -60,8 +58,44 @@ export default {
 </script>
 
 <style scoped>
-  .image {
-    max-height: 15%;
-    max-width: 15%;
-  }
+ul{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+li {
+  height: 40vh;
+  flex-grow: 1;
+  margin: 1%;
+  list-style-type: none;
+}
+
+img {
+  max-height: 100%;
+  min-width: 100%;
+  object-fit: cover;
+  vertical-align: bottom;
+  
+}
+#beer-name{
+  display: flex;
+  justify-content: center;
+  margin-top: 1%;
+
+
+
+}
+#beer-row{
+  text-decoration: none;
+  font-size: 75%;
+  color: #e0af1f;
+  font-variant: small-caps;  
+  
+}
+
+#beer-row:hover{
+  text-decoration: underline;
+}
+
+  
 </style>

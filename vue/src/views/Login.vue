@@ -1,7 +1,7 @@
 <template>
     <form class="form-signin" @submit.prevent="login">
       <h1 class="header">Please Sign In</h1>
-      <label for="username">Username:</label>
+      <label for="username">Username</label>
       <input
         type="text"
         id="username"
@@ -11,7 +11,7 @@
         required
         autofocus
       />
-      <label for="password">Password:</label>
+      <label for="password">Password</label>
       <input
         type="password"
         id="password"
@@ -22,7 +22,7 @@
       />
       <button type="submit">Sign in</button>
       <div class="hyperlink">
-        <router-link :to="{ name: 'register' }" class="router-link">Need an account?</router-link>
+        <router-link :to="{ name: 'register' }" class="router-link">>> Need an account?</router-link>
         <div
         role="alert"
         v-if="invalidCredentials"
@@ -78,8 +78,59 @@ export default {
           }
         });
     }
+  },
+  created(){
+    document.getElementById("username").focus()
   }
 };
 </script>
 <style scoped>
+
+.form-signin{
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  justify-content: center;
+  margin: auto;
+  margin-top: 100px;
+}
+label{
+  display:inline-block;
+  max-width: 100%;
+  font-weight: bold;
+    margin-bottom: 2px;
+    font-size: 13px;
+  
+}
+input{
+  display: block;
+    width: 100%;
+    height: 30px;
+    padding: 10px 13px;
+    font-size: 14px;
+    color: #000000;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #dfd7ca;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+.router-link{
+  font-size: 14px;
+  color: #e0af1f;
+  text-decoration: none;
+}
+.router-link:hover{
+  text-decoration: underline;
+}
+button{
+  margin: 17px 0px;
+  max-width: 25%;
+}
+h1 {
+  margin-bottom: 30px;
+  font-weight: bold;
+  font-variant: small-caps;
+
+}
 </style>

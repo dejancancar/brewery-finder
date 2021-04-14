@@ -1,13 +1,8 @@
 <template>
-  <div>
-    <div v-if="showFavoritesButton">
-      <button @click="addToFavorite" v-show="!breweryInfo.isFavorite">
-        Add To Favorites
-      </button>
-      <button @click="deleteFavorite" v-show="breweryInfo.isFavorite">Remove From Favorites</button>
-    </div>
+  <div id="brewery-info-main">
 
-    <h2>
+
+    <h2 class="brewery-name">
       {{ breweryInfo.breweryName }}
     </h2>
     <div class="brewery-basic-info">
@@ -30,6 +25,12 @@
         > -->
         <span v-if="readMore">{{ breweryInfo.history }}</span>
       </div>
+    </div>
+        <div v-if="showFavoritesButton">
+        <button @click="addToFavorite" v-show="!breweryInfo.isFavorite">
+        Add To Favorites
+        </button>
+        <button @click="deleteFavorite" v-show="breweryInfo.isFavorite">Remove Favorite</button>
     </div>
   </div>
 </template>
@@ -88,10 +89,28 @@ export default {
     // },
   },
   created() {
-    this.getBreweryInfo();
+     this.getBreweryInfo();
   },
 };
 </script>
 
-<style>
+<style scoped>
+button{
+  max-height: 4em;
+  max-width: 10em;
+  font-size: .7em;
+  margin-left: 0px;
+}
+#brewery-info-main{
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+}
+.brewery-name{
+  font-weight: bold;
+  font-size: 30px;
+  text-decoration: underline;
+  font-variant: small-caps;
+}
+
 </style>

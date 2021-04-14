@@ -1,11 +1,12 @@
 <template>
-  <div>
-    <h2>Upcoming Events!</h2>
+  <div id="container">
+     <h2>Upcoming Events!</h2>
     <ul>
+
       <li v-for="event in events" :key="event.breweryEventId">
-        <h2>{{ event.title }}</h2>
-        <div>{{ formatDate(event.dateAndTime) }} </div>
-        <div>{{event.description}}</div>
+        <h3 class="event">{{ event.title }}</h3>
+        <div class="event" id="date-time">{{ formatDate(event.dateAndTime) }} </div>
+        <div class="event" id="description">{{event.description}}</div>
       </li>
     </ul>
   </div>
@@ -36,5 +37,46 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+ul{
+    display: flex;
+    justify-content: flex-start;
+    list-style-type: none;
+    margin: 0px;
+  }
+  li{
+    margin: 15px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+
+  }
+  .image{
+    max-width: 100%;
+  }
+  h2{
+    margin-left: 2%;
+    margin-top: 1%;
+    font-size: 40px;
+    text-decoration: underline;
+    font-weight: bold;
+    font-variant: small-caps;
+    
+  }
+  h3{
+    margin: 0px;
+    font-size: 30px;
+
+  }
+  .event{
+    padding: 0px 30px;
+  }
+  #description{
+    margin-top: 10px;
+  }
+  #container{
+    margin-top: 2%;
+    background-color: rgba(221, 221, 221, 0.637);
+  }
+
 </style>

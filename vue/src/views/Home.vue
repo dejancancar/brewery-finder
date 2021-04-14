@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <!-- <p>You must be authenticated to see this</p>
     <p>User Name: {{currentUser.username}}</p>
     <p>User Id: {{currentUser.userId}}</p>
