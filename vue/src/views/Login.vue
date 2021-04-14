@@ -78,6 +78,9 @@ export default {
           }
         });
     }
+  },
+  created(){
+    document.getElementById("username").focus()
   }
 };
 </script>

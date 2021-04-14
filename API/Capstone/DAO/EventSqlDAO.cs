@@ -15,6 +15,12 @@ namespace Capstone.DAO
 	                                            JOIN breweries b ON b.brewery_id = be.brewery_id
 	                                            WHERE date_and_time >= CURRENT_TIMESTAMP
 	                                            ORDER BY date_and_time ASC";
+        private const string SQL_GET_EVENTS_AUTHENTICATED = @"SELECT TOP 15 be.*, b.brewery_name
+	                                                            FROM brewery_events be
+	                                                            JOIN breweries b ON b.brewery_id = be.brewery_id
+	                                                            JOIN breweries_users bu ON bu.brewery_id = b.brewery_id
+	                                                            WHERE date_and_time >= CURRENT_TIMESTAMP AND bu.user_id = @userId
+	                                                            ORDER BY date_and_time ASC";
         private const string SQL_GET_EVENTS_BY_BREWERY = @"SELECT TOP 15 be.*, b.brewery_name
                                                 FROM brewery_events be
                                                 JOIN breweries b ON b.brewery_id = be.brewery_id
@@ -32,6 +38,36 @@ namespace Capstone.DAO
         {
             this.connectionString = dbConnectionString;
         }
+        public List<BreweryEvent> GetEvents(int userId)
+        {
+            List<BreweryEvent> events = new List<BreweryEvent>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(SQL_GET_EVENTS_AUTHENTICATED, conn);
+                    cmd.Parameters.AddWithValue("@userId", userId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        BreweryEvent be = RowToObject(reader);
+                        events.Add(be);
+                    }
+
+                    return events;
+                }
+            }
+            catch (SqlException ex)
+            {
+
+                throw;
+            }
+        }
+
 
         public List<BreweryEvent> GetEvents()
         {

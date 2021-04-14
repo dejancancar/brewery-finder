@@ -1,15 +1,15 @@
 <template>
   <div>
-    <button v-show="!toggleUpdateBeer" @click="getBeerList">
-      Update Beer
-    </button>
-    <select v-show="toggleUpdateBeer" v-model="updatedBeer">
-      <option v-for="beer in currentBeers" :key="beer.beerId" :value="beer" >
-        {{beer.beerName}}
-      </option>
-    </select>
-
-    <form v-show="toggleUpdateBeer" >
+    <button v-show="!toggleUpdateBeer" @click="getBeerList">Update Beer</button>
+    <span v-show="toggleUpdateBeer"
+      >Select to Update:
+      <select v-model="updatedBeer">
+        <option v-for="beer in currentBeers" :key="beer.beerId" :value="beer">
+          {{ beer.beerName }}
+        </option>
+      </select>
+    </span>
+    <form v-show="toggleUpdateBeer">
       <table>
         <tr>
           <td>Beer Name:</td>
@@ -30,7 +30,14 @@
         <tr>
           <td>ABV:</td>
           <td>
-            <input type="number" step=".1" min="0" max="100" v-model="updatedBeer.abv" value="0.00"/>
+            <input
+              type="number"
+              step=".1"
+              min="0"
+              max="100"
+              v-model="updatedBeer.abv"
+              value="0.00"
+            />
           </td>
         </tr>
         <tr>
@@ -84,7 +91,6 @@ export default {
       },
       toggleUpdateBeer: false,
       currentBeers: [],
-      
     };
   },
   methods: {
@@ -94,15 +100,12 @@ export default {
       });
     },
     getBeerList() {
-        this.toggleUpdateBeer = true;
+      this.toggleUpdateBeer = true;
       api.getBeers(this.$route.params.breweryId).then((resp) => {
         this.currentBeers = resp.data;
       });
     },
-    created() {
-
-    },
-    
+    created() {},
   },
 };
 </script>

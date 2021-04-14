@@ -20,13 +20,17 @@ namespace Capstone.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<BreweryEvent>> GetEvents(bool byBrewery = false, int breweryId = 0)
+        public ActionResult<List<BreweryEvent>> GetEvents(bool byBrewery = false, int breweryId = 0, bool byFavorites = false, int userId = 0)
         {
             List<BreweryEvent> events = null;
 
-            if (byBrewery == false)
+            if (byBrewery == false && byFavorites == false)
             {
                 events = eventDAO.GetEvents();
+            }
+            else if (byBrewery == false && byFavorites == true)
+            {
+                events = eventDAO.GetEvents(userId);
             }
             else
             {

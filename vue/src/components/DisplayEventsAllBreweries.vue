@@ -22,9 +22,17 @@ export default {
   },
   methods: {
     getEvents() {
-      api.getEvents().then((resp) => {
+      if (this.$store.state.token === "") {
+        api.getEvents().then((resp) => {
         this.events = resp.data;
       });
+      } else {
+        api.getEventsLoggedInUser(this.$store.state.user.userId)
+          .then((resp) => {
+            this.events = resp.data;
+          })
+      }
+      
     },
     formatDate(date) {
       return moment(String(date)).format("MMMM Do YYYY, h:mm a");
