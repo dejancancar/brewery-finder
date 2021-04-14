@@ -1,7 +1,7 @@
 <template>
   <div>
-    <update-brewery-basic-info />
-    <update-hours />
+    <update-brewery-basic-info class="brewery-info"/>
+    <update-hours class="brewery-hours" />
 
     <span class="update-beer">
       <add-beer />
@@ -45,5 +45,6 @@ export default {
 </script>
 
 <style scoped>
+
 
 </style>

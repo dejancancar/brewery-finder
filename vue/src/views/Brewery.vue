@@ -1,7 +1,10 @@
 <template>
 <div class="container">
-    <display-basic-brewery-info class ="info"/>
-    <display-brewery-hours class ="hours"/>
+  <div class ="info-hours">
+     <display-basic-brewery-info />
+    <display-brewery-hours class="hours" />
+  </div>
+
     <display-brewery-beers class="beers"/>
     <display-events-one-brewery class="events"/>
     <display-brewery-images class="images"/>
@@ -42,8 +45,9 @@ export default {
 }
 .container{
   display: grid;
+
   grid-template-areas: 
-  "info hours"
+  "info-hours ."
   "beers beers"
   "events events"
   "images images"
@@ -51,5 +55,22 @@ export default {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   height: 90vh;
+}
+.info-hours{
+  display: flex;
+  justify-content: space-around;
+}
+.hours{
+  margin-top: 1%;
+}
+.beers{
+  display: flex;
+  justify-content: center;
+  /* margin-left: 15%; */
+   flex-wrap: wrap;
+   margin:auto;
+  
+
+
 }
 </style>

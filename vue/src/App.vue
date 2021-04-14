@@ -2,7 +2,9 @@
   <div class="app">
     <div class="container">
       <div id="logo-and-nav-links">
+        <router-link :to="{ name: 'home'}">
         <img src="./images/logo.png" alt="Cleveland on Tap" id="logo" />
+        </router-link>
         <div class="nav-links">
           <router-link class="navlink" v-bind:to="{ name: 'home' }"
             >Home</router-link
@@ -34,9 +36,7 @@
 </template>
 
 <style scoped>
-/* *{
-  box-sizing: border-box;
-} */
+
 h1 {
   font-size: 3rem;
   text-align: center;
@@ -122,6 +122,10 @@ button:hover {
 }
 .app{
   margin-top: 73px;
+}
+*{
+  /* font-size: 16px; */
+  line-height: 1.7em;
 }
 
 </style>
