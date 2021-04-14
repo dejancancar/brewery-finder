@@ -61,6 +61,7 @@ export default {
 ul{
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 li {
   height: 40vh;
