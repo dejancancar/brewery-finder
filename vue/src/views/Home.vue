@@ -35,6 +35,8 @@ export default {
 #events{
   grid-area: events;
   display: flex;
+  background-color: rgba(221, 221, 221, 0.678);
+  justify-content: center;
 }
 div{
   display: grid;

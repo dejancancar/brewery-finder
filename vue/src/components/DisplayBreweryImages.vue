@@ -5,7 +5,10 @@
       v-for="image in breweryImages"
       :key="image.imageId"
     >
-      <img class="image" :src="image.imageUrl" />
+    <ul>
+      <li> <img class="image" :src="image.imageUrl" /> </li>
+    </ul>
+     
     </div>
   </div>
 </template>
@@ -32,15 +35,17 @@ export default {
 </script>
 
 <style scoped>
-/*
-.brewery-images{
+
+ul {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  flex: 1 0;
 }
+
 li {
-  height: 40vh;
+  height: 35vh;
   flex-grow: 1;
-  margin: 1%;
+  list-style-type: none;
 }
 
 img {
@@ -48,5 +53,5 @@ img {
   min-width: 100%;
   object-fit: cover;
   vertical-align: bottom;
-}*/
+}
 </style> 

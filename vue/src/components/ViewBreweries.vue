@@ -84,13 +84,20 @@ li {
   height: 350px;
   margin: 2%;
   align-content: space-around;
+
 }
 img {
   width: 100%;
   height: 100%;
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  border-radius: 5px 5px 0px 0px;
+  
 }
 img:hover{
     opacity: 50%;
+    
 }
 p {
   text-decoration: underline;
@@ -102,16 +109,18 @@ span{
     margin-left: 5px;
     color: black;
 }
+
 #address-text {
   border: 1px solid grey;
   height: 80%;
+  border-radius: 5px 5px 0px 0px;
 }
 .link {
   color: #d29f13;
   text-decoration: none;
 }
 .link:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 h1{
     display: flex;

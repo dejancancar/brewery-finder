@@ -12,6 +12,7 @@
     <new-event-form />
     <delete-event />
     <upload-images />
+    <display-brewery-images />
   </div>
 </template>
 
@@ -25,6 +26,7 @@ import DisplayBreweryBeers from "../components/DisplayBreweryBeers.vue";
 import DisplayEventsOneBrewery from "../components/DisplayEventsOneBrewery.vue";
 import NewEventForm from "../components/NewEventForm.vue";
 import DeleteEvent from "../components/DeleteEvent.vue";
+import DisplayBreweryImages from "../components/DisplayBreweryImages.vue"
 
 export default {
   data() {
@@ -40,6 +42,7 @@ export default {
     DisplayEventsOneBrewery,
     NewEventForm,
     DeleteEvent,
+    DisplayBreweryImages,
   },
 };
 </script>
