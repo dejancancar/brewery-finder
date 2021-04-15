@@ -120,6 +120,11 @@ CREATE TABLE brewery_events (
 	CONSTRAINT FK_events_breweries FOREIGN KEY (brewery_id) REFERENCES breweries(brewery_id)
 )
 
+CREATE TABLE breweries_users (
+brewery_id int NOT NULL,
+user_id int NOT NULL,
+CONSTRAINT PK_breweries_users_brewery_id_user_id PRIMARY KEY (brewery_id, user_id)
+)
 --populate default data
 
 --user data
@@ -154,7 +159,7 @@ VALUES ('7','Masthead Brewing Co.', 'Expansive brewery & taproom pouring America
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
 VALUES ('8','Southern Tier Brewery', 'Exploration is the line from local beer maker to World-Class Brewer.', '811 Prospect Ave E,', '440-484-4045', 'Cleveland', '44115', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
-VALUES ('9','Forest City Brewery', 'Great atmosphere. Off the beaten path.Feels like a hidden treasure', ' 2135 Columbus Rd, Cleveland', '2162289116', 'Cleveland', '44113', 'true');
+VALUES ('9','Forest City Brewery', 'Great atmosphere. Off the beaten path.Feels like a hidden treasure', ' 2135 Columbus Rd', '216-228-9116', 'Cleveland', '44113', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
 VALUES ('10','Platform Beer Co.', 'Opened in 2014, this 100+ seat tasting room and patio offers 20+ house beers and food options. ', '4125 Lorain Ave', '216-202-1386', 'Cleveland', '44113', 'true');
 INSERT INTO breweries (user_id, brewery_name, history, street_address, phone, city, zip_code, is_active)
@@ -366,19 +371,19 @@ VALUES (12, '7', '0', '0', '0', '0', '0', '0', 1);
 
 --Demo Great Lakes Hours
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (13, '1', '0', '0', '0', '0', '0', '0','0');
+VALUES (13, '1', '0', '0', '0', '0', '0', '0',1);
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (13, '2', '0', '0', '0', '0', '0', '0','0');
+VALUES (13, '2', '0', '0', '0', '0', '0', '0',1);
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (13, '3', '0', '0', '0', '0', '0', '0','0');
+VALUES (13, '3', '0', '0', '0', '0', '0', '0',1);
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (13, '4', '4', '00', 'pm', '10', '00', 'pm','1');
+VALUES (13, '4', '4', '00', 'pm', '10', '00', 'pm',0);
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (13, '5', '12', '00', 'pm', '10', '00', 'pm','1');
+VALUES (13, '5', '12', '00', 'pm', '10', '00', 'pm',0);
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (13, '6', '12', '00', 'pm', '10', '00', 'pm','1');
+VALUES (13, '6', '12', '00', 'pm', '10', '00', 'pm',0);
 INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
-VALUES (13, '7', '12', '00', 'pm', '6', '00', 'pm','1');
+VALUES (13, '7', '12', '00', 'pm', '6', '00', 'pm',0);
 
 
 --brewery images data

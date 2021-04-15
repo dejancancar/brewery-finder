@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h2>Upcoming Events!</h2>
-    <ul>
+    
+    <ul><h2>Upcoming Events!</h2>
       <li v-for="event in events" :key="event.breweryEventId">
-        <h2>{{ event.breweryName }}-{{ event.title }}</h2>
+        <h3>{{ event.breweryName }}-{{ event.title }}</h3>
         <div>{{ formatDate(event.dateAndTime) }}</div>
         <div>{{ event.description }}</div>
       </li>
@@ -44,5 +44,14 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+li{
+  list-style-type: none;
+  margin-top: 50px;
+}
+h2{
+  font-size: 30px;
+  display:flex;
+  justify-content: center;
+}
 </style>

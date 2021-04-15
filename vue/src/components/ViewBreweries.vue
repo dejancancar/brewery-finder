@@ -1,22 +1,28 @@
 <template>
   <div>
-    <h1>Breweries</h1>
-    <div class="container">
+
+    <div class="container">    <h1>Breweries</h1>
       <ul class="all-breweries">
         <li
           class="breweries"
           v-for="brewery in breweries"
           :key="brewery.breweryId"
-           
         >
-          <router-link
-            class="link"
-            :to="{ name: 'brewery', params: { breweryId: brewery.breweryId } }"
-            ><img :src="brewery.defaultImageUrl" /> {{ brewery.breweryName }}
-          </router-link>
-          <div>
-            {{ brewery.streetAddress }} {{ brewery.city }}
-            {{ brewery.zipCode }} {{ brewery.phone }}
+          <div id="address-text">
+            <router-link
+              class="link"
+              :to="{
+                name: 'brewery',
+                params: { breweryId: brewery.breweryId },
+              }"
+              ><img :src="brewery.defaultImageUrl" />
+              <p>{{ brewery.breweryName }}</p
+                >
+                <span>{{ brewery.streetAddress }} {{ brewery.city }}
+                {{ brewery.zipCode }} {{ brewery.phone }}</span>
+              
+            </router-link>
+            <div></div>
           </div>
         </li>
       </ul>
@@ -42,7 +48,7 @@ export default {
       } else {
         api
           .getBreweriesLoggedInUser(
-            this.$store.state.user.userId,
+            this.$store.state.user.userId
             // this.$route.params.breweryId
           )
           .then((resp) => {
@@ -54,7 +60,6 @@ export default {
   },
   created() {
     this.getBreweries();
-
   },
 };
 </script>
@@ -76,17 +81,30 @@ li {
   border-radius: 5px;
   list-style-type: none;
   width: 390px;
-  height: 250px;
+  height: 350px;
   margin: 2%;
   align-content: space-around;
-
 }
-img{
-    width: 100%;
-    height: 100%;
+img {
+  width: 100%;
+  height: 100%;
 }
-#link{
-    
+img:hover{
+    opacity: 50%;
+}
+p {
+  text-decoration: underline;
+  margin: 0px 0px 0px 5px;
+  font-size: 20px;
+  
+}
+span{
+    margin-left: 5px;
+    color: black;
+}
+#address-text {
+  border: 1px solid grey;
+  height: 80%;
 }
 .link {
   color: #d29f13;
@@ -94,6 +112,11 @@ img{
 }
 .link:hover {
   text-decoration: underline;
+}
+h1{
+    display: flex;
+    justify-content: center;
+    margin: 40px 0px 15px 0px;
 }
 @media (max-width: 1024px) {
   li {
