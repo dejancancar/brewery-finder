@@ -67,4 +67,7 @@ export default {
 li{
   list-style-type: none;
 }
+ul{
+  margin-top: 30px;
+}
 </style>

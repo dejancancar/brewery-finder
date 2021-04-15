@@ -35,13 +35,14 @@
       <ul>
           <li v-for="review in reviews" :key="review.beerReviewId">
               <div>
-                  User: {{review.username}} - rating: 
-                  <span v-for="star in review.rating" :key="star">
+                  <img id="user-icon" src="../images/user-icon.png" /> <span id="username">{{review.username}}</span> 
+                  <span id="star-icon" v-for="star in review.rating" :key="star">
                      <img class="ratingImg" src="../images/star.png" alt="star">
                   </span>
                    </div>
+                   <div id="date-of-review">{{formatDate(review.dateOfReview)}}</div>
               <h3>{{review.reviewTitle}}</h3>
-              <div>{{review.reviewBody}}</div>
+              <div id="review-body">{{review.reviewBody}}</div>
           </li>
       </ul>
   </div>
@@ -49,6 +50,7 @@
 
 <script>
 import api from "../services/apiService.js";
+import moment from "moment"
 
 export default {
     data() {
@@ -84,18 +86,59 @@ export default {
             else {
                 return false;
             }
-        }
+        },
+       formatDate(date) {
+      return moment(String(date)).format("MMMM Do YYYY");
+    },
     },
     created() {
         this.getReviews();
     }
 
 }
+
 </script>
 
 <style>
     .ratingImg {
         
         width: 2%;
+    }
+    li{
+        list-style: none;
+    }
+    #user-icon{
+        
+        max-height: 1.8%;
+        max-width: 1.8%;
+            margin-right: .8%;
+            margin-bottom: 0px;
+
+    }
+    #username{
+
+        margin-right: 2%;
+        font-size: 30px;
+        font-weight: bold;
+        
+
+    }
+    #review-body{
+        margin-bottom: 3%;
+        margin-top: 3px;
+        font-size: 17px;
+        
+    }
+    h3{
+        margin:auto;
+        font-size: 20px;
+    }
+    h2{
+        margin:auto;
+
+    }
+    #date-of-review{
+        font-size: 16px;
+        font-style: italic;
     }
 </style>

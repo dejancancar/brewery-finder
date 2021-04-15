@@ -1,7 +1,7 @@
 <template>
-<div class="container">
-  <div class ="info-hours">
-     <display-basic-brewery-info />
+<div class="container" >
+  <div class ="info-hours">    
+     <display-basic-brewery-info  />
     <display-brewery-hours class="hours" />
   </div>
 
@@ -18,6 +18,7 @@ import DisplayBreweryHours from "../components/DisplayBreweryHours.vue";
 import DisplayBreweryBeers from "../components/DisplayBreweryBeers.vue";
 import DisplayEventsOneBrewery from "../components/DisplayEventsOneBrewery.vue";
 export default {
+
   components: {
     DisplayBasicBreweryInfo,
     DisplayBreweryHours,
@@ -65,7 +66,7 @@ export default {
 }
 .beers{
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   /* margin-left: 15%; */
    flex-wrap: wrap;
    margin:auto;
@@ -73,4 +74,5 @@ export default {
 
 
 }
+
 </style>
