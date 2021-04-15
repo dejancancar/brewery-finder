@@ -1072,6 +1072,8 @@ INSERT INTO reviews (beer_id, user_id, rating, review_title, review_body, date_o
 VALUES ('33', '5', '2', 'firesidewithphil from Massachusetts ', 'I think spiced beers suck but this is very very good and I will attempt to get more,
 I am in Massachusetts and was lucky to get this as a TYB in a trade.', '2020-11-20');
 
+--Great Lakes Events For Demo
+
 INSERT INTO brewery_events( brewery_id, title, description, date_and_time)
 VALUES ('13', 'Christmas In July','The holidays are right around the corner and what better to celebrate
 than with the chance to try some of the best Christmas Ales.','2021-07-03');
