@@ -18,8 +18,7 @@ namespace Capstone.DAO
                                                                     JOIN(SELECT MIN(image_id) as min_id, brewery_id
                                                                      FROM brewery_images
                                                                      GROUP BY brewery_id) i ON i.brewery_id = b.brewery_id
-                                                                     JOIN brewery_images bi ON bi.image_id = i.min_id
-                                                                     WHERE bu.user_id IS NULL OR bu.user_id = @userId";
+                                                                     JOIN brewery_images bi ON bi.image_id = i.min_id";
         private const string SQL_GET_BREWERIES = @"SELECT b.*, bi.image_url
                                                     FROM breweries b
                                                     JOIN(SELECT MIN(image_id) as min_id, brewery_id
@@ -29,13 +28,13 @@ namespace Capstone.DAO
 
         private const string SQL_GET_BREWERY = "SELECT * FROM breweries WHERE brewery_id = @breweryId;";
         private const string SQL_GET_BREWERY_AUTHENTICATED = @"SELECT b.*
-	                                                            FROM breweries b
-	                                                            LEFT OUTER JOIN breweries_users bu ON bu.brewery_id = b.brewery_id
-	                                                            WHERE b.brewery_id = @breweryId;
-                                                                SELECT b.user_id as favorite
-	                                                            FROM breweries b
-	                                                            JOIN breweries_users bu ON bu.user_id = b.user_id
-	                                                            WHERE b.brewery_id = @breweryId;";
+	                                                             FROM breweries b
+	                                                             LEFT OUTER JOIN breweries_users bu ON bu.brewery_id = b.brewery_id
+	                                                             WHERE b.brewery_id = @breweryId;
+	                                                             SELECT bu.user_id as favorite
+	                                                             FROM breweries b
+	                                                             JOIN breweries_users bu ON bu.brewery_id = b.brewery_id
+	                                                             WHERE b.brewery_id = @breweryId AND bu.user_id = @userId";
         private const string SQL_GET_BREWERIES_BY_BREWER = @"SELECT b.*, bi.image_url
 	                                                        FROM breweries b
 	                                                        JOIN (SELECT MIN(image_id) as min_id, brewery_id
@@ -120,7 +119,11 @@ namespace Capstone.DAO
                     {
                         Brewery createdBrewery = RowToObject(reader);
                         createdBrewery.DefaultImageUrl = Convert.ToString(reader["image_url"]);
-                        if (!DBNull.Value.Equals(reader["favorite"]))
+                        if (DBNull.Value.Equals(reader["favorite"]))
+                        {
+                            createdBrewery.IsFavorite = false;
+                        }
+                        else if (Convert.ToInt32(reader["favorite"]) == userId)
                         {
                             createdBrewery.IsFavorite = true;
                         }

@@ -1,80 +1,107 @@
 <template>
   <div>
-      <h1>Breweries</h1>
-      <div class="container">
+    <h1>Breweries</h1>
+    <div class="container">
       <ul class="all-breweries">
-          <li class="breweries" v-for="brewery in breweries" :key="brewery.breweryId">
-              <router-link class="link" :to="{ name: 'brewery', params: { breweryId: brewery.breweryId }}">{{brewery.breweryName}} </router-link>
-              <div>{{brewery.streetAddress}} {{brewery.city}} {{brewery.zipCode}} {{brewery.phone}}</div></li>
+        <li
+          class="breweries"
+          v-for="brewery in breweries"
+          :key="brewery.breweryId"
+           
+        >
+          <router-link
+            class="link"
+            :to="{ name: 'brewery', params: { breweryId: brewery.breweryId } }"
+            ><img :src="brewery.defaultImageUrl" /> {{ brewery.breweryName }}
+          </router-link>
+          <div>
+            {{ brewery.streetAddress }} {{ brewery.city }}
+            {{ brewery.zipCode }} {{ brewery.phone }}
+          </div>
+        </li>
       </ul>
-      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import api from "../services/apiService.js"
+import api from "../services/apiService.js";
 export default {
-    name: "viewBreweries",
-    data(){
-        return{
-            breweries:[],
-        }
+  name: "viewBreweries",
+  data() {
+    return {
+      breweries: [],
+    };
+  },
+  methods: {
+    getBreweries() {
+      if (this.$store.state.token === "") {
+        api.getBreweries().then((resp) => {
+          this.breweries = resp.data;
+        });
+      } else {
+        api
+          .getBreweriesLoggedInUser(
+            this.$store.state.user.userId,
+            // this.$route.params.breweryId
+          )
+          .then((resp) => {
+            this.breweries = resp.data;
+            // this.showFavoritesButton = true;
+          });
+      }
     },
-    methods:{
-        getBreweries(){
-            api.getBreweries()
-                .then( (resp) => {
-                    this.breweries = resp.data;
-                })
-        },
-    },
-    created(){
-        this.getBreweries();
-    }
-}
+  },
+  created() {
+    this.getBreweries();
+
+  },
+};
 </script>
 
 <style scoped>
-.container{
-    display: grid;
-    align-items: center;
+.container {
+  display: grid;
+  align-items: center;
 }
 ul {
-    display: flex;
-    flex-wrap:wrap;
-    flex-direction: row;
-    justify-content: center;
-}   
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
 li {
-    background-color: white;
-    border: 1px solid grey;
-    border-radius: 5px;
-    padding: 20px;
-    list-style-type: none;
-    width: 390px;
-    height: 250px;
-    margin: 2%;
-    align-content:space-around;
+  background-color: white;
+  border: 1px solid grey;
+  border-radius: 5px;
+  list-style-type: none;
+  width: 390px;
+  height: 250px;
+  margin: 2%;
+  align-content: space-around;
 }
-.link{
-      color: #d29f13;
-      text-decoration: none;
+img{
+    width: 100%;
+    height: 100%;
 }
-.link:hover{
-    text-decoration: underline;
+.link {
+  color: #d29f13;
+  text-decoration: none;
 }
-@media(max-width: 1024px) {
-    li{
-        width: 340px;
-        height: 200px;
-    }
+.link:hover {
+  text-decoration: underline;
+}
+@media (max-width: 1024px) {
+  li {
+    width: 340px;
+    height: 200px;
+  }
 }
 
-@media(max-width: 425px) {
-    li{
-        width: 340px;
-        height: 200px;
-    }
-
+@media (max-width: 425px) {
+  li {
+    width: 340px;
+    height: 200px;
+  }
 }
 </style>

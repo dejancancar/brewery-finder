@@ -47,21 +47,26 @@ export default {
   },
   methods: {
     getBreweryInfo() {
-      if (this.$store.state.token === "") {
-        api.getBreweryById(this.$route.params.breweryId).then((resp) => {
+      // if (this.$store.state.token === "") {
+        api.getBreweryWithLoggedInUser(this.$store.state.user.userId, this.$route.params.breweryId).then((resp) => {
           this.breweryInfo = resp.data;
+          // this.showFavoritesButton = false;
         });
-      } else {
-        api
-          .getBreweryLoggedInUser(
-            this.$store.state.user.userId,
-            this.$route.params.breweryId
-          )
-          .then((resp) => {
-            this.breweryInfo = resp.data;
-            this.showFavoritesButton = true;
-          });
-      }
+      // } else {
+      //   api
+      //     .getBreweryLoggedInUser(
+      //       this.$store.state.user.userId,
+      //       this.$route.params.breweryId
+      //     )
+      //     .then((resp) => {
+      //       this.breweryInfo = resp.data;
+      //       this.showFavoritesButton = true;
+      //     });
+      // }
+    },
+    checkIfUserIsLoggedIn(){
+      if(this.$store.state.token != "")
+      this.showFavoritesButton = true;
     },
     addToFavorite() {
       api.addFavoriteBrewery(this.breweryInfo, this.$store.state.user.userId).then(() => {
@@ -90,6 +95,7 @@ export default {
   },
   created() {
      this.getBreweryInfo();
+     this.checkIfUserIsLoggedIn();
   },
 };
 </script>
