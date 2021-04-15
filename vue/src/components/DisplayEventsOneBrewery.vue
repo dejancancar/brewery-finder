@@ -49,6 +49,7 @@ ul{
     background-color: white;
     padding: 20px;
     border-radius: 10px;
+    border: thin solid black;
 
   }
   .image{
@@ -66,17 +67,21 @@ ul{
   h3{
     margin: 0px;
     font-size: 30px;
+    background-color:#e0af1f;
+    /* opacity: 70%; */
+    color: white;
+    padding: 0px;
 
   }
   .event{
-    padding: 0px 30px;
+    padding: 0px 20px;
   }
   #description{
     margin-top: 10px;
   }
   #container{
     margin-top: 2%;
-    background-color: rgba(221, 221, 221, 0.637);
+    background-color: rgba(221, 221, 221, 0.678);
   }
 
 </style>

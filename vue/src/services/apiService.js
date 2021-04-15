@@ -28,10 +28,17 @@ export default {
     }
     return axios.get(path);
   },
-  getBreweryLoggedInUser(userId, breweryId){
+  getBreweriesLoggedInUser(userId){
+    let path = `/breweries`;
+    if (userId) {
+      path += `?userId=${userId}&isBrewer=false`
+    }
+    return axios.get(path);
+  },
+  getBreweryWithLoggedInUser(userId, breweryId){
     let path = `/breweries/${breweryId}`;
     if (userId) {
-      path += `?userId=${userId}&isBrewer=true`
+      path += `?userId=${userId}`
     }
     return axios.get(path);
   },

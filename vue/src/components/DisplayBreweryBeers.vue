@@ -9,6 +9,7 @@
         <h2 id="beer-name">{{ beer.beerName }}</h2>
         </router-link>
       </li>
+      <li></li>
       
     </ul>
   </div>
@@ -77,6 +78,9 @@ img {
   vertical-align: bottom;
   
 }
+img:hover{
+  opacity: 50%;
+}
 #beer-name{
   display: flex;
   justify-content: center;
@@ -95,6 +99,9 @@ img {
 
 #beer-row:hover{
   text-decoration: underline;
+}
+li:last-child{
+  flex-grow: 100;
 }
 
   

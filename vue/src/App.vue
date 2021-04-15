@@ -107,6 +107,7 @@ button:hover {
   background-color: black;
   top: 0px;
   margin: top 73px;
+  z-index: 100;
 }
 .navlink {
   font-variant: small-caps;

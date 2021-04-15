@@ -5,8 +5,8 @@
     <p>User Id: {{currentUser.userId}}</p>
     <p>Role: {{currentUser.role}}</p> -->
     <!-- <router-link :to="{name: 'users'}" ><button>Search Users</button></router-link> -->
-    <view-breweries />
-    <display-events-all-breweries />
+    <view-breweries id="breweries"/>
+    <display-events-all-breweries id="events"/>
   </div>
 </template>
 
@@ -26,3 +26,23 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+#breweries{
+  grid-area: breweries;
+  display: flex;
+}
+#events{
+  grid-area: events;
+  display: flex;
+  background-color: rgba(221, 221, 221, 0.678);
+  justify-content: center;
+}
+div{
+  display: grid;
+  grid-template-areas:
+    "breweries breweries breweries events"
+  ;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+</style>
