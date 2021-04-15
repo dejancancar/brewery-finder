@@ -48,6 +48,7 @@ namespace Capstone.DAO
                                                     VALUES(@breweryName, @userId, @history, @phone, @streetAddress, @city, @zipCode, @isActive);
                                                     DECLARE @breweryId int = @@IDENTITY;
                                                     SELECT * FROM breweries WHERE brewery_id = @breweryId;
+                                                    INSERT INTO brewery_images (brewery_id, image_url) VALUES (@breweryId, @imageUrl);
                                                     INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
                                                         VALUES (@breweryId, 1, 0, 0, 'AM', 0, 0, 'AM', 1);
                                                     INSERT INTO hours (brewery_id, day_of_week, open_hour, open_minute, open_am_pm, close_hour, close_minute, close_am_pm, is_closed)
@@ -267,6 +268,7 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@city", "");
                     cmd.Parameters.AddWithValue("@zipCode", "");
                     cmd.Parameters.AddWithValue("@isActive", true);
+                    cmd.Parameters.AddWithValue("@imageUrl", "https://res.cloudinary.com/breweryfinderte/image/upload/v1618520520/bfimages/lrvfz5up7svx4uwgh8wk.jpg");
 
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())

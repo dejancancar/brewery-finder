@@ -1090,7 +1090,22 @@ Weekly drink specials. Bring your own games or check out our selection.','2021-0
 INSERT INTO brewery_events( brewery_id, title, description, date_and_time)
 VALUES ('13', 'Bands & Brews','Time to get drinking and jamming with our local artists! Enjoy the city whick truly rocks with us','2021-06-15 13:00:00');
 
+-- Events other breweries
 
+INSERT INTO brewery_events( brewery_id, title, description, date_and_time)
+VALUES (1, 'Come by for wing night!', 'Come by next Wednesday for 50 cent wings and $2 drafts!  Wing special is for dine-in only.', '2021-04-21 18:00:00');
+
+INSERT INTO brewery_events( brewery_id, title, description, date_and_time)
+VALUES (2, 'Nu Haze now on tap', 'Feel the haze with light citrue and ripe lemon.  Introducing our newest beer May 1st!', '2021-05-01 14:00:00');
+
+INSERT INTO brewery_events( brewery_id, title, description, date_and_time)
+VALUES (3, 'Live music next Friday', 'Enjoy live music from Clevelands own local artists next Friday while drinking Forest City beer!', '2021-04-23 18:00:00');
+
+INSERT INTO brewery_events( brewery_id, title, description, date_and_time)
+VALUES (4, 'Trivia night!', 'Bring your friends to drink beer and win prizes 4/19', '2021-04-19 20:30:00');
+
+INSERT INTO brewery_events( brewery_id, title, description, date_and_time)
+VALUES (5, 'Live music with Brent Kirby', 'Sip on a cold beer and enjoy live music.  Show begins at 7pm.', '2021-04-30');
 
 
 
