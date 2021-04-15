@@ -36,9 +36,9 @@
         <tr id="info-in-row">
           <td>{{ brewery.history }}</td>
         </tr>
-      </table>
+      
       <div id="hidden-area-two">
-        <button
+        <button 
           class="medium-button"
           type="button"
           v-on:click="toggleUpdateBrewery = true"
@@ -46,7 +46,7 @@
         >
           Update Info
         </button>
-      </div>
+      </div></table>
     </span>
 
     <div id="right-column">
@@ -212,8 +212,6 @@ export default {
 }
 #hidden-area-two {
   grid-area: two;
-  max-height: 25%;
-  max-width: 35%;
   align-self: end;
 }
 
@@ -240,9 +238,9 @@ table {
 h1 {
   margin-top: 8%;
   font-weight: bold;
-  font-variant: small-caps;
-  text-decoration: underline;
-  font-size: 40;
+  /* font-variant: small-caps; */
+  /* text-decoration: underline; */
+  font-size: 40px;
   margin-bottom: 0px;
 }
 #showing-area-two {

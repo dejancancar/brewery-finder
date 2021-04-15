@@ -59,7 +59,7 @@ ul{
     margin-left: 2%;
     margin-top: 1%;
     font-size: 40px;
-    text-decoration: underline;
+    /* text-decoration: underline; */
     font-weight: bold;
     font-variant: small-caps;
     
