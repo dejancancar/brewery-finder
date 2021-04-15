@@ -10,7 +10,7 @@ namespace Capstone.DAO
     public class BeerSqlDAO : IBeerDAO
     {
         private readonly string connectionString;
-        private const string SQL_GET_BEERS = "SELECT * FROM beers WHERE brewery_id = @breweryId;";
+        private const string SQL_GET_BEERS = "SELECT * FROM beers WHERE brewery_id = @breweryId ORDER BY is_active DESC;";
         private const string SQL_GET_BEER_BY_ID = "SELECT * FROM beers WHERE beer_id = @beerId;";
         private const string SQL_CREATE_BEER = @"INSERT INTO beers (brewery_id, beer_name, description, image_url, abv, beer_type, is_active) 
                                                     VALUES (@breweryId, @beerName, @description, @imageUrl, @abv, @beerType, @isActive)

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <div
       class="brewery-images"
       v-for="image in breweryImages"
@@ -31,5 +31,22 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style scoped>
+/*
+.brewery-images{
+  display: flex;
+  justify-content: space-between;
+}
+li {
+  height: 40vh;
+  flex-grow: 1;
+  margin: 1%;
+}
+
+img {
+  max-height: 100%;
+  min-width: 100%;
+  object-fit: cover;
+  vertical-align: bottom;
+}*/
+</style> 

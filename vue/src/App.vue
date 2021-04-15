@@ -1,12 +1,19 @@
 <template>
   <div class="app">
-
     <div class="container">
       <div id="logo-and-nav-links">
+        <router-link :to="{ name: 'home'}">
         <img src="./images/logo.png" alt="Cleveland on Tap" id="logo" />
+        </router-link>
         <div class="nav-links">
           <router-link class="navlink" v-bind:to="{ name: 'home' }"
             >Home</router-link
+          >
+          <router-link
+            class="navlink"
+            v-bind:to="{ name: 'brewer-breweries' }"
+            v-if="$store.state.user.role === 'brewer'"
+            >Brewer</router-link
           >
           <router-link
             class="navlink"
@@ -14,6 +21,7 @@
             v-if="$store.state.token != ''"
             >Logout</router-link
           >
+
           <router-link
             class="navlink"
             v-bind:to="{ name: 'login' }"
@@ -28,9 +36,7 @@
 </template>
 
 <style scoped>
-/* *{
-  box-sizing: border-box;
-} */
+
 h1 {
   font-size: 3rem;
   text-align: center;
@@ -42,36 +48,16 @@ body {
   font-size: 87.5%;
   height: 100%;
 }
-#logo-and-nav-links {
-  align-content: center;
-  display: flex;
-  width: stretch;
-  justify-content: space-between;
-  font-size: 30px;
-  align-items: flex-end;
-  color: white;
-}
-.navlink {
-  font-variant: small-caps;
-  color: white;
-  font-size: 75%;
-  text-decoration: none;
-  padding-right: 40px;
-  font-weight: bold;
-  transition: all 0.2s;
-}
-.navlink:hover {
-  color: #dead30;
-}
-.app {
+
+/* .app {
   justify-content: start;
   position: absolute;
   z-index: -2;
-  height: 60px;
+  height: 70px;
   width: 100%;
   background-size: auto 100%;
   background-color: black;
-}
+} */
 
 @media all and (max-width: 30em) {
   button {
@@ -108,4 +94,38 @@ button {
 button:hover {
   text-decoration: underline;
 }
+
+#logo-and-nav-links {
+  display: flex;
+  width: stretch;
+  justify-content: space-between;
+  font-size: 30px;
+  align-items: flex-end;
+  color: white;
+  position:fixed;
+  overflow: hidden;
+  background-color: black;
+  top: 0px;
+  margin: top 73px;
+}
+.navlink {
+  font-variant: small-caps;
+  color: white;
+  font-size: 75%;
+  text-decoration: none;
+  padding-right: 40px;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+.navlink:hover {
+  color: #dead30;
+}
+.app{
+  margin-top: 73px;
+}
+*{
+  /* font-size: 16px; */
+  line-height: 1.7em;
+}
+
 </style>

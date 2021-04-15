@@ -38,14 +38,14 @@
           required
         />
       </div>
-      <div >
-        <router-link id="login-page" :to="{ name: 'login' }">>> Have an account?</router-link>      
-      </div>
 
       <div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>        
+      </div>
+            <div >
+        <router-link id="login-page" :to="{ name: 'login' }">>> Have an account?</router-link>      
       </div>
 
     </form>
@@ -109,23 +109,22 @@ export default {
 <style scoped>
 
 .sr-only{
-  font-size: 15px;
+  font-size: 13px;
 }
 .form-register{
-  display: flexbox;
-  max-width: 500px;
-  justify-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  justify-content: center;
+  margin: auto;
+  margin-top: 100px;
 }
 label{
   display:inline-block;
-  max-width: 100%;
   font-weight: bold;
-    margin-bottom: 2px;
-  
-}
-#username, #password{
+  margin-bottom: 2px;
   font-size: 13px;
-
+  
 }
 input{
   display: block;
@@ -150,5 +149,11 @@ input{
 }
 button{
   margin: 17px 0px;
+}
+h1 {
+  margin-bottom: 30px;
+  font-weight: bold;
+  font-variant: small-caps;
+
 }
 </style>
