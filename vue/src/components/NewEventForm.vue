@@ -5,20 +5,26 @@
     </button>
     <form v-show="toggleAddEvent">
       <table>
-        <tr>
-          <td>When:</td>
-          <td>
-            <input type="datetime-local" v-model="newEvent.dateAndTime" />
-          </td>
+        <tr id="select-name">
+          <td>When</td>
         </tr>
         <tr>
-          <td>Event Name:</td>
+          <td>
+            <input id="date" type="datetime-local" v-model="newEvent.dateAndTime" />
+          </td>
+        </tr>
+        <tr id="select-name">
+          <td>Event Name</td>
+        </tr>
+        <tr id="select-name">
           <td>
             <input type="text" v-model="newEvent.title" />
           </td>
         </tr>
+        <tr id="select-name">
+          <td>Event Details</td>
+        </tr>
         <tr>
-          <td>Event Details:</td>
           <td>
             <textarea
               cols="30"
@@ -35,7 +41,7 @@
 </template>
 
 <script>
-import api from '../services/apiService.js'
+import api from "../services/apiService.js";
 export default {
   data() {
     return {
@@ -49,15 +55,47 @@ export default {
     };
   },
   methods: {
-      addEvent() {
-          api.addEvent(this.newEvent)
-            .then(() => {
-                this.newEvent = {};
-            })
-      }
-  }
+    addEvent() {
+      api.addEvent(this.newEvent).then(() => {
+        this.newEvent = {};
+      });
+    },
+  },
 };
 </script>
 
-<style>
+<style scoped>
+select, input {
+  padding-left: 3px;
+  font-size: 16px;
+  color: #000000;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #dfd7ca;
+  border-radius: 4px;
+  height: 40px;
+  margin-left: 6px;
+}
+textarea {
+  padding-left: 3px;
+  font-size: 16px;
+  color: #000000;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #dfd7ca;
+  border-radius: 4px;
+  height: 40px;
+  margin-left: 6px;
+  height: 150px;
+  width: 100%;
+}
+#select-name {
+  font-weight: bold;
+  font-size: 17px;
+  margin-right: 3px;
+}
+#date{
+  font-weight: bold;
+  padding-left: 10px;
+}
 </style>

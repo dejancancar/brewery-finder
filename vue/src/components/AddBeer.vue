@@ -1,40 +1,58 @@
 <template>
-  <div >
+  <div>
     <h2>Beers</h2>
-    <button v-show="!toggleAddBeer" @click="toggleAddBeer = true">Add Beer</button>
+    <button id="add-beer" v-show="!toggleAddBeer" @click="toggleAddBeer = true">
+      Add Beer
+    </button>
 
     <form v-show="toggleAddBeer">
       <table id="add-beer-table">
         <tr>
-          <td>Beer Name:</td>
+          <td id="select-names">Beer Name</td>
+        </tr>
+        <tr>
           <td>
             <input type="text" v-model="newBeer.beerName" />
           </td>
         </tr>
-        <tr>
-          <td>Description:</td>
-          <td>
+        <tr id="select-names">
+          <td>Description</td>
+        </tr>
+        <tr id="text-area-tr">
+          <td id="text-area-td">
             <textarea
-              cols="30"
-              rows="10"
               v-model="newBeer.description"
             ></textarea>
           </td>
         </tr>
-        <tr>
-          <td>ABV:</td>
-          <td>
-            <input type="number" step=".1" min="0" max="100" v-model="newBeer.abv" value="0.00"/>
-          </td>
+        <tr id="select-names">
+          <td >ABV</td>
         </tr>
         <tr>
-          <td>Beer Type:</td>
+          <td>
+            <input
+            id="abv-input"
+              type="number"
+              step=".1"
+              min="0"
+              max="100"
+              v-model="newBeer.abv"
+              value="0.00"
+            />
+          </td>
+        </tr>
+        <tr id="select-names">
+          <td>Beer Type</td>
+        </tr>
+        <tr>
           <td>
             <input type="text" v-model="newBeer.beerType" />
           </td>
         </tr>
+        <tr id="select-names">
+          <td>Currently on Tap</td>
+        </tr>
         <tr>
-          <td>Currently on Tap:</td>
           <td>
             <select v-model="newBeer.isActive">
               <option value="true">Yes</option>
@@ -43,7 +61,9 @@
           </td>
         </tr>
         <tr>
-          <td>Image URL:</td>
+          <td id="select-names">Image URL</td>
+        </tr>
+        <tr>
           <td>
             <vue-dropzone
               id="dropzone"
@@ -131,11 +151,58 @@ export default {
 </script>
 
 <style scoped>
-.brewery-beers {
+#abv-input{
+  width: 15%;
+  padding-left: 15px;
+  font-size: 20px;
+  
+}
+#text-area-td{
+  height: 100%;
+  width: 100%;
+}
+input{
+  width: 100%;
+}
+/* .brewery-beers {
     max-height: 320px;
     padding-bottom: 0px;
 }
 #add-beer-table{
   margin-top:269px
+} */
+h2 {
+  font-size: 40px;
+  margin-top: 0px;
 }
+#select-names {
+  font-weight: bold;
+  font-size: 17px;
+  margin-right: 3px;
+}
+select, input {
+  padding-left: 3px;
+  font-size: 16px;
+  color: #000000;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #dfd7ca;
+  border-radius: 4px;
+  height: 40px;
+  margin-left: 6px;
+}
+textarea{
+    padding-left: 3px;
+  font-size: 16px;
+  color: #000000;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #dfd7ca;
+  border-radius: 4px;
+  height: 40px;
+  margin-left: 6px;
+  height: 150px;
+  width: 100%;
+}
+
 </style>

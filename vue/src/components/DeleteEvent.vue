@@ -10,8 +10,8 @@
     </select>
     <form v-show="toggleDeleteEvent">
         <table>
-            <td>Confirm Delete: </td>
-            <td><input type="checkbox" value="true" v-model="confirmedDelete"></td>
+            <td id="confirm-delete">Confirm Delete: </td>
+            <td id="checkbox"><input  type="checkbox" value="true" v-model="confirmedDelete"></td>
         </table>
       <button @click="deleteEvent" :disabled="!confirmedDelete">Submit</button>
       <button @click="toggleUpdateEvent = false">Cancel</button>
@@ -47,5 +47,20 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+select  {
+  padding-left: 3px;
+  font-size: 16px;
+  color: #000000;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #dfd7ca;
+  border-radius: 4px;
+  height: 40px;
+  margin-left: 6px;
+}
+#confirm-delete{
+  font-weight: bold;
+}
+
 </style>
