@@ -4,13 +4,13 @@
       <h1>Info</h1>
       <table>
         <tr id="name-of-row">
-          <td>Name:</td>
+          <td>Name</td>
         </tr>
         <tr id="info-in-row">
           <td>{{ brewery.breweryName }}</td>
         </tr>
         <tr id="name-of-row">
-          <td>Address:</td>
+          <td>Address</td>
         </tr>
         <tr id="info-in-row">
           <td>
@@ -19,80 +19,99 @@
           </td>
         </tr>
         <tr id="name-of-row">
-          <td>Phone:</td>
+          <td>Phone</td>
         </tr>
         <tr id="info-in-row">
           <td>{{ brewery.phone }}</td>
         </tr>
         <tr id="name-of-row">
-          <td>Status:</td>
+          <td>Status</td>
         </tr>
         <tr id="info-in-row">
           <td>{{ brewery.isActive ? "Active" : "Inactive" }}</td>
         </tr>
         <tr id="name-of-row">
-          <td>History:</td>
+          <td>History</td>
         </tr>
         <tr id="info-in-row">
           <td>{{ brewery.history }}</td>
         </tr>
-      </table></span
-    >
-    <div id="hidden-area-two">
-      <button
-        class="medium-button"
-        type="button"
-        v-on:click="toggleUpdateBrewery = true"
-        v-show="!toggleUpdateBrewery"
-      >
-        Update Info
-      </button>
-    </div>
+      </table>
+      <div id="hidden-area-two">
+        <button
+          class="medium-button"
+          type="button"
+          v-on:click="toggleUpdateBrewery = true"
+          v-show="!toggleUpdateBrewery"
+        >
+          Update Info
+        </button>
+      </div>
+    </span>
+
     <div id="right-column">
       <form id="showing-area-two" v-show="toggleUpdateBrewery">
         <table>
-          <tr>
-            <td>Name:</td>
-            <td><input type="text" v-model="updateBrewery.breweryName" /></td>
+          <tr id="name-of-row">
+            <td>Name</td>
           </tr>
           <tr>
-            <td>Street Address:</td>
+            <td><input type="text" v-model="updateBrewery.breweryName" /></td>
+          </tr>
+          <tr id="name-of-row">
+            <td>Street Address</td>
+          </tr>
+          <tr id="name-of-row">
             <td>
               <input type="text" v-model="updateBrewery.streetAddress" />
             </td>
           </tr>
-          <tr>
-            <td>City:</td>
+          <tr id="name-of-row">
+            <td>City</td>
+          </tr>
+          <tr id="name-of-row">
             <td>
               <input type="text" v-model="updateBrewery.city" />
             </td>
           </tr>
+          <tr id="name-of-row">
+            <td>Zip Code</td>
+          </tr>
           <tr>
-            <td>Zip Code:</td>
             <td>
               <input type="text" v-model="updateBrewery.zipCode" />
             </td>
           </tr>
+          <tr id="name-of-row">
+            <td>Phone Number</td>
+          </tr>
           <tr>
-            <td>Phone Number:</td>
-            <td>
-              <input type="text" v-model="updateBrewery.phone" />
-              <div>Format: 123-456-7890</div>
+            <td id="name-of-row">
+              <input id="phone-input" type="text" v-model="updateBrewery.phone" />
+              <div id="phone-format">Format: 123-456-7890</div>
             </td>
           </tr>
-          <tr>
-            <td>Currently Active:</td>
-            <select v-model="updateBrewery.isActive">
-              <option value="true">Active</option>
-              <option value="false">Inactive</option>
-            </select>
+          <tr id="name-of-row">
+            <td>Currently Active</td>
           </tr>
           <tr>
-            <td>Brewery History:</td>
-            <textarea
-              type="text-area"
-              v-model="updateBrewery.history"
-            ></textarea>
+            <td>
+              <select v-model="updateBrewery.isActive">
+                <option value="true">Active</option>
+                <option value="false">Inactive</option>
+              </select>
+            </td>
+          </tr>
+          <tr id="name-of-row">
+            <td>Brewery History</td>
+          </tr>
+          <tr>
+            <td id="txtarea">
+              <textarea
+                type="text-area"
+                v-model="updateBrewery.history"
+              ></textarea>
+            </td>
           </tr>
         </table>
         <button @click.prevent="updateBreweryInfo">Update Info</button>
@@ -196,34 +215,29 @@ export default {
   max-height: 25%;
   max-width: 35%;
   align-self: end;
+}
 
-}
-#showing-area-two {
-  grid-area: three;
-}
 #container {
   display: grid;
-  grid-template-areas: "one two three";
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "one two";
+  grid-template-columns: 1fr 1fr;
 }
 #name-of-row {
   font-weight: bold;
   margin-bottom: 0px;
 }
-#name-of-row > td{
-  padding-left: 2%;
-}
+
 #info-in-row > td {
   padding-left: 5%;
   margin-top: 0px;
 }
-#info-in-row{
+#info-in-row {
   margin-top: 0px;
 }
-table{
-  margin-right: 5%;
+table {
+  margin-right: 2%;
 }
-h1{
+h1 {
   margin-top: 8%;
   font-weight: bold;
   font-variant: small-caps;
@@ -231,4 +245,50 @@ h1{
   font-size: 40;
   margin-bottom: 0px;
 }
+#showing-area-two {
+  margin-top: 5%;
+  margin-bottom: 0px;
+}
+input,  textarea {
+  display: block;
+  width: 300px;
+  height: 20px;
+  padding: 8px 12px;
+  font-size: 16px;
+  color: #000000;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #dfd7ca;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  margin-left: 2%;
+}
+select{
+  padding-left: 10px;
+  font-size: 16px;
+  color: #000000;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #dfd7ca;
+  border-radius: 4px;
+  height: 40px;
+  margin-left: 12px;
+
+}
+#phone-format{
+  font-size: 13px;
+  font-weight:none;
+  font-style: italic;
+  padding-left: 210px;
+  padding-right: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+textarea{
+  width: 600px;
+  height: 125px;
+}
+
+
 </style>
