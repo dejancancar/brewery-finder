@@ -17,7 +17,7 @@ namespace Capstone.Models
         public string ZipCode { get; set; } = "";
         public string DefaultImageUrl { get; set; } = "https://res.cloudinary.com/breweryfinderte/image/upload/v1618351293/o7nsfdtjw8ogmyndjabe.png";
         public bool IsActive { get; set; } = true;
-        public bool IsFavorite { get; set; } = false;
+        public bool IsFavorite { get; set; }
 
     }
 
