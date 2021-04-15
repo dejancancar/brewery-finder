@@ -79,10 +79,14 @@ li {
   height: 250px;
   margin: 2%;
   align-content: space-around;
+
 }
 img{
     width: 100%;
     height: 100%;
+}
+#link{
+    
 }
 .link {
   color: #d29f13;
