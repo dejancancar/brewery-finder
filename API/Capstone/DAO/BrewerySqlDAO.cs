@@ -13,12 +13,12 @@ namespace Capstone.DAO
         private readonly string connectionString;
 
         private const string SQL_GET_BREWERIES_AUTHENTICATED = @"SELECT b.*, bi.image_url, bu.user_id as favorite
-                                                                    FROM breweries b
-                                                                    LEFT OUTER JOIN breweries_users bu ON bu.brewery_id = b.brewery_id
-                                                                    JOIN(SELECT MIN(image_id) as min_id, brewery_id
-                                                                     FROM brewery_images
-                                                                     GROUP BY brewery_id) i ON i.brewery_id = b.brewery_id
-                                                                     JOIN brewery_images bi ON bi.image_id = i.min_id";
+                                                                     FROM breweries b
+                                                                     LEFT OUTER JOIN (SELECT * FROM breweries_users WHERE user_id = @userId) bu ON bu.brewery_id = b.brewery_id
+                                                                     JOIN(SELECT MIN(image_id) as min_id, brewery_id
+                                                                      FROM brewery_images
+                                                                      GROUP BY brewery_id) i ON i.brewery_id = b.brewery_id
+                                                                      JOIN brewery_images bi ON bi.image_id = i.min_id";
         private const string SQL_GET_BREWERIES = @"SELECT b.*, bi.image_url
                                                     FROM breweries b
                                                     JOIN(SELECT MIN(image_id) as min_id, brewery_id

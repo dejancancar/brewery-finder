@@ -4,7 +4,7 @@
     <ul>
 
       <li v-for="event in events" :key="event.breweryEventId">
-        <h3 class="event">{{ event.title }}</h3>
+        <h3 class="event"><span id="title">{{ event.title }}</span></h3>
         <div class="event" id="date-time">{{ formatDate(event.dateAndTime) }} </div>
         <div class="event" id="description">{{event.description}}</div>
       </li>
@@ -45,10 +45,11 @@ ul{
     margin: 0px;
   }
   li{
-    margin: 15px;
+    margin: 10px;
     background-color: white;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    border: thin solid black;
 
   }
   .image{
@@ -66,17 +67,27 @@ ul{
   h3{
     margin: 0px;
     font-size: 30px;
+    background-color:#e0af1f;
+    /* opacity: 70%; */
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
 
   }
   .event{
-    padding: 0px 30px;
+    
   }
   #description{
     margin-top: 10px;
   }
   #container{
     margin-top: 2%;
-    background-color: rgba(221, 221, 221, 0.637);
+    background-color: rgba(221, 221, 221, 0.678);
   }
+  #title{
+    
+  }
+
 
 </style>

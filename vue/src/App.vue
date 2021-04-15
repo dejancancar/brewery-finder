@@ -3,7 +3,7 @@
     <div class="container">
       <div id="logo-and-nav-links">
         <router-link :to="{ name: 'home'}">
-        <img src="./images/logo.png" alt="Cleveland on Tap" id="logo" />
+        <img src="./images/Cleveland-On-Tap-600w.png" alt="Cleveland on Tap" id="logo" />
         </router-link>
         <div class="nav-links">
           <router-link class="navlink" v-bind:to="{ name: 'home' }"
@@ -93,6 +93,7 @@ button {
 }
 button:hover {
   text-decoration: underline;
+
 }
 
 #logo-and-nav-links {
@@ -107,6 +108,7 @@ button:hover {
   background-color: black;
   top: 0px;
   margin: top 73px;
+  z-index: 100;
 }
 .navlink {
   font-variant: small-caps;
@@ -126,6 +128,12 @@ button:hover {
 *{
   /* font-size: 16px; */
   line-height: 1.7em;
+}
+#logo{
+  max-height: 70%;
+  max-width: 60%;
+  margin-left: 5px;
+  margin-top: 5px;
 }
 
 </style>
