@@ -4,9 +4,10 @@
       <li v-for="beer in activeBeer" :key="beer.beerId">
         <router-link id="beer-row" :to="{name: 'beer', params: {beerId: beer.beerId }}">
 
-        <div v-if="showOnTapBrewer">Currently on tap: {{beer.isActive ? "Yes" : "No"}}</div>
-        <img class="image" :src="beer.imageUrl" alt="Beer Picture" />
-        <h2 id="beer-name">{{ beer.beerName }}</h2>
+        
+        <span id="beer-decoration"><img class="image" :src="beer.imageUrl" alt="Beer Picture" />
+        <h2 id="beer-name">{{ beer.beerName }}</h2></span>
+        <div id="brewer-on-tap" v-if="showOnTapBrewer"><span id="currently-on-tap">Currently on tap:</span><span id="on-tap"> {{beer.isActive ? "Yes" : "No"}}</span></div>
         </router-link>
       </li>
       <li></li>
@@ -67,7 +68,8 @@ ul{
 li {
   height: 40vh;
   flex-grow: 1;
-  margin: 1%;
+  margin-top: 2%;
+  margin-bottom: 2%;
   list-style-type: none;
 }
 
@@ -78,16 +80,14 @@ img {
   vertical-align: bottom;
   
 }
-img:hover{
-  opacity: 50%;
-}
 #beer-name{
   display: flex;
   justify-content: center;
   margin-top: 1%;
-
-
-
+  margin-bottom: 0px;
+}
+#beer-decoration:hover{
+  text-decoration: underline;
 }
 #beer-row{
   text-decoration: none;
@@ -98,10 +98,27 @@ img:hover{
 }
 
 #beer-row:hover{
-  text-decoration: underline;
+  opacity: 50%;
 }
 li:last-child{
   flex-grow: 100;
+}
+#currently-on-tap{
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+}
+#on-tap{
+  color: red;
+  font-size: 14px;
+  margin-left: 5px;
+}
+#brewer-on-tap{
+  display: flex;
+  justify-content: center;
+  margin-top: 0px;
+  font-weight: bold;
+
 }
 
   

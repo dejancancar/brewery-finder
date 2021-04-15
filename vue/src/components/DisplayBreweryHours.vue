@@ -2,7 +2,7 @@
   <div>
     <ul class = "brewery-hours">
       <li v-for="displayHours in breweryHours" :key="displayHours.hoursId">
-        {{ displayDayOfWeek(displayHours.dayOfWeek) }}:
+        <span id="day-of-week">{{ displayDayOfWeek(displayHours.dayOfWeek) }}:</span>
         <span v-show="!displayHours.isClosed">
           {{ displayHours.openHour }}:{{
             displayMinutesProperly(displayHours.openMinute)
@@ -12,7 +12,7 @@
           }}
           {{ displayHours.closeAmPm }}
         </span>
-        <span v-show="displayHours.isClosed">CLOSED</span>
+        <span id="closed" v-show="displayHours.isClosed">CLOSED</span>
       </li>
     </ul>
   </div>
@@ -69,5 +69,14 @@ li{
 }
 ul{
   margin-top: 30px;
+}
+#closed{
+  font-weight: bold;
+  color: red;
+}
+#day-of-week{
+  font-weight: bold;
+  font-size: 17px;
+  margin-right: 5px;
 }
 </style>

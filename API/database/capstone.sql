@@ -1072,23 +1072,23 @@ I am in Massachusetts and was lucky to get this as a TYB in a trade.', '2020-11-
 
 INSERT INTO brewery_events( brewery_id, title, description, date_and_time)
 VALUES ('13', 'Christmas In July','The holidays are right around the corner and what better to celebrate
-than with the chance to try some of the best Christmas Ales.','2021-07-03');
+than with the chance to try some of the best Christmas Ales.','2021-07-03 18:00:00');
 
 INSERT INTO brewery_events( brewery_id, title, description, date_and_time)
 VALUES ('13', 'Private Brewery Tour and Tasting','Private Guided Tour to our Brewhouse and Canning Facility 
-- Welcome Beer - Beer Flight or Single Beer at the Taproom and Kitchen.','2021-05-01');
+- Welcome Beer - Beer Flight or Single Beer at the Taproom and Kitchen.','2021-05-01 12:00:00');
 
 INSERT INTO brewery_events( brewery_id, title, description, date_and_time)
 VALUES ('13', 'Choose Your Ohio Sport | Paint + Brews!','Theres no better fan base than Cleveland!
 Baseball is officially back, the NFL Draft is coming up and the Cavs host the NBA Draft next year.
-Get HYPED and root for your home team by creating your own Cleveland sports themed painting','2021-04-27');
+Get HYPED and root for your home team by creating your own Cleveland sports themed painting','2021-04-27 21:00:00');
 
 INSERT INTO brewery_events( brewery_id, title, description, date_and_time)
 VALUES ('13', 'Board Games and Brews','Bring some great friends and play your favorit board games & drinks some great beer.
-Weekly drink specials. Bring your own games or check out our selection.','2021-05-22');
+Weekly drink specials. Bring your own games or check out our selection.','2021-05-22 18:30:00');
 
 INSERT INTO brewery_events( brewery_id, title, description, date_and_time)
-VALUES ('13', 'Bands & Brews','Time to get drinking and jamming with our local artists! Enjoy the city whick truly rocks with us','2021-06-15');
+VALUES ('13', 'Bands & Brews','Time to get drinking and jamming with our local artists! Enjoy the city whick truly rocks with us','2021-06-15 13:00:00');
 
 
 

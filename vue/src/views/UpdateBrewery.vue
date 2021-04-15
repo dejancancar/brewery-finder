@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="container">
     <update-brewery-basic-info class="brewery-info"/>
     <update-hours class="brewery-hours" />
 
@@ -48,6 +48,8 @@ export default {
 </script>
 
 <style scoped>
-
+*{
+  margin: 1%
+}
 
 </style>
