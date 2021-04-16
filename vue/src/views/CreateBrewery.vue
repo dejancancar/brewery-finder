@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <h1>Details</h1>
         <h3>UserId: {{ user.userId }}</h3>
         <h3>Username: {{ user.username }}</h3>
@@ -8,16 +8,16 @@
         </button>
     <div v-show="toggleForm">
       <form class="newBrewery" v-on:submit.prevent="createBrewery">
-            <label for="breweryName">Enter Brewery Name:</label>
-            <input type="text" class="form-look" v-model="brewery.breweryName" />
-            <button type="submit" class="btn btn-submit">Submit Brewery</button>
+            <div><label for="breweryName">Enter Brewery Name</label></div>
+            <input type="text" class="form-look" v-model="brewery.breweryName" autofocus />
+            <div class="both-buttons"><button type="submit" class="btn btn-submit">Submit Brewery</button>
             <button
               type="button"
               class="btn btn-cancel"
               v-on:click.prevent="cancelForm"
             >
               Cancel
-            </button>
+            </button></div>
             <!-- i dont like how cancel redirects us to home -todd -->
       </form>
     </div>
@@ -81,5 +81,34 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.container{
+  margin-top: 8%;
+  margin-left: 3%;
+}
+h1{
+  font-size: 40px;
+  font-weight: bold;
+}
+button{
+  margin-left: 0;
+}
+input {
+  padding-left: 3px;
+  font-size: 16px;
+  color: #000000;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #dfd7ca;
+  border-radius: 4px;
+  height: 40px;
+  width: 20%;
+
+}
+label {
+  font-weight: bold;
+  font-size: 17px;
+  margin-right: 3px;
+}
+
 </style>

@@ -15,6 +15,12 @@
             v-if="$store.state.user.role === 'brewer'"
             >Brewer</router-link
           >
+           <router-link
+            class="navlink"
+            v-bind:to="{ name: 'admin-search-users' }"
+            v-if="$store.state.user.role === 'admin'"
+            >Admin</router-link
+          >
           <router-link
             class="navlink"
             v-bind:to="{ name: 'logout' }"
@@ -68,6 +74,9 @@ body {
 </style>
 
 <style>
+textarea{
+  resize: none;
+}
 * {
   font-family: century, brandonlight, arial, helvetica;
 }
